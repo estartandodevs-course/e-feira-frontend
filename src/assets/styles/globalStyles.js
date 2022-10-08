@@ -20,8 +20,8 @@ const GlobalStyle = createGlobalStyle`
     --primary-color-dark: #252525;
     --primary-color-light: #252525;
     --neutral-color: #252525;
-    --neutral-color-dark: #242424;
-    --neutral-color-light: #FFFFFF;
+    --neutral-color-dark: #252525;
+    --neutral-color-light: #252525;
     --alert-color: #AA3929;
     --error-color: #C06C5F;
     --swiper-theme-color: #81CAA8;
