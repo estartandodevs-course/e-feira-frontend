@@ -1,11 +1,14 @@
-import { IntroSlogan, ContainerStyle } from './styles';
+import { ContainerStyle } from './styles';
 import { useEffect } from 'react';
 import { useSplash } from '../../contexts/SplashProvider';
+import { SlidesComponent } from '../../components/Slider/';
+import { slides } from '../../mocks/slides';
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
 const Home = () => {
   const { hideSplash, isShown } = useSplash();
+
 
   useEffect(() => {
     (async () => {
@@ -19,7 +22,9 @@ const Home = () => {
 
   return isShown ? null : (
     <ContainerStyle>
-      <IntroSlogan>A sua feira preferida a um click de você</IntroSlogan>;
+      <div>
+        <SlidesComponent slides={slides} />
+      </div>
     </ContainerStyle>
   );
 };
