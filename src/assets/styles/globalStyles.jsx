@@ -29,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
     font-size: 1.6rem;
   }
   

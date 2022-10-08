@@ -5,11 +5,12 @@ export const HeaderBox = styled.div`
 `;
 
 export const SiteTitle = styled.h1`
-  display: flex;
   align-items: center;
   background-color: inherit;
+  color: #fff;
+  display: flex;
+  font-weight: bolder;
   justify-content: center;
   margin-top: 5vh;
   width: 100%;
-  color: #fff;
 `;
