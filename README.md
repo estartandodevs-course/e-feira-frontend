@@ -12,7 +12,7 @@
  git clone https://github.com/estartandodevs-course/e-feira-frontend.git
  ```
  
-## :rocket: Para iniciar o servidor de desenvolvimento rode o comando NPM abaixo
+## :rocket: Para iniciar o servidor de desenvolvimento rode o comando YARN abaixo
 
 ```
   yarn start
@@ -21,8 +21,8 @@
 ### :white_check_mark: To do
 
 - [ ] Criar a estrutura inicial do projeto 
-  -[x] Intalação do Yarn & Instalação dos Pacotes 
-  -[x] Fonte Roboto
+  - [ x ] Intalação do Yarn & Instalação dos Pacotes 
+  - [ x ] Fonte Roboto
 - [ ] Splash Screen 
 - [ ] Home
 - [ ] Header
