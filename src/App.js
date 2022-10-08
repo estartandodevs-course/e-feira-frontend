@@ -1,11 +1,15 @@
 import React from 'react';
+import Router from './routes';
 import GlobalStyle from './assets/styles/globalStyles';
+import { SplashProvider } from './contexts/SplashProvider';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h1>Boilerplate CRA - Estartando Devs</h1>;
+      <SplashProvider>
+        <Router />
+      </SplashProvider>
     </>
   );
 }
