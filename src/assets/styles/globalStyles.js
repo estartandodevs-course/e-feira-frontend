@@ -16,14 +16,14 @@ const GlobalStyle = createGlobalStyle`
   }
   
   :root {
-    --primary-color: #252525;
-    --primary-color-dark: #252525;
-    --primary-color-light: #252525;
-    --neutral-color: #252525;
-    --neutral-color-dark: #252525;
-    --neutral-color-light: #252525;
-    --alert-color: #AA3929;
-    --error-color: #C06C5F;
+    --primary-color: #32A060;
+    --primary-color-dark: #32A097;
+    --primary-color-light: #3BA032;
+    --neutral-color: #9732A0;
+    --neutral-color-dark: #323BA0;
+    --neutral-color-light: #6032A0;
+    --alert-color: #A0323B;
+    --error-color: #A0323B;
     --swiper-theme-color: #81CAA8;
   }
   
