@@ -1,14 +1,14 @@
 export const slides = [
   {
-    url: "/images/logo.png",
+    url: "/images/slide1.png",
     title: "Slide-1",
   },
   {
-    url: "localhost:3000/",
+    url: "/images/slide2.png",
     title: "Slide-2",
   },
   {
-    url: "./assets/images/slide3.png",
+    url: "/images/slide3.png",
     title: "Slide-3",
   },
 ];
