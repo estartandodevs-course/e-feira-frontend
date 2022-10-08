@@ -1,3 +1,40 @@
-# Boilerplate CRA
+## :memo: Repositório para o trabalho final do curso Estartando Devs 2022##
 
-Esse boilerplate configura um app React com Eslint, Prettier, EditorConfig e react-router-dom, a fim de ser utilizado no projeto final do curso de Front-end. 
+## :wrench: Principais Tecnologias Utilizadas
+- React.JS
+- JavaScript 
+- Styled Components 
+- React Router
+
+## Clone o reposiório com 
+  
+ ```
+ git clone https://github.com/estartandodevs-course/e-feira-frontend.git
+ ```
+ 
+## :rocket: Para iniciar o servidor de desenvolvimento rode o comando NPM abaixo
+
+```
+  yarn start
+```
+
+### :white_check_mark: To do
+
+- [ ] Criar a estrutura inicial do projeto 
+  -[x] Intalação do Yarn & Instalação dos Pacotes 
+  -[x] Fonte Roboto
+- [ ] Splash Screen 
+- [ ] Home
+- [ ] Header
+- [ ] Menu
+- [ ] Categorias de Produtos
+- [ ] Footer
+- [ ] CRUD
+- [ ] Páginas de Produtos
+- [ ] Formulários de Contato
+
+
+### :handshake: Members 
+
+  - Atila Iglesias https://github.com/junglereef
+  - Felipe André https://github.com/felipeandree
