@@ -1,5 +1,11 @@
-import { SiteTitle } from './styles';
+import { SiteTitle, HeaderBox } from './styles';
 
 export function Header() {
-  return <SiteTitle> E- Feira </SiteTitle>;
+  return (
+    <>
+    <HeaderBox>
+      <SiteTitle>e-feira</SiteTitle>;
+    </HeaderBox>;
+    </>
+  )
 }

@@ -1,7 +1,8 @@
-import styled, { css } from 'styled-components';
+/* eslint-disable no-unused-vars */
+
+import styled, { css } from "styled-components";
 
 export const PageWrapper = styled.div`
-  // eslint-disable-next-line prettier/prettier
   ${(props) => css`
     display: flex;
     flex-direction: column;
