@@ -2,12 +2,19 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; 
-import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Pagination } from "swiper";
 
 const SlidesComponent = ({ slides }) => {
   return (
     <>
-        <Swiper navigation={true} className="swiperSection"> 
+        <Swiper 
+        pagination={{
+          dynamicBullets:true,
+        }} 
+        modules={[Pagination]}  
+        className="swiperSection"
+        > 
           
           <SwiperSlide><img src={slides[0].url} alt="" /></SwiperSlide>
           <SwiperSlide><img src={slides[1].url} alt="" /></SwiperSlide>

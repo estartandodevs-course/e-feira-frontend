@@ -79,6 +79,22 @@ width: 100%;
 height: 100%;
 object-fit: cover;
 }
+
+.swiper-pagination  {
+  opacity: 1;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  z-index: 1; 
+  border-radius: 15px
+  
+}
+.swiper-pagination-bullet {
+  background-color: #9E9E9E;
+}
+
+.swiper-pagination-bullet-active {
   
 `;
+
 export default GlobalStyle;
