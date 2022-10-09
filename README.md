@@ -20,11 +20,12 @@
 
 ### :white_check_mark: To do
 
-- [ ] Criar a estrutura inicial do projeto 
+- [x] Criar a estrutura inicial do projeto 
   - [x] Intalação do Yarn & Instalação dos Pacotes 
   - [x] Fonte Roboto
-- [ ] Splash Screen 
+- [x] Splash Screen 
 - [ ] Home
+  - [ ] Carrossel
 - [ ] Header
 - [ ] Menu
 - [ ] Categorias de Produtos
