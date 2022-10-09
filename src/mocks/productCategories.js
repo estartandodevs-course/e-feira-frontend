@@ -3,7 +3,7 @@ const data = {
     {
       id: 1,
       name: 'Frutas',
-      image: '/images/frutas.png',
+      url: '/images/frutas.png',
       type: "categories-icon",
     },
     {
