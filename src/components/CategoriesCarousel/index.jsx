@@ -1,6 +1,5 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import data from '../../mocks/productCategories'
 import { CategoriesTitles, Container, CategoriesCard, Card, CardTitle, CardImg } from './styles'
 import "swiper/css";
@@ -10,7 +9,7 @@ export const CategoriesCarousel = () => {
   const { dataCategories } = data; 
   return (
     <Container> 
-      <CategoriesTitles> Categories </CategoriesTitles>
+      <CategoriesTitles> Categorias </CategoriesTitles>
        
         {dataCategories.length > 0 ? (
           <CategoriesCard>

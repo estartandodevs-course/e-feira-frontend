@@ -4,6 +4,7 @@ import { useSplash } from '../../contexts/SplashProvider';
 import { SlidesComponent } from '../../components/Slider/';
 import { slides } from '../../mocks/slides';
 import { CategoriesCarousel } from '../../components/CategoriesCarousel';
+import { StreetMarket } from '../../components/LastStreetMarket'; 
 
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
@@ -29,6 +30,7 @@ const Home = () => {
         <SlidesComponent slides={slides} />
       </div>
         <CategoriesCarousel />
+        <StreetMarket />
     </ContainerStyle>
   );
 };
