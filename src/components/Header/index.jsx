@@ -5,7 +5,7 @@ export function Header() {
     <>
     <HeaderBox>
       <SiteTitle>e-feira</SiteTitle>;
-    </HeaderBox>;
+    </HeaderBox>
     </>
   )
 }
