@@ -24,8 +24,8 @@
   - [x] Intalação do Yarn & Instalação dos Pacotes 
   - [x] Fonte Roboto
 - [x] Splash Screen 
-- [ ] Home
-  - [ ] Carrossel
+- [x] Home
+  - [x] Carrossel
 - [ ] Header
 - [ ] Menu
 - [ ] Categorias de Produtos

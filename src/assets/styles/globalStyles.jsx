@@ -93,6 +93,7 @@ object-fit: cover;
 }
 
 .swiper-pagination-bullet-active {
+}
   
 `;
 
