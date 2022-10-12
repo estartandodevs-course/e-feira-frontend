@@ -10,7 +10,7 @@ export const StreetMarket = () => {
 
   
   
-const [showHLastMarket, setLastMarket] = useState([]);
+const [latestMarket, setlatestMarket] = useState([]);
 
 const apiUrl = 'https://private-ea557-efeira1.apiary-mock.com/home/latest-streetMarket';
 
@@ -18,7 +18,7 @@ function pullLastMarket() {
   fetch(apiUrl)
     .then(response => response.json())
     .then(responseData => {
-      setLastMarket(responseData)
+      setlatestMarket(responseData)
       // console.log(responseData)
     })
     .catch(error => {
@@ -38,7 +38,7 @@ useEffect(() => {
         {/*  // aqui vai verificar qual é o ultima banca que foi visualizada, vista //  */}
         Vendinha do seu Francisco
       </LastMarketAcess>
-      {showHLastMarket?.length > 0 ? (
+      {latestMarket?.length > 0 ? (
         <MarketCard>
           <Swiper
           slidesPerView={1.5}
@@ -46,11 +46,11 @@ useEffect(() => {
           className="mySwiper">
           
 
-            {showHLastMarket.map((item) => {
-          if (item.title === 'Vendinha do seu Francisco') {
-            console.log(item.title)
+            {latestMarket[0].products.map((item, index) => {
+              console.log(item)
+          // if (item.title === 'Vendinha do seu Francisco') {
             return(
-              <SwiperSlide key={item.id}>
+              <SwiperSlide key={index}>
                 <Card>
                   <CardImg>
                     <img src={item.image} alt={item.alt} />
@@ -64,8 +64,8 @@ useEffect(() => {
                 </Card>
               </SwiperSlide>
             );
-          }
-          return null; 
+          // }
+          // return null; 
         })}
         </Swiper>
         </MarketCard>
