@@ -1,7 +1,7 @@
 import { ContainerStyle } from './styles';
 import { useEffect } from 'react';
 import { useSplash } from '../../contexts/SplashProvider';
-import { SlidesComponent } from '../../components/Slider/';
+import { HighlightsComponent } from '../../components/Highlights';
 import { slides } from '../../mocks/slides';
 import { CategoriesCarousel } from '../../components/CategoriesCarousel';
 import { StreetMarket } from '../../components/LastStreetMarket'; 
@@ -27,7 +27,7 @@ const Home = () => {
   return isShown ? null : (
     <ContainerStyle>
       <div>
-        <SlidesComponent slides={slides} />
+        <HighlightsComponent slides={slides} />
       </div>
         <CategoriesCarousel />
         <StreetMarket />

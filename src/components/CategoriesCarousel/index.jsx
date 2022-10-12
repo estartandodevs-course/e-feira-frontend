@@ -36,7 +36,7 @@ export const CategoriesCarousel = () => {
         {showCategories?.length > 0 ? (
           <CategoriesCard>
             <Swiper
-              slidesPerView={4}
+              slidesPerView={4.5}
               spaceBetween={12}
               className="mySwiper">
               

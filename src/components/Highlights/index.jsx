@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper';
 import { useEffect, useState } from 'react';
 
-const SlidesComponent = () => {
+const HighlightsComponent = () => {
 
 const [showHighlight, setHighlight] = useState([]);
 
@@ -56,4 +56,4 @@ const [showHighlight, setHighlight] = useState([]);
   );
 };
 
-export { SlidesComponent };
+export { HighlightsComponent };
