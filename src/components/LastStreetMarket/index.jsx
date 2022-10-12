@@ -1,13 +1,35 @@
 import React from 'react';	
 import { LastMarketTitle, LastMarketAcess, MarketCard, Card, CardImg, CardTitle, CardSubTitle, Container } from './styles';
-import MarketData  from '../../mocks/streetMarket'
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/pagination";
 
 
 export const StreetMarket = () => {
-  const { dataMarket } = MarketData
+
+  
+  
+const [showHLastMarket, setLastMarket] = useState([]);
+
+const apiUrl = 'https://private-ea557-efeira1.apiary-mock.com/home/latest-streetMarket';
+
+function pullLastMarket() {
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(responseData => {
+      setLastMarket(responseData)
+      // console.log(responseData)
+    })
+    .catch(error => {
+      console.error(error);
+    });
+}
+
+useEffect(() => {
+  pullLastMarket();
+}, []);
+  
   return (
     <Container>
       <LastMarketTitle>Última banca</LastMarketTitle>
@@ -16,7 +38,7 @@ export const StreetMarket = () => {
         {/*  // aqui vai verificar qual é o ultima banca que foi visualizada, vista //  */}
         Vendinha do seu Francisco
       </LastMarketAcess>
-      {dataMarket.length > 0 ? (
+      {showHLastMarket?.length > 0 ? (
         <MarketCard>
           <Swiper
           slidesPerView={1.5}
@@ -24,8 +46,9 @@ export const StreetMarket = () => {
           className="mySwiper">
           
 
-        {dataMarket.map((item) => {
-          if (item.type === 'market-category') {
+            {showHLastMarket.map((item) => {
+          if (item.title === 'Vendinha do seu Francisco') {
+            console.log(item.title)
             return(
               <SwiperSlide key={item.id}>
                 <Card>
