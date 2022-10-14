@@ -4,15 +4,13 @@ import { useSplash } from '../../contexts/SplashProvider';
 import { HighlightsComponent } from '../../components/Highlights';
 import { slides } from '../../mocks/slides';
 import { CategoriesCarousel } from '../../components/Carousel';
-import { LatestMarket } from '../../components/LatestMarket'; 
-
+import { LatestMarket } from '../../components/LatestMarket';
+import { LabelBottomNavigation } from '../../components/Navbar';
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
 const Home = () => {
-  
   const { hideSplash, isShown } = useSplash();
-
 
   useEffect(() => {
     (async () => {
@@ -29,8 +27,9 @@ const Home = () => {
       <div>
         <HighlightsComponent slides={slides} />
       </div>
-        <CategoriesCarousel />
-        <LatestMarket />
+      <CategoriesCarousel />
+      <LatestMarket />
+      <LabelBottomNavigation />
     </ContainerStyle>
   );
 };
