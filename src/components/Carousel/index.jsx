@@ -1,4 +1,4 @@
-     import React from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CategoriesTitles, Container, CategoriesCard, Card, CardTitle, CardImg } from './styles'
 import "swiper/css";

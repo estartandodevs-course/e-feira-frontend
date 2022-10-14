@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useSplash } from '../../contexts/SplashProvider';
 import { HighlightsComponent } from '../../components/Highlights';
 import { slides } from '../../mocks/slides';
-import { CategoriesCarousel } from '../../components/CategoriesCarousel';
-import { StreetMarket } from '../../components/LastStreetMarket'; 
+import { CategoriesCarousel } from '../../components/Carousel';
+import { LatestMarket } from '../../components/LatestMarket'; 
 
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
@@ -30,7 +30,7 @@ const Home = () => {
         <HighlightsComponent slides={slides} />
       </div>
         <CategoriesCarousel />
-        <StreetMarket />
+        <LatestMarket />
     </ContainerStyle>
   );
 };

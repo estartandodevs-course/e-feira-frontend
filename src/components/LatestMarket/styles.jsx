@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const LastMarketTitle = styled.h3`  
+export const Title = styled.h3`  
   margin: 1rem 0; 
 
 `
-export const LastMarketAcess = styled.h4`
+export const Access = styled.h4`
   color: #3BA032;
   padding: 0.5rem 0; 
 `
@@ -17,9 +17,9 @@ export const Container = styled.div `
   height: 100%;
 `
 
-export const MarketCard = styled.div `
+export const Market = styled.div `
   display: flex;
-  flex-wrap: wrap;D
+  flex-wrap: wrap;
   justify-content: center;
   flex-direction: row;
 

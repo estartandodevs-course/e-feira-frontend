@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper';
 import { useEffect, useState } from 'react';
 
+
 const HighlightsComponent = () => {
 
 const [showHighlight, setHighlight] = useState([]);
