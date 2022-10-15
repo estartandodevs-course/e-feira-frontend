@@ -1,19 +1,16 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-// import FolderIcon from '@mui/icons-material/Folder';
-// import RestoreIcon from '@mui/icons-material/Restore';
-// import LocationOnIcon from '@mui/icons-material/LocationOn';
-// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-// import SvgIcon from '@mui/material/SvgIcon';
 import { createSvgIcon } from '@mui/material/utils';
 import { ContainerStyle } from './styles';
+
+
 
 
 export default function LabelBottomNavigation() {
 
   const HomeIcon = createSvgIcon(
-    <path d="M0.500244 27.3328V9.33276L12.5377 0.332764L24.4996 9.33276V27.3328H15.6499V16.72H9.31214V27.3328H0.500244ZM3.01214 24.82H6.83714V14.2081H18.1627V24.82H21.9877V10.5703L12.5377 3.44496L3.01214 10.5703V24.82Z" />,
+    <path d="M 0,24 V 7.9999858 L 12.037779,0 24,7.9999858 V 24 H 15.150063 V 14.566412 H 8.8121325 V 24 Z M 2.5119634,21.766403 H 6.337066 V 12.333615 H 17.66293 v 9.432788 h 3.825103 V 9.1000196 L 12.037779,2.7663928 2.5119634,9.1000196 Z" />,
     'Home',
   );
 
@@ -23,7 +20,7 @@ export default function LabelBottomNavigation() {
   );
 
   const ShoppingCartIcon = createSvgIcon(
-    <path d="M6.16678 25.8327C5.789 25.8327 5.44456 25.7163 5.13345 25.4834C4.82233 25.2496 4.61122 24.9438 4.50011 24.5661L0.766779 11.0994C0.655668 10.7883 0.705446 10.4994 0.916113 10.2327C1.12767 9.96606 1.41122 9.83272 1.76678 9.83272H8.50011L14.3668 1.09939C14.4779 0.921612 14.6334 0.777167 14.8334 0.666056C15.0334 0.554945 15.2446 0.49939 15.4668 0.49939C15.689 0.49939 15.9001 0.554945 16.1001 0.666056C16.3001 0.777167 16.4557 0.921612 16.5668 1.09939L22.4334 9.83272H29.2334C29.589 9.83272 29.8726 9.96606 30.0841 10.2327C30.2948 10.4994 30.3446 10.7883 30.2334 11.0994L26.5001 24.5661C26.389 24.9438 26.1779 25.2496 25.8668 25.4834C25.5557 25.7163 25.2112 25.8327 24.8334 25.8327H6.16678ZM6.83345 23.1661H24.1668L27.1001 12.4994H3.90011L6.83345 23.1661ZM15.5001 20.4994C16.2334 20.4994 16.8614 20.2385 17.3841 19.7167C17.9059 19.1941 18.1668 18.5661 18.1668 17.8327C18.1668 17.0994 17.9059 16.4714 17.3841 15.9487C16.8614 15.4269 16.2334 15.1661 15.5001 15.1661C14.7668 15.1661 14.1392 15.4269 13.6174 15.9487C13.0948 16.4714 12.8334 17.0994 12.8334 17.8327C12.8334 18.5661 13.0948 19.1941 13.6174 19.7167C14.1392 20.2385 14.7668 20.4994 15.5001 20.4994ZM11.7334 9.83272H19.2334L15.4668 4.23272L11.7334 9.83272Z" />,
+    <path d="M 4.4277672,24 C 4.1212709,24 3.8418229,23.889744 3.5894158,23.669082 3.3370005,23.447588 3.1657251,23.157883 3.0755804,22.800061 L 0.04669063,10.042122 c -0.090144,-0.2947244 -0.04976,-0.5684204 0.121156,-0.8210852 0.1716384,-0.2526048 0.4016852,-0.3789264 0.6901551,-0.3789264 H 6.3208215 L 11.080527,0.5684214 C 11.170657,0.40000008 11.296823,0.26315748 11.459086,0.15789408 11.621347,0.05263128 11.792696,0 11.97297,0 c 0.18027,0 0.35154,0.0526308 0.513802,0.15789408 0.162261,0.105264 0.288502,0.242106 0.378638,0.41052732 l 4.759632,8.273689 h 5.516911 c 0.288503,0 0.518587,0.1263216 0.690179,0.3789264 0.170945,0.2526648 0.211349,0.5263608 0.121132,0.8210852 l -3.028865,12.757939 c -0.09013,0.357822 -0.261404,0.647527 -0.513803,0.869021 C 20.158196,23.889725 19.8787,24 19.572188,24 Z M 4.9686434,21.473744 H 19.031368 L 21.411186,11.36844 H 2.588794 Z m 7.0313426,-2.526351 c 0.594934,0 1.104437,-0.247167 1.528508,-0.741504 0.423339,-0.495095 0.635011,-1.090044 0.635011,-1.784845 0,-0.694704 -0.211672,-1.289652 -0.635011,-1.784843 -0.424071,-0.494337 -0.933574,-0.741412 -1.528508,-0.741412 -0.594935,0 -1.104113,0.247075 -1.527457,0.741412 -0.423989,0.495191 -0.6360645,1.090139 -0.6360645,1.784843 0,0.694801 0.2120755,1.28975 0.6360645,1.784845 0.423344,0.494337 0.932522,0.741504 1.527457,0.741504 z M 8.9440225,8.8421104 H 15.028851 L 11.97297,3.5368421 Z" />,
     'ShoppingCart',
   );
 
@@ -32,23 +29,22 @@ export default function LabelBottomNavigation() {
     'Person',
   );
 
-  
-
-
   const [value, setValue] = React.useState('home');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+ 
+  
   return (
     <>
-      <ContainerStyle>
+      <ContainerStyle  sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
         <BottomNavigation sx={{ width: '100%' , color: "black" }} value={value} onChange={handleChange}>
-          <BottomNavigationAction label="Home" value="home" Showlabel="false" icon={<HomeIcon  sx={{ p: -2, width: 20  } } fontSize="large" />} />
-          <BottomNavigationAction label="Search" value="search"  icon={<SearchIcon fontSize="large" />} />
-          <BottomNavigationAction label="Cart" value="cart" sx={{ m: 2 }} icon={<ShoppingCartIcon fontSize="large"  />} />
-          <BottomNavigationAction label="Account" value="account" sx={{ p: -2 }} icon={<PersonIcon fontSize="large" />} />
+          <BottomNavigationAction value="home"  icon={<HomeIcon fontSize="large" />} />
+          <BottomNavigationAction value="search"  icon={<SearchIcon fontSize="large"  />} />
+          <BottomNavigationAction value="cart" icon={<ShoppingCartIcon  fontSize="large"  />} />
+          <BottomNavigationAction value="account" icon={<PersonIcon fontSize="large" />} />
         </BottomNavigation>
       </ContainerStyle>
     </>
