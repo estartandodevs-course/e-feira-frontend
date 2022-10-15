@@ -5,8 +5,9 @@ import FolderIcon from '@mui/icons-material/Folder';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { ContainerStyle } from './styles';
 
-export function LabelBottomNavigation() {
+export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState('recents');
 
   const handleChange = (event, newValue) => {
@@ -14,23 +15,15 @@ export function LabelBottomNavigation() {
   };
 
   return (
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
-      <BottomNavigationAction
-        label="Recents"
-        value="recents"
-        icon={<RestoreIcon />}
-      />
-      <BottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteIcon />}
-      />
-      <BottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<LocationOnIcon />}
-      />
-      <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon />} />
-    </BottomNavigation>
+    <>
+      <ContainerStyle>
+        <BottomNavigation sx={{ width: '100%',color: "black", fontSize: "80px"  }} value={value} onChange={handleChange}>
+          <BottomNavigationAction label="Recents" showLabel="true" value="recents" icon={<RestoreIcon sx={{ color: "black", fontSize: "35px"  }}/> } />
+          <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon sx={{ color: "black", fontSize: "35px"  }} />} />
+          <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon sx={{ color: "black", fontSize: "35px"  }}  />} />
+          <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon sx={{ color: "black", fontSize: "35px"  }} />} />
+        </BottomNavigation>
+      </ContainerStyle>
+    </>
   );
 }

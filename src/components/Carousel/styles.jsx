@@ -7,6 +7,7 @@ export const Container = styled.div`
   margin: 0 auto;
   // padding: 0 1rem;
   height: 100%;
+  
 
 `
 export const CategoriesTitles = styled.h3`

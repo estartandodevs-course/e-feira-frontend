@@ -50,7 +50,7 @@ export const CardSubTitle = styled.h6`
 export const CardImg = styled.div`
   height: 100%;
   width: 100%; 
-  margin 0.75rem 0;
+  margin: 0.75rem 0;
   > img {
     border-radius: 12px;
     padding-bottom: 0.5rem;
