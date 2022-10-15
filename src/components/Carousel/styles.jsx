@@ -7,7 +7,10 @@ export const Container = styled.div`
   margin: 0 auto;
   // padding: 0 1rem;
   height: 100%;
-  
+
+
+  background-color: white;
+
 
 `
 export const CategoriesTitles = styled.h3`
@@ -42,6 +45,7 @@ export const CardTitle = styled.h5`
 export const CardImg = styled.div`
 height: 100%;
 width: 15rem;
+background-color: white;
 
 > img {
   border-radius: 12px;

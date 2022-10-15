@@ -1,14 +1,41 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import FolderIcon from '@mui/icons-material/Folder';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+// import FolderIcon from '@mui/icons-material/Folder';
+// import RestoreIcon from '@mui/icons-material/Restore';
+// import LocationOnIcon from '@mui/icons-material/LocationOn';
+// import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+// import SvgIcon from '@mui/material/SvgIcon';
+import { createSvgIcon } from '@mui/material/utils';
 import { ContainerStyle } from './styles';
 
+
 export default function LabelBottomNavigation() {
-  const [value, setValue] = React.useState('recents');
+
+  const HomeIcon = createSvgIcon(
+    <path d="M0.500244 27.3328V9.33276L12.5377 0.332764L24.4996 9.33276V27.3328H15.6499V16.72H9.31214V27.3328H0.500244ZM3.01214 24.82H6.83714V14.2081H18.1627V24.82H21.9877V10.5703L12.5377 3.44496L3.01214 10.5703V24.82Z" />,
+    'Home',
+  );
+
+  const SearchIcon = createSvgIcon(
+    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />,
+    'Search',
+  );
+
+  const ShoppingCartIcon = createSvgIcon(
+    <path d="M6.16678 25.8327C5.789 25.8327 5.44456 25.7163 5.13345 25.4834C4.82233 25.2496 4.61122 24.9438 4.50011 24.5661L0.766779 11.0994C0.655668 10.7883 0.705446 10.4994 0.916113 10.2327C1.12767 9.96606 1.41122 9.83272 1.76678 9.83272H8.50011L14.3668 1.09939C14.4779 0.921612 14.6334 0.777167 14.8334 0.666056C15.0334 0.554945 15.2446 0.49939 15.4668 0.49939C15.689 0.49939 15.9001 0.554945 16.1001 0.666056C16.3001 0.777167 16.4557 0.921612 16.5668 1.09939L22.4334 9.83272H29.2334C29.589 9.83272 29.8726 9.96606 30.0841 10.2327C30.2948 10.4994 30.3446 10.7883 30.2334 11.0994L26.5001 24.5661C26.389 24.9438 26.1779 25.2496 25.8668 25.4834C25.5557 25.7163 25.2112 25.8327 24.8334 25.8327H6.16678ZM6.83345 23.1661H24.1668L27.1001 12.4994H3.90011L6.83345 23.1661ZM15.5001 20.4994C16.2334 20.4994 16.8614 20.2385 17.3841 19.7167C17.9059 19.1941 18.1668 18.5661 18.1668 17.8327C18.1668 17.0994 17.9059 16.4714 17.3841 15.9487C16.8614 15.4269 16.2334 15.1661 15.5001 15.1661C14.7668 15.1661 14.1392 15.4269 13.6174 15.9487C13.0948 16.4714 12.8334 17.0994 12.8334 17.8327C12.8334 18.5661 13.0948 19.1941 13.6174 19.7167C14.1392 20.2385 14.7668 20.4994 15.5001 20.4994ZM11.7334 9.83272H19.2334L15.4668 4.23272L11.7334 9.83272Z" />,
+    'ShoppingCart',
+  );
+
+  const PersonIcon = createSvgIcon(
+    <path d="M11.4999 10.8328C10.0333 10.8328 8.7777 10.3106 7.73325 9.26614C6.68881 8.22169 6.16659 6.96614 6.16659 5.49947C6.16659 4.0328 6.68881 2.77725 7.73325 1.7328C8.7777 0.68836 10.0333 0.166138 11.4999 0.166138C12.9666 0.166138 14.2221 0.68836 15.2666 1.7328C16.311 2.77725 16.8333 4.0328 16.8333 5.49947C16.8333 6.96614 16.311 8.22169 15.2666 9.26614C14.2221 10.3106 12.9666 10.8328 11.4999 10.8328ZM0.833252 21.4995V17.7661C0.833252 17.0106 1.02792 16.3159 1.41725 15.6821C1.8057 15.0492 2.32214 14.5661 2.96659 14.2328C4.34436 13.5439 5.74436 13.027 7.16659 12.6821C8.58881 12.3381 10.0333 12.1661 11.4999 12.1661C12.9666 12.1661 14.411 12.3381 15.8333 12.6821C17.2555 13.027 18.6555 13.5439 20.0333 14.2328C20.6777 14.5661 21.1941 15.0492 21.5826 15.6821C21.9719 16.3159 22.1666 17.0106 22.1666 17.7661V21.4995H0.833252ZM3.49992 18.8328H19.4999V17.7661C19.4999 17.5217 19.439 17.2995 19.3173 17.0995C19.1946 16.8995 19.0333 16.7439 18.8333 16.6328C17.6333 16.0328 16.4221 15.5826 15.1999 15.2821C13.9777 14.9826 12.7444 14.8328 11.4999 14.8328C10.2555 14.8328 9.02214 14.9826 7.79992 15.2821C6.5777 15.5826 5.36659 16.0328 4.16659 16.6328C3.96659 16.7439 3.8057 16.8995 3.68392 17.0995C3.56125 17.2995 3.49992 17.5217 3.49992 17.7661V18.8328ZM11.4999 8.16614C12.2333 8.16614 12.8613 7.9048 13.3839 7.38214C13.9057 6.86036 14.1666 6.2328 14.1666 5.49947C14.1666 4.76614 13.9057 4.13858 13.3839 3.6168C12.8613 3.09414 12.2333 2.8328 11.4999 2.8328C10.7666 2.8328 10.139 3.09414 9.61725 3.6168C9.09459 4.13858 8.83325 4.76614 8.83325 5.49947C8.83325 6.2328 9.09459 6.86036 9.61725 7.38214C10.139 7.9048 10.7666 8.16614 11.4999 8.16614Z" />,
+    'Person',
+  );
+
+  
+
+
+  const [value, setValue] = React.useState('home');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -17,11 +44,11 @@ export default function LabelBottomNavigation() {
   return (
     <>
       <ContainerStyle>
-        <BottomNavigation sx={{ width: '100%',color: "black", fontSize: "80px"  }} value={value} onChange={handleChange}>
-          <BottomNavigationAction label="Recents" showLabel="true" value="recents" icon={<RestoreIcon sx={{ color: "black", fontSize: "35px"  }}/> } />
-          <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon sx={{ color: "black", fontSize: "35px"  }} />} />
-          <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon sx={{ color: "black", fontSize: "35px"  }}  />} />
-          <BottomNavigationAction label="Folder" value="folder" icon={<FolderIcon sx={{ color: "black", fontSize: "35px"  }} />} />
+        <BottomNavigation sx={{ width: '100%' , color: "black" }} value={value} onChange={handleChange}>
+          <BottomNavigationAction label="Home" value="home" Showlabel="false" icon={<HomeIcon  sx={{ p: -2, width: 20  } } fontSize="large" />} />
+          <BottomNavigationAction label="Search" value="search"  icon={<SearchIcon fontSize="large" />} />
+          <BottomNavigationAction label="Cart" value="cart" sx={{ m: 2 }} icon={<ShoppingCartIcon fontSize="large"  />} />
+          <BottomNavigationAction label="Account" value="account" sx={{ p: -2 }} icon={<PersonIcon fontSize="large" />} />
         </BottomNavigation>
       </ContainerStyle>
     </>
