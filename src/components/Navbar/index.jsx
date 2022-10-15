@@ -39,8 +39,8 @@ export default function LabelBottomNavigation() {
   
   return (
     <>
-      <ContainerStyle  sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
-        <BottomNavigation sx={{ width: '100%' , color: "black" }} value={value} onChange={handleChange}>
+      <ContainerStyle  >
+        <BottomNavigation sx={{ width: '100%' }} value={value} onChange={handleChange}>
           <BottomNavigationAction value="home"  icon={<HomeIcon fontSize="large" />} />
           <BottomNavigationAction value="search"  icon={<SearchIcon fontSize="large"  />} />
           <BottomNavigationAction value="cart" icon={<ShoppingCartIcon  fontSize="large"  />} />
