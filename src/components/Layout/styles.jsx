@@ -8,4 +8,5 @@ export const PageWrapper = styled.div`
     flex-direction: column;
   `}
 `;
-export const PageContent = styled.main``;
+export const PageContent = styled.main`
+`;

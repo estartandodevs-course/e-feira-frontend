@@ -44,7 +44,7 @@ export const LatestMarket = () => {
       </Access>
       {latestMarket?.length > 0 ? (
         <Market>
-          <Swiper slidesPerView={1.5} spaceBetween={10} className="mySwiper">
+          <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
             {latestMarket[0].products.map((item, index) => {
               // if (item.title === 'Vendinha do seu Francisco') {
               return (
