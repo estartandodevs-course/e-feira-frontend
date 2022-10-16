@@ -5,7 +5,7 @@ import { HighlightsComponent } from '../../components/Highlights';
 import { slides } from '../../mocks/slides';
 import { CategoriesCarousel } from '../../components/Carousel';
 import { LatestMarket } from '../../components/LatestMarket';
-import  LabelBottomNavigation from '../../components/Navbar/index';
+import LabelBottomNavigation from '../../components/Navbar/index';
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -24,15 +24,13 @@ const Home = () => {
 
   return isShown ? null : (
     <>
-    <ContainerStyle>
-      <div>
+      <ContainerStyle>
         <HighlightsComponent slides={slides} />
-      </div>
-      <CategoriesCarousel />
-      <LatestMarket />
-      <LabelBottomNavigation />
+        <CategoriesCarousel />
+        <LatestMarket />
+        <LabelBottomNavigation />
       </ContainerStyle>
-      </>
+    </>
   );
 };
 

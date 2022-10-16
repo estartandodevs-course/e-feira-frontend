@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-
-
 export const Title = styled.h3`
   margin: 1rem 0;
- 
 `;
 export const Access = styled.h4`
   color: #3ba032;
@@ -17,12 +14,11 @@ export const Container = styled.div`
   margin: 0 auto;
   // padding: 0 1rem;
   height: 100%;
-  >.swiper-wrapper *{
+  > .swiper-wrapper * {
     background-color: #fff;
   }
 `;
-
-export const Market = styled.div`
+export const Main = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -51,7 +47,6 @@ export const CardSubTitle = styled.h6`
   font-size: 12px;
   line-height: 120%;
 `;
-
 export const CardImg = styled.div`
   background-color: #fff;
   height: 100%;
