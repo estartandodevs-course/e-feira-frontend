@@ -1,32 +1,23 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { SliderBox  } from './styles';
+import { SliderBox } from './styles';
+import { Pagination } from 'swiper';
+import { useState, useEffect } from 'react';
+import { ApiServer } from '../../services/Api';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper';
-import { useEffect, useState } from 'react';
-
 
 const HighlightsComponent = () => {
-
-const [showHighlight, setHighlight] = useState([]);
-
-  const apiUrl = 'https://private-ea557-efeira1.apiary-mock.com/home/highlights';
-
-  function pullHighlights() {
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(responseData => {
-        setHighlight(responseData )
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+  const [showHighlight, setHighlight] = useState([]);
 
   useEffect(() => {
-    pullHighlights();
+    ApiServer.get('home/highlights')
+      .then(response => {
+        setHighlight(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   return (
@@ -34,7 +25,7 @@ const [showHighlight, setHighlight] = useState([]);
       {showHighlight?.length > 0 ? (
         <SliderBox>
           <Swiper
-            spaceBetween={30}
+            spaceBetween={15}
             loop={true}
             pagination={{
               el: '.swiper-custom-pagination',
@@ -45,7 +36,6 @@ const [showHighlight, setHighlight] = useState([]);
           >
             {showHighlight.map((item, index) => (
               <SwiperSlide key={index}>
-                
                 <img src={item.url} alt="" />
               </SwiperSlide>
             ))}

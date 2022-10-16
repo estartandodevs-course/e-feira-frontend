@@ -7,8 +7,6 @@ export const Container = styled.div`
   margin: 0 auto;
   // padding: 0 1rem;
   height: 100%;
-
-
   background-color: white;
 
 
@@ -30,6 +28,7 @@ export const Card = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  background-color: white;
 `
 
 export const CardTitle = styled.h5`
