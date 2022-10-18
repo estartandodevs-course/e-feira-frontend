@@ -7,7 +7,7 @@ import { ApiServer } from '../../services/Api';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-const HighlightsComponent = () => {
+const Highlights = () => {
   const [showHighlight, setHighlight] = useState([]);
 
   useEffect(() => {
@@ -47,4 +47,4 @@ const HighlightsComponent = () => {
   );
 };
 
-export { HighlightsComponent };
+export { Highlights };
