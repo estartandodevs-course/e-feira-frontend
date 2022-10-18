@@ -22,32 +22,34 @@ export const LatestMarket = () => {
   return (
     <Container>
       <Title>Última banca</Title>
-      <Access>
-        {/*  // aqui vai verificar qual é o ultima banca que foi visualizada, vista //  */}
-        Vendinha do seu Francisco
-      </Access>
-      {latestMarket?.length > 0 ? (
-        <Main>
-          <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-            {latestMarket[0].products.map((item, index) => {
-              // if (item.title === 'Vendinha do seu Francisco') {
-              return (
-                <SwiperSlide key={index}>
-                  <Card>
-                    <CardImg>
-                      <img src={item.image} alt={item.alt} />
-                      <CardTitle>{item.name}</CardTitle>
-                      <CardSubTitle>{item.subtitle}</CardSubTitle>
-                    </CardImg>
-                  </Card>
-                </SwiperSlide>
-              );
-              // }
-              // return null;
-            })}
-          </Swiper>
-        </Main>
-      ) : null}
+
+      {latestMarket.length > 0 &&
+        latestMarket.map(item => (
+          <>
+            <Access>{item.title}</Access>
+
+            <Main>
+              <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
+                {item.products.map((item, index) => {
+                  // if (item.title === 'Vendinha do seu Francisco') {
+                  return (
+                    <SwiperSlide key={index}>
+                      <Card>
+                        <CardImg>
+                          <img src={item.image} alt={item.alt} />
+                          <CardTitle>{item.name}</CardTitle>
+                          <CardSubTitle>{item.subtitle}</CardSubTitle>
+                        </CardImg>
+                      </Card>
+                    </SwiperSlide>
+                  );
+                  // }
+                  // return null;
+                })}
+              </Swiper>
+            </Main>
+          </>
+        ))}
     </Container>
   );
 };
