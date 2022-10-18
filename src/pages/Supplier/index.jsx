@@ -1,15 +1,12 @@
 import { ContainerStyle } from './styles';
 import { useEffect } from 'react';
 import { useSplash } from '../../contexts/SplashProvider';
-import { Highlights } from '../../components/Highlights';
-import { slides } from '../../mocks/slides';
-import { CategoriesCarousel } from '../../components/Carousel';
-import { LatestMarket } from '../../components/LatestMarket';
+import { SupplierCard } from '../../components/SupplierCard';
 import Navbar from '../../components/Navbar';
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
-const Home = () => {
+const Supplier = () => {
   const { hideSplash, isShown } = useSplash();
 
   useEffect(() => {
@@ -25,13 +22,11 @@ const Home = () => {
   return isShown ? null : (
     <>
       <ContainerStyle>
-        <Highlights slides={slides} />
-        <CategoriesCarousel />
-        <LatestMarket />
+        <SupplierCard />
         <Navbar />
       </ContainerStyle>
     </>
   );
 };
 
-export default Home;
+export default Supplier;
