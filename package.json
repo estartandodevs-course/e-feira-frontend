@@ -41,7 +41,7 @@
     "@testing-library/user-event": "^14.4.3",
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "msw": "^0.47.4",
     "prettier": "^2.7.1"
