@@ -3,14 +3,23 @@ import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, Title 
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
+import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 export const LatestMarket = () => {
   const [latestMarket, setlatestMarket] = useState([]);
+  const navigate = useNavigate();
+
+  const SelectedItem = item => {
+    navigate(`/fornecedor/${item.id}`, {
+      replace: true,
+      state: { item },
+    });
+  };
 
   useEffect(() => {
-    ApiServer.get('home/latest-streetMarket')
+    ApiServer.get('home/street-market-latest')
       .then(response => {
         setlatestMarket(response.data);
       })
@@ -26,7 +35,7 @@ export const LatestMarket = () => {
       {latestMarket.length > 0 &&
         latestMarket.map(item => (
           <>
-            <Access>{item.title}</Access>
+            <Access onClick={() => SelectedItem(item)}>{item.title}</Access>
 
             <Main>
               <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">

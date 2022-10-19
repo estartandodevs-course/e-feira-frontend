@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { PageWrapper, PageContent } from './styles';
-import { Header } from '../Header/';
+import { Header } from '../../components/Header/';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { green } from '@mui/material/colors';
 

@@ -7,9 +7,9 @@ import { CategoriesCarousel } from '../../components/Carousel';
 import { LatestMarket } from '../../components/LatestMarket';
 import Navbar from '../../components/Navbar';
 
-const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
-
 const Home = () => {
+  const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
+
   const { hideSplash, isShown } = useSplash();
 
   useEffect(() => {
