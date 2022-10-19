@@ -3,10 +3,15 @@ import styled from 'styled-components';
 export const Title = styled.h3`
   margin: 1rem 0;
 `;
-export const Access = styled.h4`
+export const Access = styled.h2`
   color: #3ba032;
   padding: 0.5rem 0;
 `;
+export const MainImage = styled.img`
+  width: 100%;
+  border-radius: 1rem;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;

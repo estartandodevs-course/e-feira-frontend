@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import { useSplash } from '../../contexts/SplashProvider';
 import { SupplierCard } from '../../components/SupplierCard';
 import Navbar from '../../components/Navbar';
+import { useParams } from 'react-router-dom';
 
 const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
-const Supplier = () => {
+const SingleSupplier = () => {
+  const { id } = useParams;
   const { hideSplash, isShown } = useSplash();
 
   useEffect(() => {
@@ -19,6 +21,7 @@ const Supplier = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(id);
   return isShown ? null : (
     <>
       <ContainerStyle>
@@ -29,4 +32,4 @@ const Supplier = () => {
   );
 };
 
-export default Supplier;
+export default SingleSupplier;
