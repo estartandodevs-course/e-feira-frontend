@@ -79,8 +79,28 @@ export const CardPrice = styled.div`
   }
 `;
 
-export const CardInformations = styled.div``;
+export const CardInformations = styled.div`
+  justify-content: flex-start;
+`;
 
-export const MeetSupplier = styled.div``;
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: end;
+`;
 
-export const PriceCompare = styled.div``;
+export const MeetSupplier = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-end;
+  padding: 3.12rem 1rem;
+  gap: 0.625rem;
+`;
+
+export const PriceCompare = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 1rem;
+  gap: 0.625rem;
+`;

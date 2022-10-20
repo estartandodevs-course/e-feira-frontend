@@ -11,8 +11,12 @@ import {
   CardInformations,
   MeetSupplier,
   PriceCompare,
+  IconContainer,
 } from './styles';
 import { ApiServer } from '../../services/Api';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 export const Products = () => {
   const [productDetails, setProductDetails] = useState([]);
@@ -45,8 +49,21 @@ export const Products = () => {
           </CardPrice>
 
           <CardInformations>
-            <MeetSupplier> </MeetSupplier>
-            <PriceCompare> </PriceCompare>
+            <MeetSupplier>
+              <FavoriteBorderIcon fontSize="large" />
+              Conheça o fornecedor
+              <IconContainer>
+                <ChevronRightIcon fontSize="large" />
+              </IconContainer>
+            </MeetSupplier>
+
+            <PriceCompare>
+              <ErrorOutlineIcon fontSize="large" />
+              Compare o preço
+              <IconContainer>
+                <ChevronRightIcon fontSize="large" />
+              </IconContainer>
+            </PriceCompare>
           </CardInformations>
         </TextInfo>
       </Container>
