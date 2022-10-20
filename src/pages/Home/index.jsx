@@ -4,7 +4,7 @@ import { useSplash } from '../../contexts/SplashProvider';
 import { Highlights } from '../../components/Highlights';
 import { slides } from '../../mocks/slides';
 import { CategoriesCarousel } from '../../components/Carousel';
-import { LatestMarket } from '../../components/LatestMarket';
+import { Latest } from '../../components/Latest';
 import Navbar from '../../components/Navbar';
 
 const Home = () => {
@@ -27,7 +27,7 @@ const Home = () => {
       <ContainerStyle>
         <Highlights slides={slides} />
         <CategoriesCarousel />
-        <LatestMarket />
+        <Latest />
         <Navbar />
       </ContainerStyle>
     </>

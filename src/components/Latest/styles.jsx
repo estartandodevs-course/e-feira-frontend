@@ -6,6 +6,7 @@ export const Title = styled.h3`
 export const Access = styled.h4`
   color: #3ba032;
   padding: 0.5rem 0;
+  cursor: pointer;
 `;
 export const Container = styled.div`
   display: flex;

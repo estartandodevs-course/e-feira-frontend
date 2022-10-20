@@ -3,6 +3,7 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { createSvgIcon } from '@mui/material/utils';
 import { ContainerStyle } from './styles';
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   const HomeIcon = createSvgIcon(
@@ -35,7 +36,14 @@ export default function Navbar() {
     <>
       <ContainerStyle>
         <BottomNavigation sx={{ width: '100%' }} value={value} onChange={handleChange}>
-          <BottomNavigationAction value="home" icon={<HomeIcon fontSize="large" />} />
+          <BottomNavigationAction
+            value="home"
+            icon={
+              <NavLink to="/">
+                <HomeIcon fontSize="large" />
+              </NavLink>
+            }
+          />
           <BottomNavigationAction value="search" icon={<SearchIcon fontSize="large" />} />
           <BottomNavigationAction value="cart" icon={<ShoppingCartIcon fontSize="large" />} />
           <BottomNavigationAction value="account" icon={<PersonIcon fontSize="large" />} />

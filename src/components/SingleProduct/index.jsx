@@ -1,24 +1,24 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import {
-  Container,
   Card,
-  CardTitle,
-  CardSubTitle,
-  TextInfo,
-  TextQuestion,
-  CardPrice,
   CardInformations,
+  CardPrice,
+  CardSubTitle,
+  CardTitle,
+  Container,
+  IconContainer,
   MeetSupplier,
   PriceCompare,
-  IconContainer,
+  TextInfo,
+  TextQuestion,
 } from './styles';
 import { ApiServer } from '../../services/Api';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-export const Products = () => {
+export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState([]);
 
   useEffect(() => {

@@ -3,6 +3,7 @@ import { PageWrapper, PageContent } from './styles';
 import { Header } from '../../components/Header/';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { green } from '@mui/material/colors';
+import Navbar from '../../components/Navbar';
 
 const theme = createTheme({
   palette: {
@@ -12,7 +13,6 @@ const theme = createTheme({
   },
 });
 
-// eslint-disable-next-line react/prop-types
 const Layout = () => {
   return (
     <ThemeProvider theme={theme}>
@@ -21,6 +21,7 @@ const Layout = () => {
         <PageContent>
           <Outlet />
         </PageContent>
+        <Navbar />
       </PageWrapper>
     </ThemeProvider>
   );
