@@ -75,7 +75,7 @@ export const CardPrice = styled.div`
     text-align: center;
     letter-spacing: 0.0125em;
     text-transform: uppercase;
-    color: #fffff;
+    color: #fff;
   }
 `;
 

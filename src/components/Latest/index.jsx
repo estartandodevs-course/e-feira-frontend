@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-export const LatestMarket = () => {
+export const Latest = () => {
   const [latestMarket, setlatestMarket] = useState([]);
   const navigate = useNavigate();
 
@@ -30,19 +30,18 @@ export const LatestMarket = () => {
 
   return (
     <Container>
-      <Title>Última banca</Title>
+      <Title>Últimas Bancas</Title>
 
       {latestMarket.length > 0 &&
-        latestMarket.map(item => (
+        latestMarket.map((item, index) => (
           <>
             <Access onClick={() => SelectedItem(item)}>{item.title}</Access>
 
-            <Main>
+            <Main key={index}>
               <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-                {item.products.map((item, index) => {
-                  // if (item.title === 'Vendinha do seu Francisco') {
+                {item.products.map(item => {
                   return (
-                    <SwiperSlide key={index}>
+                    <SwiperSlide key={item.id}>
                       <Card>
                         <CardImg>
                           <img src={item.image} alt={item.alt} />
@@ -52,8 +51,6 @@ export const LatestMarket = () => {
                       </Card>
                     </SwiperSlide>
                   );
-                  // }
-                  // return null;
                 })}
               </Swiper>
             </Main>

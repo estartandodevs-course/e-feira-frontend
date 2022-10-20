@@ -1,15 +1,23 @@
 import { Routes, Route } from 'react-router';
 import Layout from '../pages/Layout';
 import Home from '../pages/Home';
-import SingleSupplier from '../pages/SingleSupplier';
+import SupplierPage from '../pages/SupplierPage';
 import ProductDetails from '../pages/ProductsDetails';
+import { SplashProvider } from '../contexts/SplashProvider';
 
 const Router = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/fornecedor/:id" element={<SingleSupplier />} />
+        <Route
+          path="/"
+          element={
+            <SplashProvider>
+              <Home />
+            </SplashProvider>
+          }
+        />
+        <Route path="/fornecedor/:id" element={<SupplierPage />} />
         <Route path="/products" element={<ProductDetails />} />
       </Route>
     </Routes>
