@@ -4,10 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
-  // padding: 0 1rem;
-  height: 100%;
-  > .swiper-wrapper * {
+  height: auto > .swiper-wrapper * {
     background-color: #fff;
   }
 `;
@@ -19,7 +16,7 @@ export const Card = styled.div`
   background-color: white;
   flex-direction: column;
   > img {
-    padding: 3.75rem 1rem 1.31rem 1rem;
+    padding: 1rem 1rem 1.31rem 1rem;
   }
 `;
 
@@ -62,7 +59,7 @@ export const CardPrice = styled.div`
   height: auto;
   border-radius: 6px;
   padding: 0.5rem 1rem;
-  margin: 1rem 0;
+  margin: 1rem 1rem;
   display: flex;
 
   text-align: center;
@@ -75,17 +72,18 @@ export const CardPrice = styled.div`
     text-align: center;
     letter-spacing: 0.0125em;
     text-transform: uppercase;
-    color: #fff;
+    color: #000000;
   }
 `;
 
 export const CardInformations = styled.div`
   justify-content: flex-start;
+  padding: 0 1rem;
 `;
 
 export const IconContainer = styled.div`
-  display: flex;
-  justify-content: end;
+  position: absolute;
+  right: 15px;
 `;
 
 export const MeetSupplier = styled.div`
@@ -95,6 +93,11 @@ export const MeetSupplier = styled.div`
   align-content: flex-end;
   padding: 3.12rem 1rem;
   gap: 0.625rem;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  align-items: center;
 `;
 
 export const PriceCompare = styled.div`
@@ -103,4 +106,16 @@ export const PriceCompare = styled.div`
   align-items: flex-start;
   padding: 0 1rem;
   gap: 0.625rem;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  align-items: center;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 3.75rem 1rem;
+  marginbottom 1rem; 
 `;
