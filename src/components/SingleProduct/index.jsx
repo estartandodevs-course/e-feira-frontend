@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import {
+  ButtonContainer,
   Card,
   CardInformations,
   CardPrice,
@@ -17,6 +18,7 @@ import { ApiServer } from '../../services/Api';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { Button } from '../Button';
 
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState([]);
@@ -33,40 +35,40 @@ export const SingleProduct = () => {
 
   console.log(productDetails);
   return (
-    <Container>
-      <Container key={productDetails.id}>
-        <Card>
-          <img src={productDetails.image} alt={productDetails.alt} />
+    <Container key={productDetails.id}>
+      <Card>
+        <img src={productDetails.image} alt={productDetails.alt} />
 
-          <CardTitle>{productDetails.name}</CardTitle>
-          <CardSubTitle>{productDetails.subtitle}</CardSubTitle>
-        </Card>
+        <CardTitle>{productDetails.name}</CardTitle>
+        <CardSubTitle>{productDetails.subtitle}</CardSubTitle>
+      </Card>
 
-        <TextInfo>
-          <TextQuestion>Adicionar mais?</TextQuestion>
-          <CardPrice>
-            <p>R${productDetails.price}</p>
-          </CardPrice>
+      <TextInfo>
+        <TextQuestion>Adicionar mais?</TextQuestion>
+        <CardPrice>
+          <p>R${productDetails.price}</p>
+        </CardPrice>
 
-          <CardInformations>
-            <MeetSupplier>
-              <FavoriteBorderIcon fontSize="large" />
-              Conheça o fornecedor
-              <IconContainer>
-                <ChevronRightIcon fontSize="large" />
-              </IconContainer>
-            </MeetSupplier>
+        <CardInformations>
+          <MeetSupplier>
+            <FavoriteBorderIcon fontSize="large" /> Conheça o fornecedor
+            <IconContainer>
+              <ChevronRightIcon fontSize="large" />
+            </IconContainer>
+          </MeetSupplier>
 
-            <PriceCompare>
-              <ErrorOutlineIcon fontSize="large" />
-              Compare o preço
-              <IconContainer>
-                <ChevronRightIcon fontSize="large" />
-              </IconContainer>
-            </PriceCompare>
-          </CardInformations>
-        </TextInfo>
-      </Container>
+          <PriceCompare>
+            <ErrorOutlineIcon fontSize="large" />
+            Compare o preço
+            <IconContainer>
+              <ChevronRightIcon fontSize="large" />
+            </IconContainer>
+          </PriceCompare>
+        </CardInformations>
+      </TextInfo>
+      <ButtonContainer>
+        <Button description={'Enviar Para Sacola'} />
+      </ButtonContainer>
     </Container>
   );
 };
