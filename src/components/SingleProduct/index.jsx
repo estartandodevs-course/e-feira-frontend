@@ -8,20 +8,28 @@ import {
   CardSubTitle,
   CardTitle,
   Container,
+  Icon,
   IconContainer,
+  ItemUnit,
   MeetSupplier,
   PriceCompare,
   TextInfo,
   TextQuestion,
 } from './styles';
 import { ApiServer } from '../../services/Api';
+import { Button } from '../Button';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Button } from '../Button';
+import AddIcon from '@mui/icons-material/Add';
+
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState([]);
+
+  const [itemCount, setItemCount] = React.useState(0);
+  console.log(itemCount);
 
   useEffect(() => {
     ApiServer.get('/products/provider-page')
@@ -47,11 +55,40 @@ export const SingleProduct = () => {
         <TextQuestion>Adicionar mais?</TextQuestion>
         <CardPrice>
           <p>R${productDetails.price}</p>
+          <Icon style={{ alignItems: 'flex-start' }}>
+            <button
+              onClick={() => {
+                setItemCount(Math.max(itemCount - 1, 0));
+              }}
+            >
+              {' '}
+              <RemoveIcon style={{ color: '#3BA032' }} />
+            </button>
+
+            <ItemUnit>
+              {' '}
+              {itemCount.toLocaleString('pt-BR', {
+                minimumIntegerDigits: 2,
+                useGrouping: false,
+              })}{' '}
+            </ItemUnit>
+
+            <button
+              onClick={() => {
+                setItemCount(itemCount + 1);
+              }}
+            >
+              {' '}
+              <AddIcon style={{ color: '#3BA032' }} />
+            </button>
+          </Icon>
         </CardPrice>
 
         <CardInformations>
           <MeetSupplier>
-            <FavoriteBorderIcon fontSize="large" /> Conheça o fornecedor
+            
+            <FavoriteBorderIcon fontSize="large" />
+            Conheça o fornecedor
             <IconContainer>
               <ChevronRightIcon fontSize="large" />
             </IconContainer>

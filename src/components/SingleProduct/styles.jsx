@@ -39,6 +39,11 @@ export const CardSubTitle = styled.h6`
   margin: 0 1rem;
 `;
 
+export const ItemUnit = styled.div`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
 export const TextInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -80,10 +85,28 @@ export const CardInformations = styled.div`
   justify-content: flex-start;
   padding: 0 1rem;
 `;
+export const Icon = styled.div`
+  position: absolute;
+  padding: 11rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  > button {
+    border: none;
+  }
+`;
 
 export const IconContainer = styled.div`
   position: absolute;
   right: 15px;
+  display: flex;
+  gap: 0.5rem;
 `;
 
 export const MeetSupplier = styled.div`
