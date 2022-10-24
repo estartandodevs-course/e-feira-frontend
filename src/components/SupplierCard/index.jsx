@@ -1,21 +1,21 @@
 import React from 'react';
 import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, MainImage } from './styles';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
-import { useParams, useLocation } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 export const SupplierCard = () => {
   const { id } = useParams();
-  const { state } = useLocation();
+
+  const [provider, setProvider] = useState({ products: [[]] });
 
   useEffect(() => {
-    ApiServer.get('home/street-market-latest')
+    ApiServer.get('/provider-page/' + id)
       .then(response => {
-        response.data;
+        setProvider(response.data[0]);
       })
       .catch(error => {
         console.log(error);
@@ -25,12 +25,12 @@ export const SupplierCard = () => {
   return (
     <Container id={id}>
       <>
-        <Access>{state.item.title}</Access>
-        <MainImage src={state.item.image} />
+        <Access>{provider.name}</Access>
+        <MainImage src={provider.url} />
 
         <Main>
           <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-            {state.item.products.map(item => {
+            {provider.products[0].map(item => {
               return (
                 <SwiperSlide key={item.id}>
                   <Card>

@@ -18,23 +18,34 @@ import {
 } from './styles';
 import { ApiServer } from '../../services/Api';
 import { Button } from '../Button';
+import { useNavigate } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import AddIcon from '@mui/icons-material/Add';
+import { useParams } from 'react-router-dom';
 
 import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
-  const [productDetails, setProductDetails] = useState([]);
+  const [productDetails, setProductDetails] = useState({});
 
   const [itemCount, setItemCount] = React.useState(0);
-  console.log(itemCount);
+
+  const navigate = useNavigate();
+
+  const { id } = useParams();
+
+  const SelectedItem = () => {
+    navigate(`/fornecedor/${productDetails.provider_id}`, {
+      replace: true,
+    });
+  };
 
   useEffect(() => {
-    ApiServer.get('/products/provider-page')
+    ApiServer.get('/products/' + id)
       .then(response => {
-        setProductDetails(response.data[0].products[0]);
+        setProductDetails(response.data[0].product_info[0]);
       })
       .catch(error => {
         console.log(error);
@@ -86,12 +97,13 @@ export const SingleProduct = () => {
 
         <CardInformations>
           <MeetSupplier>
-            
-            <FavoriteBorderIcon fontSize="large" />
-            Conheça o fornecedor
-            <IconContainer>
-              <ChevronRightIcon fontSize="large" />
-            </IconContainer>
+            <div onClick={SelectedItem}>
+              <FavoriteBorderIcon fontSize="large" />
+              Conheça o fornecedor
+              <IconContainer>
+                <ChevronRightIcon fontSize="large" />
+              </IconContainer>
+            </div>
           </MeetSupplier>
 
           <PriceCompare>
