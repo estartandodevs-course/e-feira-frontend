@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export const ApiServer = axios.create({
-  baseURL: 'https://private-ea557-efeira1.apiary-mock.com', // baseURL inicial
+  baseURL: 'https://e-feira-backend.onrender.com/api', // baseURL inicial
   timeout: 15000,
 });

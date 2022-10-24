@@ -18,7 +18,7 @@ const Router = () => {
           }
         />
         <Route path="/fornecedor/:id" element={<SupplierPage />} />
-        <Route path="/products" element={<ProductDetails />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
       </Route>
     </Routes>
   );
