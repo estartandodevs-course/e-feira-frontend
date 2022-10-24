@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const Title = styled.h3`
-  margin: 1rem 0;
-`;
-export const Access = styled.h4`
-  color: #3ba032;
-  padding: 0.5rem 0;
-  cursor: pointer;
-`;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,11 +11,14 @@ export const Container = styled.div`
     background-color: #fff;
   }
 `;
-export const Main = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
+export const Title = styled.h3`
+  margin: 1rem 0;
+`;
+export const Main = styled.div``;
+export const Access = styled.h4`
+  color: #3ba032;
+  padding: 0.5rem 0;
+  cursor: pointer;
 `;
 export const Card = styled.div`
   display: flex;

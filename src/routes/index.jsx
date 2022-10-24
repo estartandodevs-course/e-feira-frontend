@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router';
 import Layout from '../pages/Layout';
 import Home from '../pages/Home';
 import SupplierPage from '../pages/SupplierPage';
-import ProductDetails from '../pages/ProductsDetails';
+import ProductDetails from '../pages/ProductDetails';
 import { SplashProvider } from '../contexts/SplashProvider';
 
 const Router = () => {

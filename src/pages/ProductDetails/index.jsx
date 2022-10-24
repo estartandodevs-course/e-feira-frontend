@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../../components/Navbar';
 import { SingleProduct } from '../../components/SingleProduct';
 
-const ProductsDetails = () => {
+const ProductDetails = () => {
   return (
     <>
       <SingleProduct />
@@ -11,4 +11,4 @@ const ProductsDetails = () => {
   );
 };
 
-export default ProductsDetails;
+export default ProductDetails;

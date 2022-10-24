@@ -34,6 +34,7 @@ export const Card = styled.div`
   justify-content: center;
   width: 100%;
   background-color: white;
+  margin-bottom: 1rem;
 `;
 export const CardTitle = styled.h6`
   padding: 0.5rem 0;

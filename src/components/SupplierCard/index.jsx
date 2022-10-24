@@ -1,7 +1,6 @@
 import React from 'react';
 import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, MainImage } from './styles';
 import { useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
 import { useParams, useLocation } from 'react-router-dom';
 
@@ -29,21 +28,19 @@ export const SupplierCard = () => {
         <MainImage src={state.item.image} />
 
         <Main>
-          <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-            {state.item.products.map(item => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <Card>
-                    <CardImg>
-                      <img src={item.image} alt={item.alt} />
-                      <CardTitle>{item.name}</CardTitle>
-                      <CardSubTitle>{item.subtitle}</CardSubTitle>
-                    </CardImg>
-                  </Card>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          {/* <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper"> */}
+          {state.item.products.map(item => {
+            return (
+              <Card key={item.id}>
+                <CardImg>
+                  <img src={item.image} alt={item.alt} />
+                  <CardTitle>{item.name}</CardTitle>
+                  <CardSubTitle>{item.subtitle}</CardSubTitle>
+                </CardImg>
+              </Card>
+            );
+          })}
+          {/* </Swiper> */}
         </Main>
       </>
     </Container>
