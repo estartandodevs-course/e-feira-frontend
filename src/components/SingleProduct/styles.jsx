@@ -4,7 +4,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: auto > .swiper-wrapper * {
+  height: auto;
+  > .swiper-wrapper * {
     background-color: #fff;
   }
 `;
@@ -140,5 +141,5 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 3.75rem 1rem;
-  marginbottom 1rem; 
+  margin-bottom: 1rem;
 `;
