@@ -1,5 +1,5 @@
 import React from 'react';
-import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, MainImage } from './styles';
+import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, MainImage, CardDescription } from './styles';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
@@ -25,26 +25,28 @@ export const SupplierCard = () => {
   return (
     <Container id={id}>
       <>
-        <Access>{provider.name}</Access>
         <MainImage src={provider.url} />
+        <Access>{provider.name}</Access>
 
-        <Main>
-          <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
+        <Swiper slidesPerView={1} spaceBetween={10} loop={true} className="mySwiper">
+          <Main>
             {provider.products[0].map(item => {
               return (
                 <SwiperSlide key={item.id}>
                   <Card>
                     <CardImg>
                       <img src={item.image} alt={item.alt} />
+                    </CardImg>
+                    <CardDescription>
                       <CardTitle>{item.name}</CardTitle>
                       <CardSubTitle>{item.subtitle}</CardSubTitle>
-                    </CardImg>
+                    </CardDescription>
                   </Card>
                 </SwiperSlide>
               );
             })}
-          </Swiper>
-        </Main>
+          </Main>
+        </Swiper>
       </>
     </Container>
   );
