@@ -34,7 +34,7 @@ export const Main = styled.div`
 `;
 export const Card = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 `;
 
 export const CardImg = styled.div`
@@ -53,12 +53,12 @@ export const CardDescription = styled.div`
   gap: 8px;
   width: 100%;
 
-  /* justify-content: flex-end;
-  display: flex;
-  flex-direction: column; */
+  display: inline-grid;
 `;
 
 export const CardTitle = styled.h6`
+  grid-row-start: 1;
+  grid-row-end: 1;
   padding: 0.5rem 0;
   text-align: start;
   font-style: normal;
@@ -68,6 +68,8 @@ export const CardTitle = styled.h6`
 `;
 
 export const CardSubTitle = styled.h6`
+  grid-row-start: 2;
+  grid-row-end: 2;
   background-color: #fff;
   padding: 0.25rem 0;
   text-align: start;
@@ -75,4 +77,8 @@ export const CardSubTitle = styled.h6`
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
+`;
+
+export const SupplierDescription = styled.div`
+  margin-bottom: 2rem;
 `;
