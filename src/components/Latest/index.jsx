@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 export const Latest = () => {
-  const [latestMarket, setlatestMarket] = useState([]);
+  const [latestMarket, setLatestMarket] = useState([]);
   const navigate = useNavigate();
 
   const SelectedItem = item => {
@@ -21,7 +21,7 @@ export const Latest = () => {
   useEffect(() => {
     ApiServer.get('home/street-market-latest')
       .then(response => {
-        setlatestMarket(response.data);
+        setLatestMarket(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -39,7 +39,7 @@ export const Latest = () => {
 
             <Main key={index}>
               <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-                {item.products.map(item => {
+                {item.products[0].map(item => {
                   return (
                     <SwiperSlide key={item.id}>
                       <Card>
