@@ -37,7 +37,6 @@ export const Latest = () => {
           <Main key={item.id}>
             <Access onClick={() => SelectedItem(item)}>{item.title}</Access>
 
-<<<<<<< HEAD
             <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
               {item.products.map(item => {
                 return (
@@ -54,26 +53,6 @@ export const Latest = () => {
               })}
             </Swiper>
           </Main>
-=======
-            <Main key={index}>
-              <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-                {item.products[0].map(item => {
-                  return (
-                    <SwiperSlide key={item.id}>
-                      <Card>
-                        <CardImg>
-                          <img src={item.image} alt={item.alt} />
-                          <CardTitle>{item.name}</CardTitle>
-                          <CardSubTitle>{item.subtitle}</CardSubTitle>
-                        </CardImg>
-                      </Card>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </Main>
-          </>
->>>>>>> 510d93e4a28fe8a1428333761293f496c0f3bfe2
         ))}
     </Container>
   );
