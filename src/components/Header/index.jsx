@@ -4,9 +4,11 @@ import { SiteTitle, HeaderBox } from './styles';
 export function Header() {
   return (
     <>
-    <HeaderBox>
-      <SiteTitle><NavLink to="/">e-feira</NavLink></SiteTitle>;
-    </HeaderBox>
+      <HeaderBox>
+        <SiteTitle>
+          <NavLink to="/">e-feira</NavLink>
+        </SiteTitle>
+      </HeaderBox>
     </>
-  )
+  );
 }
