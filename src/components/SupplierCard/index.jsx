@@ -48,12 +48,13 @@ export const SupplierCard = () => {
           {provider.phoneNumber?.map((item, index) => (
             <ContactPhone key={index}>
               <LocalPhoneOutlinedIcon />
-              <p>{item}</p>
+              <a href="tel:${item}"> {item}</a>
             </ContactPhone>
           ))}
         </ContactInfo>
         <>
           <Swiper
+            width={450}
             noSwiping={true}
             allowTouchMove={false}
             navigation={false}

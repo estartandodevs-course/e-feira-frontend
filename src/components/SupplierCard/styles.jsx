@@ -14,9 +14,10 @@ export const MainImage = styled.img`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  /* padding: 0 0 2rem 0; */
+  width: 95%;
   height: 100%;
+  padding: 1rem;
+  margin-bottom: 4rem;
   > .mySwiper * {
     background-color: white;
     align-items: center;
@@ -88,6 +89,7 @@ export const CardTitle = styled.h6`
   font-weight: 400;
   font-size: 16px;
   line-height: 120%;
+  width: 100%;
 `;
 
 export const CardSubTitle = styled.h6`
