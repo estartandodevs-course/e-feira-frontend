@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 
+export const HeaderButton = styled.div`
+  position: absolute;
+  margin: 3rem;
+  > a:link,
+  a:visited,
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+`;
+
 export const Title = styled.h3`
   margin: 1rem 0;
 `;

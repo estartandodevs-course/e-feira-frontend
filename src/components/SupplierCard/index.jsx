@@ -11,6 +11,7 @@ import {
   ContactInfo,
   ContactPhone,
   Container,
+  HeaderButton,
   ItemPrice,
   Main,
   MainImage,
@@ -19,12 +20,22 @@ import {
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 
 export const SupplierCard = () => {
+  const { pathname } = useLocation();
+
+  let backButton =
+    pathname === '/' ? null : (
+      <Link to="/">
+        <ArrowBackIosNewOutlinedIcon fontSize="large" />
+      </Link>
+    );
+
   const { id } = useParams();
 
   const [provider, setProvider] = useState({ products: [[]] });
@@ -41,6 +52,7 @@ export const SupplierCard = () => {
 
   return (
     <>
+      <HeaderButton>{backButton}</HeaderButton>
       <MainImage src={provider.url} />
       <Container>
         <Access>{provider.name}</Access>
@@ -81,7 +93,7 @@ export const SupplierCard = () => {
                         <CardDescription>
                           <CardTitle>{item.name}</CardTitle>
                           <CardSubTitle>{item.subtitle}</CardSubTitle>
-                          <ItemPrice>R${item.price}</ItemPrice>
+                          <ItemPrice>R$ {item.price.toFixed(2)}</ItemPrice>
                         </CardDescription>
                       </CardRight>
                     </Card>
