@@ -34,27 +34,25 @@ export const Latest = () => {
 
       {latestMarket.length > 0 &&
         latestMarket.map((item, index) => (
-          <>
+          <Main key={index}>
             <Access onClick={() => SelectedItem(item)}>{item.title}</Access>
 
-            <Main key={index}>
-              <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
-                {item.products[0].map(item => {
-                  return (
-                    <SwiperSlide key={item.id}>
-                      <Card>
-                        <CardImg>
-                          <img src={item.image} alt={item.alt} />
-                          <CardTitle>{item.name}</CardTitle>
-                          <CardSubTitle>{item.subtitle}</CardSubTitle>
-                        </CardImg>
-                      </Card>
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
-            </Main>
-          </>
+            <Swiper slidesPerView={1.5} spaceBetween={10} loop={true} className="mySwiper">
+              {item.products[0].map(item => {
+                return (
+                  <SwiperSlide key={item.id}>
+                    <Card>
+                      <CardImg>
+                        <img src={item.image} alt={item.alt} />
+                        <CardTitle>{item.name}</CardTitle>
+                        <CardSubTitle>{item.subtitle}</CardSubTitle>
+                      </CardImg>
+                    </Card>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </Main>
         ))}
     </Container>
   );

@@ -2,13 +2,15 @@ import React from 'react';
 import {
   Access,
   Card,
+  CardDescription,
   CardImg,
+  CardLeft,
   CardSubTitle,
   CardTitle,
+  ContactInfo,
   Container,
   Main,
   MainImage,
-  CardDescription,
   SupplierDescription,
 } from './styles';
 import { useEffect, useState } from 'react';
@@ -17,6 +19,7 @@ import { ApiServer } from '../../services/Api';
 import { useParams } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 
 export const SupplierCard = () => {
   const { id } = useParams();
@@ -35,31 +38,49 @@ export const SupplierCard = () => {
 
   return (
     <Container id={id}>
-      <>
-        <MainImage src={provider.url} />
-        <Access>{provider.name}</Access>
-        <SupplierDescription>{provider.description}</SupplierDescription>
+      <MainImage src={provider.url} />
+      <Access>{provider.name}</Access>
 
-        <Swiper slidesPerView={1} spaceBetween={10} loop={true} className="mySwiper">
-          <Main>
-            {provider.products[0].map(item => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <Card>
+      <SupplierDescription>{provider.description}</SupplierDescription>
+      <ContactInfo>
+        {provider.phoneNumber?.map((item, index) => (
+          <>
+            <LocalPhoneOutlinedIcon />
+            <p key={index}>{item}</p>
+          </>
+        ))}
+      </ContactInfo>
+      <Swiper
+        noSwiping={true}
+        allowTouchMove={false}
+        navigation={false}
+        // autoHeight={true}
+        slidesPerView={1}
+        spaceBetween={10}
+        // direction="vertical"
+        loop={true}
+        className="mySwiper"
+      >
+        <Main>
+          {provider.products[0].map(item => {
+            return (
+              <SwiperSlide key={item.id}>
+                <Card className="cardBox">
+                  <CardLeft>
                     <CardImg>
                       <img src={item.image} alt={item.alt} />
                     </CardImg>
-                    <CardDescription>
-                      <CardTitle>{item.name}</CardTitle>
-                      <CardSubTitle>{item.subtitle}</CardSubTitle>
-                    </CardDescription>
-                  </Card>
-                </SwiperSlide>
-              );
-            })}
-          </Main>
-        </Swiper>
-      </>
+                  </CardLeft>
+                  <CardDescription>
+                    <CardTitle>{item.name}</CardTitle>
+                    <CardSubTitle>{item.subtitle}</CardSubTitle>
+                  </CardDescription>
+                </Card>
+              </SwiperSlide>
+            );
+          })}
+        </Main>
+      </Swiper>
     </Container>
   );
 };

@@ -4,8 +4,7 @@ export const Title = styled.h3`
   margin: 1rem 0;
 `;
 export const Access = styled.h2`
-  color: #3ba032;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
 `;
 export const MainImage = styled.img`
   width: 100%;
@@ -16,14 +15,31 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  // padding: 0 1rem;
+  padding: 0 0 2rem 0;
   height: 100%;
   > .mySwiper * {
-    display: grid;
-    grid-template-columns: auto 3fr;
     background-color: white;
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
+  > .cardBox {
+  }
+`;
+
+export const ContactInfo = styled.div`
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  > * {
+    margin-right: 1rem;
+  }
+`;
+export const CardLeft = styled.div`
+  width: 50%;
+  /* display: flex;
+  flex-direction: column; */
 `;
 
 export const Main = styled.div`
@@ -40,8 +56,9 @@ export const Card = styled.div`
 export const CardImg = styled.div`
   /* background-color: #fff; */
   /* height: 100%; */
-  width: 80%;
-  flex-grow: 2;
+  /* width: 50%; */
+  /* flex-grow: 2; */
+  padding: 0 1rem 0 0;
   margin: 0.75rem 0;
   > img {
     border-radius: 12px;
@@ -51,9 +68,9 @@ export const CardImg = styled.div`
 export const CardDescription = styled.div`
   /* align-items: flex-end; */
   gap: 8px;
-  width: 100%;
+  width: 40%;
 
-  display: inline-grid;
+  /* display: inline-grid; */
 `;
 
 export const CardTitle = styled.h6`
@@ -80,5 +97,5 @@ export const CardSubTitle = styled.h6`
 `;
 
 export const SupplierDescription = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;

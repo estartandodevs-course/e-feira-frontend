@@ -1,3 +1,4 @@
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { PageWrapper, PageContent } from './styles';
 import { Header } from '../../components/Header/';
@@ -18,9 +19,11 @@ const Layout = () => {
     <ThemeProvider theme={theme}>
       <PageWrapper>
         <Header />
-        <PageContent>
-          <Outlet />
-        </PageContent>
+        <React.StrictMode>
+          <PageContent>
+            <Outlet />
+          </PageContent>
+        </React.StrictMode>
         <Navbar />
       </PageWrapper>
     </ThemeProvider>
