@@ -1,13 +1,41 @@
 import React from 'react';
-import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, MainImage, CardDescription } from './styles';
+import {
+  Access,
+  Card,
+  CardDescription,
+  CardImg,
+  CardLeft,
+  CardRight,
+  CardSubTitle,
+  CardTitle,
+  ContactInfo,
+  ContactPhone,
+  Container,
+  HeaderButton,
+  ItemPrice,
+  Main,
+  MainImage,
+  SupplierDescription,
+} from './styles';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 
 export const SupplierCard = () => {
+  const { pathname } = useLocation();
+
+  let backButton =
+    pathname === '/' ? null : (
+      <Link to="/">
+        <ArrowBackIosNewOutlinedIcon fontSize="large" />
+      </Link>
+    );
+
   const { id } = useParams();
 
   const [provider, setProvider] = useState({ products: [[]] });
@@ -23,31 +51,59 @@ export const SupplierCard = () => {
   }, []);
 
   return (
-    <Container id={id}>
-      <>
-        <MainImage src={provider.url} />
+    <>
+      <HeaderButton>{backButton}</HeaderButton>
+      <MainImage src={provider.url} />
+      <Container>
         <Access>{provider.name}</Access>
 
-        <Swiper slidesPerView={1} spaceBetween={10} loop={true} className="mySwiper">
-          <Main>
-            {provider.products[0].map(item => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <Card>
-                    <CardImg>
-                      <img src={item.image} alt={item.alt} />
-                    </CardImg>
-                    <CardDescription>
-                      <CardTitle>{item.name}</CardTitle>
-                      <CardSubTitle>{item.subtitle}</CardSubTitle>
-                    </CardDescription>
-                  </Card>
-                </SwiperSlide>
-              );
-            })}
-          </Main>
-        </Swiper>
-      </>
-    </Container>
+        <SupplierDescription>{provider.description}</SupplierDescription>
+        <ContactInfo>
+          {provider.phoneNumber?.map((item, index) => (
+            <ContactPhone key={index}>
+              <LocalPhoneOutlinedIcon />
+              <a href="tel:${item}"> {item}</a>
+            </ContactPhone>
+          ))}
+        </ContactInfo>
+        <>
+          <Swiper
+            width={450}
+            noSwiping={true}
+            allowTouchMove={false}
+            navigation={false}
+            // autoHeight={true}
+            slidesPerView={1}
+            spaceBetween={10}
+            // direction="vertical"
+            loop={true}
+            className="mySwiper"
+          >
+            <Main>
+              {provider.products[0].map(item => {
+                return (
+                  <SwiperSlide key={item.id}>
+                    <Card className="cardBox">
+                      <CardLeft>
+                        <CardImg>
+                          <img src={item.image} alt={item.alt} />
+                        </CardImg>
+                      </CardLeft>
+                      <CardRight>
+                        <CardDescription>
+                          <CardTitle>{item.name}</CardTitle>
+                          <CardSubTitle>{item.subtitle}</CardSubTitle>
+                          <ItemPrice>R$ {item.price.toFixed(2)}</ItemPrice>
+                        </CardDescription>
+                      </CardRight>
+                    </Card>
+                  </SwiperSlide>
+                );
+              })}
+            </Main>
+          </Swiper>
+        </>
+      </Container>
+    </>
   );
 };

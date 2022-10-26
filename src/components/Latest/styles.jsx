@@ -7,6 +7,7 @@ export const Access = styled.h4`
   color: #3ba032;
   padding: 0.5rem 0;
   cursor: pointer;
+  justify-content: flex-start;
 `;
 export const Container = styled.div`
   display: flex;
@@ -22,7 +23,7 @@ export const Container = styled.div`
 export const Main = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: row;
 `;
 export const Card = styled.div`

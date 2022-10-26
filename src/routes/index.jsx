@@ -1,9 +1,10 @@
-import { Routes, Route } from 'react-router';
+import { Routes, Route } from 'react-router-dom';
 import Layout from '../pages/Layout';
 import Home from '../pages/Home';
 import SupplierPage from '../pages/SupplierPage';
 import ProductDetails from '../pages/ProductsDetails';
 import { SplashProvider } from '../contexts/SplashProvider';
+import { Header } from '../components/Header';
 
 const Router = () => {
   return (
@@ -12,13 +13,24 @@ const Router = () => {
         <Route
           path="/"
           element={
-            <SplashProvider>
-              <Home />
-            </SplashProvider>
+            <>
+              <SplashProvider>
+                <Header />
+                <Home />
+              </SplashProvider>
+            </>
           }
         />
         <Route path="/fornecedor/:id" element={<SupplierPage />} />
-        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route
+          path="/produtos/:id"
+          element={
+            <>
+              <Header />
+              <ProductDetails />
+            </>
+          }
+        />
       </Route>
     </Routes>
   );
