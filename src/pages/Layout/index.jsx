@@ -4,6 +4,7 @@ import { Header } from '../../components/Header/';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { green } from '@mui/material/colors';
 import Navbar from '../../components/Navbar';
+// import Context from '../../contexts/Context';
 
 const theme = createTheme({
   palette: {
@@ -15,15 +16,17 @@ const theme = createTheme({
 
 const Layout = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <PageWrapper>
-        <Header />
-        <PageContent>
-          <Outlet />
-        </PageContent>
-        <Navbar />
-      </PageWrapper>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <PageWrapper>
+          <Header />
+          <PageContent>
+            <Outlet />
+          </PageContent>
+          <Navbar />
+        </PageWrapper>
+      </ThemeProvider>
+    </>
   );
 };
 export default Layout;
