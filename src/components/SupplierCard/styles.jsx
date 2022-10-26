@@ -43,12 +43,6 @@ export const ContactPhone = styled.div`
   flex-direction: row;
 `;
 
-export const CardLeft = styled.div`
-  width: 50%;
-  /* display: flex;
-  flex-direction: column; */
-`;
-
 export const Main = styled.div`
   /* display: flex;
   flex-wrap: wrap;
@@ -57,7 +51,18 @@ export const Main = styled.div`
 `;
 export const Card = styled.div`
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: row;
+`;
+
+export const CardLeft = styled.div`
+  width: 50%;
+  /* display: flex;
+  flex-direction: column; */
+`;
+
+export const CardRight = styled.div`
+  width: 50%;
+  gap: 8px;
 `;
 
 export const CardImg = styled.div`
@@ -74,10 +79,15 @@ export const CardImg = styled.div`
 `;
 export const CardDescription = styled.div`
   /* align-items: flex-end; */
-  gap: 8px;
-  width: 40%;
+
+  /* width: 40%; */
 
   /* display: inline-grid; */
+`;
+
+export const ItemPrice = styled.div`
+  margin-top: 4rem;
+  width: 100%;
 `;
 
 export const CardTitle = styled.h6`

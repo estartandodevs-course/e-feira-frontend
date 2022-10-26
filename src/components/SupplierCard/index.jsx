@@ -5,11 +5,13 @@ import {
   CardDescription,
   CardImg,
   CardLeft,
+  CardRight,
   CardSubTitle,
   CardTitle,
   ContactInfo,
   ContactPhone,
   Container,
+  ItemPrice,
   Main,
   MainImage,
   SupplierDescription,
@@ -75,10 +77,13 @@ export const SupplierCard = () => {
                           <img src={item.image} alt={item.alt} />
                         </CardImg>
                       </CardLeft>
-                      <CardDescription>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardSubTitle>{item.subtitle}</CardSubTitle>
-                      </CardDescription>
+                      <CardRight>
+                        <CardDescription>
+                          <CardTitle>{item.name}</CardTitle>
+                          <CardSubTitle>{item.subtitle}</CardSubTitle>
+                          <ItemPrice>R${item.price}</ItemPrice>
+                        </CardDescription>
+                      </CardRight>
                     </Card>
                   </SwiperSlide>
                 );
