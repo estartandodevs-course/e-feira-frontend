@@ -15,7 +15,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 0 2rem 0;
+  /* padding: 0 0 2rem 0; */
   height: 100%;
   > .mySwiper * {
     background-color: white;
@@ -33,9 +33,15 @@ export const ContactInfo = styled.div`
   display: flex;
   justify-content: center;
   > * {
-    margin-right: 1rem;
+    margin: 0 2rem;
   }
 `;
+
+export const ContactPhone = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const CardLeft = styled.div`
   width: 50%;
   /* display: flex;
