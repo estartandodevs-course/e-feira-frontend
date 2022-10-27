@@ -17,7 +17,7 @@ import {
   TextQuestion,
 } from './styles';
 import { ApiServer } from '../../services/Api';
-import { Button } from '../Button';
+// import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -30,7 +30,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState({});
 
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
 
   const [itemCount, setItemCount] = React.useState(0);
 
@@ -138,7 +138,7 @@ export const SingleProduct = () => {
         </CardInformations>
       </TextInfo>
       <ButtonContainer>
-        <button onClick={() => handleAddToCart(productDetails)}> 'Enviar Para Sacola' </button>
+        <button onClick={() => handleAddToCart(productDetails)}> Enviar Para Sacola </button>
         {/* <Button description={'Enviar Para Sacola'} onClick={() => handleAddToCart()} /> */}
       </ButtonContainer>
     </Container>
