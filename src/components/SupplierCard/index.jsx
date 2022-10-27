@@ -86,7 +86,7 @@ export const SupplierCard = () => {
                     <Card className="cardBox">
                       <CardLeft>
                         <CardImg>
-                          <Link to={`/produtos/${provider.id}`}>
+                          <Link to={`/produtos/${item.id}`}>
                             <img src={item.image} alt={item.alt} />
                           </Link>
                         </CardImg>

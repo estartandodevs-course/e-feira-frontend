@@ -17,24 +17,20 @@ import {
   TextQuestion,
 } from './styles';
 import { ApiServer } from '../../services/Api';
-// import { Button } from '../Button';
-import { useContentUserActive } from '../../useContent';
+import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import AddIcon from '@mui/icons-material/Add';
+import { useParams } from 'react-router-dom';
+
 import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState({});
 
-  // const [cartItems, setCartItems] = useState([]);
-
   const [itemCount, setItemCount] = React.useState(0);
-
-  const { userActive, setUserActive } = useContentUserActive();
 
   const navigate = useNavigate();
 
@@ -46,33 +42,15 @@ export const SingleProduct = () => {
     });
   };
 
-  const handleAddToCart = checkedItem => {
-    const data = {
-      checkedItem,
-      amount: itemCount,
-    };
-
-    setUserActive(prev => {
-      const isItemInCart = prev.find(item => item.id === data.checkedItem.id);
-
-      if (isItemInCart) {
-        return prev.map(item => (item.id === data.checkedItem.id ? { data } : item));
-      }
-
-      return [...prev, { ...data }];
-    });
-  };
-
   useEffect(() => {
-    ApiServer.get('/provider-page/' + id)
+    ApiServer.get('/products/' + id)
       .then(response => {
         setProductDetails(response.data[0].product_info[0]);
       })
       .catch(error => {
         console.log(error);
       });
-    console.log(userActive);
-  }, [userActive]);
+  }, []);
 
   console.log(productDetails);
   return (
@@ -87,10 +65,7 @@ export const SingleProduct = () => {
       <TextInfo>
         <TextQuestion>Adicionar mais?</TextQuestion>
         <CardPrice>
-          <p>
-            R$
-            {productDetails.price?.toFixed(2)}
-          </p>
+          <p>R${productDetails.price}</p>
           <Icon style={{ alignItems: 'flex-start' }}>
             <button
               onClick={() => {
@@ -141,8 +116,7 @@ export const SingleProduct = () => {
         </CardInformations>
       </TextInfo>
       <ButtonContainer>
-        <button onClick={() => handleAddToCart(productDetails)}> Enviar Para Sacola </button>
-        {/* <Button description={'Enviar Para Sacola'} onClick={() => handleAddToCart()} /> */}
+        <Button description={'Enviar Para Sacola'} />
       </ButtonContainer>
     </Container>
   );
