@@ -17,7 +17,6 @@ import {
   TextQuestion,
 } from './styles';
 import { ApiServer } from '../../services/Api';
-// import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -26,6 +25,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
 import { useContentUserActive } from '../../useContent';
 import RemoveIcon from '@mui/icons-material/Remove';
+import { Stack, Button } from '@mui/material';
 
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState({});
@@ -41,7 +41,7 @@ export const SingleProduct = () => {
   const { id } = useParams();
 
   const SelectedItem = () => {
-    navigate(`/fornecedor/${productDetails.provider_id}`, {
+    navigate(`/${productDetails.provider_id}`, {
       replace: true,
     });
   };
@@ -83,7 +83,6 @@ export const SingleProduct = () => {
         <CardTitle>{productDetails.name}</CardTitle>
         <CardSubTitle>{productDetails.subtitle}</CardSubTitle>
       </Card>
-
       <TextInfo>
         <TextQuestion>Adicionar mais?</TextQuestion>
         <CardPrice>
@@ -141,8 +140,29 @@ export const SingleProduct = () => {
         </CardInformations>
       </TextInfo>
       <ButtonContainer>
-        <button onClick={() => handleAddToCart(productDetails)}> Enviar Para Sacola </button>
-        {/* <Button description={'Enviar Para Sacola'} onClick={() => handleAddToCart()} /> */}
+        <Stack spacing={2} direction="row">
+          <Button
+            style={{
+              width: '100%',
+              background: '#3ba032',
+              borderRadius: '8px',
+              alignItems: 'center',
+              textAlign: 'center',
+              letterSpacing: '0.0125em',
+              textTransform: 'uppercase',
+              color: '#fff',
+              fontWeight: '500',
+              fontSize: '16px',
+              lineHeight: '120%',
+              border: 'none',
+              padding: '1rem 8.5rem',
+            }}
+            onClick={() => handleAddToCart(productDetails)}
+          >
+            {' '}
+            <label>Enviar para sacola</label>
+          </Button>
+        </Stack>
       </ButtonContainer>
     </Container>
   );
