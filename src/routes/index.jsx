@@ -1,39 +1,44 @@
+// import { ApiServer } from '../../services/Api';
+
 import { Routes, Route } from 'react-router-dom';
-import Layout from '../pages/Layout';
-import Home from '../pages/Home';
-import SupplierPage from '../pages/SupplierPage';
-import ProductDetails from '../pages/ProductsDetails';
-import Cart from '../pages/Cart';
 import { SplashProvider } from '../contexts/SplashProvider';
-import { Header } from '../components/Header';
+// import { useEffect, useState, useParams } from 'react';
+import Cart from '../pages/Cart';
+import Home from '../pages/Home';
+import Layout from '../pages/Layout';
+import LayoutNoHeader from '../pages/LayoutNoHeader';
+import ProductDetails from '../pages/ProductsDetails';
+import SupplierPage from '../pages/SupplierPage';
 
 const Router = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route
-          path="/"
-          element={
-            <>
-              <SplashProvider>
-                <Header />
-                <Home />
-              </SplashProvider>
-            </>
-          }
-        />
-        <Route path="/fornecedor/:id" element={<SupplierPage />} />
-        <Route
-          path="/produtos/:id"
-          element={
-            <>
-              <Header />
-              <ProductDetails />
-            </>
-          }
-        />
-        <Route path="/cart" element={<Cart />} />
-      </Route>
+      <>
+        <Route element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <>
+                <SplashProvider>
+                  <Home />
+                </SplashProvider>
+              </>
+            }
+          />
+          <Route
+            path="/produtos/:id"
+            element={
+              <>
+                <ProductDetails />
+              </>
+            }
+          />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
+        <Route element={<LayoutNoHeader />}>
+          <Route path="/fornecedor/:id" element={<SupplierPage />} />
+        </Route>
+      </>
     </Routes>
   );
 };

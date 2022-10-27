@@ -18,13 +18,13 @@ import {
 } from './styles';
 import { ApiServer } from '../../services/Api';
 // import { Button } from '../Button';
-import { useNavigate } from 'react-router-dom';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import AddIcon from '@mui/icons-material/Add';
-import { useParams } from 'react-router-dom';
 import { useContentUserActive } from '../../useContent';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import AddIcon from '@mui/icons-material/Add';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
