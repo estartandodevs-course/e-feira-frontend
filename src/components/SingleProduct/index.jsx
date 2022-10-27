@@ -87,7 +87,10 @@ export const SingleProduct = () => {
       <TextInfo>
         <TextQuestion>Adicionar mais?</TextQuestion>
         <CardPrice>
-          <p>R${productDetails.price}</p>
+          <p>
+            R$
+            {productDetails.price?.toFixed(2)}
+          </p>
           <Icon style={{ alignItems: 'flex-start' }}>
             <button
               onClick={() => {
