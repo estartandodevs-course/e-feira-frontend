@@ -2,7 +2,6 @@ import { ContainerStyle } from './styles';
 import { useEffect } from 'react';
 import { useSplash } from '../../contexts/SplashProvider';
 import { Highlights } from '../../components/Highlights';
-import { slides } from '../../mocks/slides';
 import { CategoriesCarousel } from '../../components/Carousel';
 import { Latest } from '../../components/Latest';
 import Navbar from '../../components/Navbar';
@@ -25,7 +24,7 @@ const Home = () => {
   return isShown ? null : (
     <>
       <ContainerStyle>
-        <Highlights slides={slides} />
+        <Highlights />
         <CategoriesCarousel />
         <Latest />
         <Navbar />
