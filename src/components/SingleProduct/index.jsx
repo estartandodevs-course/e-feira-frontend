@@ -64,7 +64,7 @@ export const SingleProduct = () => {
   };
 
   useEffect(() => {
-    ApiServer.get('/products/' + id)
+    ApiServer.get('/provider-page/' + id)
       .then(response => {
         setProductDetails(response.data[0].product_info[0]);
       })
