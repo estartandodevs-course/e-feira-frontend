@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderButton = styled.div`
   position: absolute;
-  margin: 3rem;
+  margin: 3rem 2rem;
   > a:link,
   a:visited,
   a:hover {
@@ -67,13 +67,14 @@ export const Card = styled.div`
 
 export const CardLeft = styled.div`
   width: 50%;
+  gap: 1rem;
   /* display: flex;
   flex-direction: column; */
 `;
 
 export const CardRight = styled.div`
   width: 50%;
-  gap: 8px;
+  gap: 1rem;
 `;
 
 export const CardImg = styled.div`
