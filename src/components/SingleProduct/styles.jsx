@@ -140,8 +140,8 @@ export const PriceCompare = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 3.75rem 0.01rem;
+  margin: 1rem;
+  padding: 3.75rem;
   margin-bottom: 1rem;
   width: 100%;
 `;

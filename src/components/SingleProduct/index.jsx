@@ -21,6 +21,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { useContentUserActive } from '../../useContent';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -35,12 +36,30 @@ export const SingleProduct = () => {
 
   const { id } = useParams();
 
+  const { userActive, setUserActive } = useContentUserActive();
+
   const SelectedItem = () => {
     navigate(`/${productDetails.provider_id}`, {
       replace: true,
     });
   };
 
+  const handleAddToCart = checkedItem => {
+    const data = {
+      checkedItem,
+      amount: itemCount,
+    };
+
+    setUserActive(prev => {
+      const isItemInCart = prev.find(item => item.id === data.checkedItem.id);
+
+      if (isItemInCart) {
+        return prev.map(item => (item.id === data.checkedItem.id ? { data } : item));
+      }
+
+      return [...prev, { ...data }];
+    });
+  };
   useEffect(() => {
     ApiServer.get('/products/' + id)
       .then(response => {
@@ -49,7 +68,8 @@ export const SingleProduct = () => {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+    console.log(userActive);
+  }, [userActive]);
 
   console.log(productDetails);
   return (
@@ -63,7 +83,7 @@ export const SingleProduct = () => {
       <TextInfo>
         <TextQuestion>Adicionar mais?</TextQuestion>
         <CardPrice>
-          <p>R${productDetails.price}</p>
+          <p>R${productDetails.price?.toFixed(2)}</p>
           <Icon style={{ alignItems: 'flex-start' }}>
             <button
               onClick={() => {
@@ -119,11 +139,10 @@ export const SingleProduct = () => {
         <Stack spacing={2} direction="row">
           <Button
             style={{
-              width: '100%',
+              width: '110%',
               background: '#3ba032',
               borderRadius: '8px',
-              alignItems: 'center',
-              textAlign: 'center',
+              justifyContent: 'center',
               letterSpacing: '0.0125em',
               textTransform: 'uppercase',
               color: '#fff',
@@ -131,9 +150,9 @@ export const SingleProduct = () => {
               fontSize: '16px',
               lineHeight: '120%',
               border: 'none',
-              padding: '1rem 8.5rem',
+              padding: '1rem 1rem',
             }}
-            // onClick={() => handleAddToCart(productDetails)}
+            onClick={() => handleAddToCart(productDetails)}
           >
             {' '}
             <label>Enviar para sacola</label>
