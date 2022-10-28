@@ -44,7 +44,7 @@ export const Latest = () => {
                     <Card>
                       <CardBox>
                         <CardImg>
-                          <Link to={`/fornecedor/${item.id}`}>
+                          <Link to={`/produtos/${item.id}`}>
                             <img src={item.image} alt={item.alt} />
                           </Link>
                         </CardImg>
