@@ -1,6 +1,6 @@
 import App from './App';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import Context from './contexts/Context'
 
 // if (process.env.NODE_ENV === 'development') {
 //   const { worker } = require('./mocks/browser')
@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(
-  <BrowserRouter>
+  <Context>
     <App />
-  </BrowserRouter>
+  </Context>
 );

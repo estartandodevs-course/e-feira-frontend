@@ -3,14 +3,17 @@ import Router from './routes';
 import GlobalStyle from './assets/styles/globalStyles';
 import ScrollToTop from './components/ScrollToTop';
 import { ContentProvider } from './useContext';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <ContentProvider>
-      <GlobalStyle />
-      <Router />
-      <ScrollToTop />
-    </ContentProvider>
+    <BrowserRouter>
+      <ContentProvider>
+        <GlobalStyle />
+        <Router />
+        <ScrollToTop />
+      </ContentProvider>
+    </BrowserRouter>
   );
 }
 
