@@ -1,9 +1,9 @@
 import React from 'react';
-import { Access, Card, CardImg, CardSubTitle, CardTitle, Container, Main, Title } from './styles';
+import { Access, Card, CardBox, CardImg, CardSubTitle, CardTitle, Container, Main, Title } from './styles';
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -42,11 +42,16 @@ export const Latest = () => {
                 return (
                   <SwiperSlide key={item.id}>
                     <Card>
-                      <CardImg>
-                        <img src={item.image} alt={item.alt} />
+                      <CardBox>
+                        <CardImg>
+                          <Link to={`/fornecedor/${item.id}`}>
+                            <img src={item.image} alt={item.alt} />
+                          </Link>
+                        </CardImg>
+
                         <CardTitle>{item.name}</CardTitle>
                         <CardSubTitle>{item.subtitle}</CardSubTitle>
-                      </CardImg>
+                      </CardBox>
                     </Card>
                   </SwiperSlide>
                 );

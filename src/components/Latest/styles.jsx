@@ -49,11 +49,14 @@ export const CardSubTitle = styled.h6`
   font-size: 12px;
   line-height: 120%;
 `;
-export const CardImg = styled.div`
+export const CardBox = styled.div`
   background-color: #fff;
   height: 100%;
   width: 100%;
   margin: 0.75rem 0;
+`;
+
+export const CardImg = styled.div`
   > img {
     border-radius: 12px;
     padding-bottom: 0.5rem;

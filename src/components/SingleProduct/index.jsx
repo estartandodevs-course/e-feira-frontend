@@ -17,19 +17,14 @@ import {
   TextQuestion,
 } from './styles';
 import { ApiServer } from '../../services/Api';
-
-import { Button } from '../Button';
-
-
 import { useNavigate } from 'react-router-dom';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import AddIcon from '@mui/icons-material/Add';
 import { useParams } from 'react-router-dom';
-
-import RemoveIcon from '@mui/icons-material/Remove';
 import { Stack, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState({});
@@ -119,7 +114,6 @@ export const SingleProduct = () => {
         </CardInformations>
       </TextInfo>
       <ButtonContainer>
-
         <Button description={'Enviar Para Sacola'} />
 
         <Stack spacing={2} direction="row">
@@ -139,13 +133,12 @@ export const SingleProduct = () => {
               border: 'none',
               padding: '1rem 8.5rem',
             }}
-            onClick={() => handleAddToCart(productDetails)}
+            // onClick={() => handleAddToCart(productDetails)}
           >
             {' '}
             <label>Enviar para sacola</label>
           </Button>
         </Stack>
-
       </ButtonContainer>
     </Container>
   );
