@@ -3,12 +3,11 @@ const { createContext, useState, useContext } = require("react");
 
 
 const SplashContext = createContext({
-  showSplash: () => {},
-  hideSplash: () => {},
+  showSplash: () => { },
+  hideSplash: () => { },
   isShown: true
 });
 
-// eslint-disable-next-line react/prop-types
 export const SplashProvider = ({ children }) => {
   const [isShown, setIsShown] = useState(true);
 
@@ -39,7 +38,7 @@ export const SplashProvider = ({ children }) => {
           }}
         >
           <img src={Logo} alt="" />
-          
+
         </div>
       ) : null}
       {children}

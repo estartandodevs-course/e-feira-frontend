@@ -1,8 +1,5 @@
-// import { ApiServer } from '../../services/Api';
-
 import { Routes, Route } from 'react-router-dom';
 import { SplashProvider } from '../contexts/SplashProvider';
-// import { useEffect, useState, useParams } from 'react';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import Layout from '../pages/Layout';

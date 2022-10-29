@@ -1,8 +1,10 @@
 import { createContext, useState, useEffect, useReducer, useContext } from 'react';
-import { ApiServer } from '../services/Api';
+// import axios from "axios";
 import { cartReducer } from './Reducers';
+import { ApiServer } from '../services/Api/index'
 
 const Cart = createContext();
+
 
 
 const Context = ({ children }) => {
@@ -19,19 +21,20 @@ const Context = ({ children }) => {
       });
   }, []);
 
+  console.log(productDetails)
 
-  // console.log(productDetails)
 
   const [state, dispatch] = useReducer(cartReducer, {
-    product: productDetails,
+    products: productDetails,
     cart: [],
   });
-  return <Cart.Provider value={{ state, dispatch }}> {children}</Cart.Provider>;
-};
 
+
+  return <Cart.Provider value={{ state, dispatch }}> {children}</Cart.Provider>;
+}
+
+export default Context
 
 export const CartState = () => {
   return useContext(Cart);
 };
-
-export default Context;
