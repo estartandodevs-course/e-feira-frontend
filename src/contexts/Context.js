@@ -1,34 +1,33 @@
 import { createContext, useState, useEffect, useReducer, useContext } from 'react';
-// import axios from "axios";
 import { cartReducer } from './Reducers';
 import { ApiServer } from '../services/Api/index'
 
 const Cart = createContext();
 
-
-
 const Context = ({ children }) => {
 
-  const [productDetails, setProductDetails] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     ApiServer.get('/products/')
       .then(response => {
-        setProductDetails(response.data);
+        if (response.data != null) {
+          setProducts(response.data);
+        } else {
+          console.log('O Array esta vazio')
+        }
       })
       .catch(error => {
         console.log(error);
       });
   }, []);
 
-  console.log(productDetails)
-
+  console.log(products)
 
   const [state, dispatch] = useReducer(cartReducer, {
-    products: productDetails,
+    products: products,
     cart: [],
   });
-
 
   return <Cart.Provider value={{ state, dispatch }}> {children}</Cart.Provider>;
 }
