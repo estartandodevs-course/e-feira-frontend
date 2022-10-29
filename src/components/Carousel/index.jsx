@@ -5,6 +5,7 @@ import { ApiServer } from '../../services/Api';
 import { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { Link } from 'react-router-dom';
 
 export const CategoriesCarousel = () => {
   const [showCategories, setCategories] = useState([]);
@@ -21,7 +22,9 @@ export const CategoriesCarousel = () => {
 
   return (
     <Container>
-      <CategoriesTitles> Categorias </CategoriesTitles>
+      <CategoriesTitles>
+        <Link to={`/categorias/`}> Categorias </Link>
+      </CategoriesTitles>
 
       {showCategories?.length > 0 ? (
         <CategoriesCard>
