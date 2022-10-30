@@ -30,7 +30,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 export const SingleProduct = () => {
   const [productDetails, setProductDetails] = useState({});
 
-  const [itemCount, setItemCount] = React.useState(0);
+  const [itemCount, setItemCount] = useState(0);
 
   const navigate = useNavigate();
 
@@ -71,7 +71,7 @@ export const SingleProduct = () => {
     console.log(userActive);
   }, [userActive]);
 
-  console.log(productDetails);
+  // console.log(productDetails);
   return (
     <Container key={productDetails.id}>
       <Card>
@@ -90,16 +90,14 @@ export const SingleProduct = () => {
                 setItemCount(Math.max(itemCount - 1, 0));
               }}
             >
-              {' '}
               <RemoveIcon style={{ color: '#3BA032' }} />
             </button>
 
             <ItemUnit>
-              {' '}
               {itemCount.toLocaleString('pt-BR', {
                 minimumIntegerDigits: 2,
                 useGrouping: false,
-              })}{' '}
+              })}
             </ItemUnit>
 
             <button
@@ -107,7 +105,6 @@ export const SingleProduct = () => {
                 setItemCount(itemCount + 1);
               }}
             >
-              {' '}
               <AddIcon style={{ color: '#3BA032' }} />
             </button>
           </Icon>
@@ -154,7 +151,6 @@ export const SingleProduct = () => {
             }}
             onClick={() => handleAddToCart(productDetails)}
           >
-            {' '}
             <label>Enviar para sacola</label>
           </Button>
         </Stack>

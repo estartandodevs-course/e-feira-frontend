@@ -4,6 +4,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { createSvgIcon } from '@mui/material/utils';
 import { ContainerStyle } from './styles';
 import { NavLink } from 'react-router-dom';
+import { CartState } from '../../contexts/Context';
 
 export default function Navbar() {
   const HomeIcon = createSvgIcon(
@@ -32,6 +33,10 @@ export default function Navbar() {
     setValue(newValue);
   };
 
+  const {
+    state: { cart },
+  } = CartState();
+  console.log(cart);
   return (
     <>
       <ContainerStyle>
