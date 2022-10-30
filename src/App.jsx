@@ -7,9 +7,11 @@ import { ContentProvider } from './useContext';
 import { CartState } from './contexts/Context';
 
 function App() {
-  const { state } = CartState();
+  const {
+    state: { products },
+  } = CartState();
 
-  console.log(state);
+  console.log(products);
   return (
     <BrowserRouter>
       <ContentProvider>

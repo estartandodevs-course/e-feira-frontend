@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useReducer, useContext } from 'react';
+import { createContext, useEffect, useReducer, useContext } from 'react';
 import { cartReducer } from './Reducers';
 import { ApiServer } from '../services/Api/index'
 
@@ -6,13 +6,11 @@ const Cart = createContext();
 
 const Context = ({ children }) => {
 
-  const [products, setProducts] = useState([]);
-
   useEffect(() => {
     ApiServer.get('/products/')
       .then(response => {
         if (response.data != null) {
-          setProducts(response.data);
+          dispatch({ type: "loadProducts", payload: response.data });
         } else {
           console.log('O Array esta vazio')
         }
@@ -22,10 +20,8 @@ const Context = ({ children }) => {
       });
   }, []);
 
-  console.log(products)
-
   const [state, dispatch] = useReducer(cartReducer, {
-    products: products,
+    products: [],
     cart: [],
   });
 
