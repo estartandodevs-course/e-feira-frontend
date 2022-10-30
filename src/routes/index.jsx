@@ -6,6 +6,7 @@ import Layout from '../pages/Layout';
 import LayoutNoHeader from '../pages/LayoutNoHeader';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
+import ProductCategory from '../pages/ProductCategory';
 
 const Router = () => {
   return (
@@ -35,6 +36,7 @@ const Router = () => {
         <Route element={<LayoutNoHeader />}>
           <Route path="/fornecedor/:id" element={<SupplierPage />} />
         </Route>
+        <Route path="/categorias" element={<ProductCategory />} />
       </>
     </Routes>
   );
