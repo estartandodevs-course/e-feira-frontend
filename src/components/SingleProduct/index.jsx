@@ -20,8 +20,8 @@ import { ApiServer } from '../../services/Api';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Stack, Button } from '@mui/material';
+import { useContentUserActive } from '../../contexts/useContent';
 import AddIcon from '@mui/icons-material/Add';
-import { useContentUserActive } from '../../useContent';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -48,6 +48,8 @@ export const SingleProduct = () => {
     const data = {
       checkedItem,
       amount: itemCount,
+      price: checkedItem.price,
+      totalAmount: checkedItem.price * itemCount,
     };
 
     setUserActive(prev => {
@@ -57,7 +59,7 @@ export const SingleProduct = () => {
         return prev.map(item => (item.id === data.checkedItem.id ? { data } : item));
       }
 
-      return [...prev, { ...data }];
+      return [{ ...data }];
     });
   };
   useEffect(() => {
