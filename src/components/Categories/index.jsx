@@ -21,8 +21,6 @@ export const CategoriesPage = () => {
   const { id } = useParams();
   const [productsCategories, setProductsCategories] = useState([]);
 
-  console.log(id);
-
   useEffect(() => {
     ApiServer.get('/products')
       .then(response => {
