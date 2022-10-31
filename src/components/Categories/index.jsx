@@ -14,21 +14,23 @@ import {
   ItemPrice,
   Main,
 } from './styles';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ApiServer } from '../../services/Api';
 
 export const CategoriesPage = () => {
+  const { id } = useParams;
   const [productsCategories, setProductsCategories] = useState([]);
 
   useEffect(() => {
     ApiServer.get('/products')
       .then(response => {
-        setProductsCategories(response.data);
+        console.log(id);
+        setProductsCategories(response.data.filter(item => item.category_id === id));
       })
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
   return (
     <>
       <Container>
@@ -45,7 +47,7 @@ export const CategoriesPage = () => {
           <Main>
             {productsCategories.map(item => {
               return (
-                <SwiperSlide key={item.category_id}>
+                <SwiperSlide key={item.id}>
                   <Card>
                     <CardLeft>
                       <CardImg>
