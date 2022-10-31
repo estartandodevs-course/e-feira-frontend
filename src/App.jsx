@@ -2,15 +2,18 @@ import React from 'react';
 import Router from './routes';
 import GlobalStyle from './assets/styles/globalStyles';
 import ScrollToTop from './components/ScrollToTop';
-import { ContentProvider } from './useContext';
+import { BrowserRouter } from 'react-router-dom';
+import CartContext from './contexts/CartContext';
 
 function App() {
   return (
-    <ContentProvider>
-      <GlobalStyle />
-      <Router />
-      <ScrollToTop />
-    </ContentProvider>
+    <BrowserRouter>
+      <CartContext>
+        <GlobalStyle />
+        <Router />
+        <ScrollToTop />
+      </CartContext>
+    </BrowserRouter>
   );
 }
 

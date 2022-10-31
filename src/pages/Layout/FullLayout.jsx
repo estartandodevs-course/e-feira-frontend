@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header } from '../../components/Header';
 import { Outlet } from 'react-router-dom';
 import { PageWrapper, PageContent } from './styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -14,18 +15,18 @@ const theme = createTheme({
   },
 });
 
-const Layout = () => {
+export const FullLayout = () => {
   return (
     <ThemeProvider theme={theme}>
       <PageWrapper>
         <React.StrictMode>
+          <Header />
           <PageContent>
             <Outlet />
           </PageContent>
+          <Navbar />
         </React.StrictMode>
-        <Navbar />
       </PageWrapper>
     </ThemeProvider>
   );
 };
-export default Layout;

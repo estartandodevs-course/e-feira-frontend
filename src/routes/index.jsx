@@ -1,21 +1,20 @@
-// import { ApiServer } from '../../services/Api';
-
 import { Routes, Route } from 'react-router-dom';
 import { SplashProvider } from '../contexts/SplashProvider';
-// import { useEffect, useState, useParams } from 'react';
+import { FullLayout } from '../pages/Layout/FullLayout';
+import { NoHeaderLayout } from '../pages/Layout/NoHeaderLayout.jsx';
+import { PageHeaderLayout } from '../pages/Layout/PageHeaderLayout';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
-import Layout from '../pages/Layout';
-import LayoutNoHeader from '../pages/LayoutNoHeader';
+import ProductCategory from '../pages/ProductCategory';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
-import ProductCategory from '../pages/ProductCategory';
+import Search from '../pages/Search';
 
 const Router = () => {
   return (
     <Routes>
       <>
-        <Route element={<Layout />}>
+        <Route element={<FullLayout />}>
           <Route
             path="/"
             element={
@@ -26,7 +25,10 @@ const Router = () => {
               </>
             }
           />
+        </Route>
+        <Route element={<PageHeaderLayout />}>
           <Route
+            // title={title}
             path="/produtos/:id"
             element={
               <>
@@ -34,12 +36,35 @@ const Router = () => {
               </>
             }
           />
+          <Route
+            path="/Carrinho"
+            element={
+              <>
+                <Cart />
+              </>
+            }
+          />
+          <Route
+            path="/categorias"
+            element={
+              <>
+                <ProductCategory />
+              </>
+            }
+          />
+          <Route path="/buscar" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
         </Route>
-        <Route element={<LayoutNoHeader />}>
-          <Route path="/fornecedor/:id" element={<SupplierPage />} />
+        <Route element={<NoHeaderLayout />}>
+          <Route
+            path="/fornecedor/:id"
+            element={
+              <>
+                <SupplierPage />
+              </>
+            }
+          />
         </Route>
-        <Route path="/categorias" element={<ProductCategory />} />
       </>
     </Routes>
   );
