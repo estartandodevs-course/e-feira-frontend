@@ -15,19 +15,11 @@ import {
   Main,
 } from './styles';
 import { Link } from 'react-router-dom';
-import { ApiServer } from '../../services/Api';
+import productsApi from '../../services/products';
 
 export const CategoriesPage = () => {
   const [productsCategories, setProductsCategories] = useState([]);
-  useEffect(() => {
-    ApiServer.get('/products')
-      .then(response => {
-        setProductsCategories(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+  useEffect(() => {}, []);
   return (
     <>
       <Container>

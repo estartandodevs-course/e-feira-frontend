@@ -4,18 +4,18 @@ import GlobalStyle from './assets/styles/globalStyles';
 import ScrollToTop from './components/ScrollToTop';
 import { BrowserRouter } from 'react-router-dom';
 import { ContentProvider } from './contexts/useContext';
-import Context from './contexts/Context';
+import CartContext from './contexts/CartContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <Context>
+      <CartContext>
         <ContentProvider>
           <GlobalStyle />
           <Router />
           <ScrollToTop />
         </ContentProvider>
-      </Context>
+      </CartContext>
     </BrowserRouter>
   );
 }

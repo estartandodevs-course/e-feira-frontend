@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
 import ProductCategory from '../pages/ProductCategory';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
-
+import { CartComponent } from '../components/CartComponent';
 const Router = () => {
   return (
     <Routes>
@@ -33,6 +33,16 @@ const Router = () => {
               <>
                 <PageHeader title="Item" />
                 <ProductDetails />
+                <Navbar />
+              </>
+            }
+          />
+          <Route
+            path="/CartXX"
+            element={
+              <>
+                <PageHeader title="Item" />
+                <CartComponent />
                 <Navbar />
               </>
             }

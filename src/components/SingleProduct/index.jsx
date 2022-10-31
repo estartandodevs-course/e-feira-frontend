@@ -16,11 +16,12 @@ import {
   TextInfo,
   TextQuestion,
 } from './styles';
-import { ApiServer } from '../../services/Api';
+import productApi from '../../services/products';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { Stack, Button } from '@mui/material';
-import { useContentUserActive } from '../../contexts/useContent';
+import { useCart } from '../../contexts/CartContext';
+
 import AddIcon from '@mui/icons-material/Add';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -28,15 +29,21 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
-  const [productDetails, setProductDetails] = useState({});
-
-  const [itemCount, setItemCount] = useState(0);
-
+  const { listProductById } = productApi;
+  const [productDetails, setProductDetails] = useState({
+    name: '',
+    subtitle: '',
+    image: '',
+    image_alt: '',
+    amount: 0,
+    price: 0,
+    totalAmount: 0,
+    provider_id: 0,
+    provider_name: '',
+  });
   const navigate = useNavigate();
-
+  const { cart, updateCart } = useCart();
   const { id } = useParams();
-
-  const { userActive, setUserActive } = useContentUserActive();
 
   const SelectedItem = () => {
     navigate(`/${productDetails.provider_id}`, {
@@ -44,36 +51,31 @@ export const SingleProduct = () => {
     });
   };
 
-  const handleAddToCart = checkedItem => {
-    const data = {
-      checkedItem,
-      amount: itemCount,
-      price: checkedItem.price,
-      totalAmount: checkedItem.price * itemCount,
-    };
-
-    setUserActive(prev => {
-      const isItemInCart = prev.find(item => item.id === data.checkedItem.id);
-
-      if (isItemInCart) {
-        return prev.map(item => (item.id === data.checkedItem.id ? { data } : item));
-      }
-
-      return [{ ...data }];
-    });
-  };
   useEffect(() => {
-    ApiServer.get('/products/' + id)
-      .then(response => {
-        setProductDetails(response.data[0].product_info[0]);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    console.log(userActive);
-  }, [userActive]);
+    const loadProductData = async () => {
+      const res = await listProductById(id);
+      if (res.success) {
+        const product = res.data[0].product_info[0];
+        const productsExists = cart.find(item => item.id === product.id && item.provider_id === product.provider_id);
+        return setProductDetails({
+          id: product.id,
+          name: product.name,
+          subtitle: product.subtitle,
+          image: product.image,
+          image_alt: product.alt,
+          amount: productsExists ? productsExists.amount : 0,
+          price: product.price,
+          totalAmount: productsExists ? product.price * productsExists.amount : 0,
+          provider_id: product.provider_id,
+          provider_name: res.data[0].provider_name,
+          inCart: productsExists ? true : false,
+        });
+      }
+      return;
+    };
+    loadProductData();
+  }, [id, cart]);
 
-  // console.log(productDetails);
   return (
     <Container key={productDetails.id}>
       <Card>
@@ -89,23 +91,27 @@ export const SingleProduct = () => {
           <Icon style={{ alignItems: 'flex-start' }}>
             <button
               onClick={() => {
-                setItemCount(Math.max(itemCount - 1, 0));
+                setProductDetails(prev => {
+                  return { ...prev, amount: prev.amount >= 1 ? prev.amount - 1 : 0 };
+                });
               }}
             >
               <RemoveIcon style={{ color: '#3BA032' }} />
             </button>
 
             <ItemUnit>
-              {itemCount.toLocaleString('pt-BR', {
+              {productDetails.amount.toLocaleString('pt-BR', {
                 minimumIntegerDigits: 2,
                 useGrouping: false,
               })}
             </ItemUnit>
 
             <button
-              onClick={() => {
-                setItemCount(itemCount + 1);
-              }}
+              onClick={() =>
+                setProductDetails(prev => {
+                  return { ...prev, amount: prev.amount + 1 };
+                })
+              }
             >
               <AddIcon style={{ color: '#3BA032' }} />
             </button>
@@ -151,9 +157,9 @@ export const SingleProduct = () => {
               border: 'none',
               padding: '1rem 1rem',
             }}
-            onClick={() => handleAddToCart(productDetails)}
+            onClick={() => updateCart(productDetails)}
           >
-            <label>Enviar para sacola</label>
+            <label>{productDetails.inCart ? 'Atualizar sacola' : 'Adicionar a sacola'}</label>
           </Button>
         </Stack>
       </ButtonContainer>
