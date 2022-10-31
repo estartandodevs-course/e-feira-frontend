@@ -33,7 +33,7 @@ export const CategoriesPage = () => {
     );
 
   useEffect(() => {
-    ApiServer.get('/products')
+    ApiServer.get('/products/')
       .then(response => {
         setProductsCategories(response.data);
       })
@@ -66,11 +66,11 @@ export const CategoriesPage = () => {
           <Main>
             {productsCategories.map(item => {
               return (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide key={item.category_id}>
                   <Card>
                     <CardLeft>
                       <CardImg>
-                        <Link to={`/produtos/${item.id}`}>
+                        <Link to={`/produtos/}`}>
                           <img src={item.image} alt={item.alt} />
                         </Link>
                       </CardImg>
