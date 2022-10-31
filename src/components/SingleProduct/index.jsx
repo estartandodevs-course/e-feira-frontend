@@ -144,7 +144,7 @@ export const SingleProduct = () => {
         <Stack spacing={2} direction="row">
           <Button
             style={{
-              width: '110%',
+              width: '100%',
               background: '#3ba032',
               borderRadius: '8px',
               justifyContent: 'center',
