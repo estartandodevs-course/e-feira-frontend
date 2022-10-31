@@ -42,6 +42,12 @@ export const CardTitle = styled.h5`
   align-items: center;
   margin-top: 2rem 0;
   padding-top: 2rem 0;
+  > a:link,
+  a:visited,
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
 `;
 
 export const CardImg = styled.div`

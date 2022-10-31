@@ -1,49 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Text } from './styles';
 import { useCart } from '../../contexts/CartContext';
-import productsApi from '../../services/products';
-import { ProductsContainer, ProductItem } from './styles';
+import { Container, ProductsContainer, ProductItem } from './styles';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 export const CartComponent = () => {
-  const { listProducts } = productsApi;
-  const [products, setProducts] = useState([]);
-  const [filterValue, setFilterValue] = useState('');
   const { cart } = useCart();
-  const category_id = 1;
-  useEffect(() => {
-    const loadProducts = async () => {
-      const res = await listProducts();
-      if (res.success) {
-        setProducts(res.data.filter(item => item.category_id === category_id));
-      }
-    };
-    loadProducts();
-  }, []);
+
   return (
     <Container>
-      <Text>
-        <div>
-          <input
-            type="text"
-            value={filterValue}
-            onChange={({ currentTarget }) => setFilterValue(String(currentTarget.value))}
-          />
+      <ProductsContainer>
+        {cart.map(item => (
+          <ProductItem key={item.id}>
+            <a href={`produtos/${item.id}`}>
+              <img src={item.image} />
 
-          <ProductsContainer>
-            {products
-              .filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
-              .map(item => (
-                <ProductItem key={item.id}>
-                  <a href={`produtos/${item.id}`}>
-                    <img src={item.image} />
-                    {item.name}
-                  </a>
-                </ProductItem>
-              ))}
-          </ProductsContainer>
-          {/* <h3>Entregar em Casa</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id at dignis.</p> */}
-        </div>
-      </Text>
+              {item.name}
+            </a>
+          </ProductItem>
+        ))}
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id at dignis.</p>
+      </ProductsContainer>
     </Container>
   );
 };

@@ -1,58 +1,46 @@
-import { Header } from '../components/Header';
-import { PageHeader } from '../components/PageHeader';
 import { Routes, Route } from 'react-router-dom';
 import { SplashProvider } from '../contexts/SplashProvider';
+import { FullLayout } from '../pages/Layout/FullLayout';
+import { NoHeaderLayout } from '../pages/Layout/NoHeaderLayout.jsx';
+import { PageHeaderLayout } from '../pages/Layout/PageHeaderLayout';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
-import Layout from '../pages/Layout';
-import Navbar from '../components/Navbar';
 import ProductCategory from '../pages/ProductCategory';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
-import { CartComponent } from '../components/CartComponent';
+import Search from '../pages/Search';
+
 const Router = () => {
   return (
     <Routes>
       <>
-        <Route element={<Layout />}>
+        <Route element={<FullLayout />}>
           <Route
             path="/"
             element={
               <>
                 <SplashProvider>
-                  <Header />
                   <Home />
-                  <Navbar />
                 </SplashProvider>
               </>
             }
           />
+        </Route>
+        <Route element={<PageHeaderLayout />}>
           <Route
+            // title={title}
             path="/produtos/:id"
             element={
               <>
-                <PageHeader title="Item" />
                 <ProductDetails />
-                <Navbar />
               </>
             }
           />
           <Route
-            path="/CartXX"
+            path="/Carrinho"
             element={
               <>
-                <PageHeader title="Item" />
-                <CartComponent />
-                <Navbar />
-              </>
-            }
-          />
-          <Route
-            path="/fornecedor/:id"
-            element={
-              <>
-                <SupplierPage />
-                <Navbar />
+                <Cart />
               </>
             }
           />
@@ -60,14 +48,22 @@ const Router = () => {
             path="/categorias"
             element={
               <>
-                <PageHeader title="Categorias" />
                 <ProductCategory />
-                <Navbar />
               </>
             }
           />
-
+          <Route path="/buscar" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
+        </Route>
+        <Route element={<NoHeaderLayout />}>
+          <Route
+            path="/fornecedor/:id"
+            element={
+              <>
+                <SupplierPage />
+              </>
+            }
+          />
         </Route>
       </>
     </Routes>

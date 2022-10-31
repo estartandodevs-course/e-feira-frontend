@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { PageWrapper, PageContent } from './styles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { green } from '@mui/material/colors';
-// import Context from '../../contexts/Context';
+import Navbar from '../../components/Navbar';
 
 const theme = createTheme({
   palette: {
@@ -13,7 +13,7 @@ const theme = createTheme({
   },
 });
 
-const Layout = () => {
+export const NoHeaderLayout = () => {
   return (
     <ThemeProvider theme={theme}>
       <PageWrapper>
@@ -21,9 +21,9 @@ const Layout = () => {
           <PageContent>
             <Outlet />
           </PageContent>
+          <Navbar />
         </React.StrictMode>
       </PageWrapper>
     </ThemeProvider>
   );
 };
-export default Layout;

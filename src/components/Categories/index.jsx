@@ -15,11 +15,20 @@ import {
   Main,
 } from './styles';
 import { Link } from 'react-router-dom';
-import productsApi from '../../services/products';
+import { ApiServer } from '../../services/Api';
 
 export const CategoriesPage = () => {
   const [productsCategories, setProductsCategories] = useState([]);
-  useEffect(() => {}, []);
+
+  useEffect(() => {
+    ApiServer.get('/products')
+      .then(response => {
+        setProductsCategories(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
   return (
     <>
       <Container>
@@ -36,7 +45,7 @@ export const CategoriesPage = () => {
           <Main>
             {productsCategories.map(item => {
               return (
-                <SwiperSlide key={item.id}>
+                <SwiperSlide key={item.category_id}>
                   <Card>
                     <CardLeft>
                       <CardImg>

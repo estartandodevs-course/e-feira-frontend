@@ -36,7 +36,9 @@ export const CategoriesCarousel = () => {
                     <Card>
                       <CardImg>
                         <img src={item.image} alt={item.alt} />
-                        <CardTitle>{item.name}</CardTitle>
+                        <CardTitle>
+                          <Link to={`/categorias/`}>{item.name}</Link>
+                        </CardTitle>
                       </CardImg>
                     </Card>
                   </SwiperSlide>

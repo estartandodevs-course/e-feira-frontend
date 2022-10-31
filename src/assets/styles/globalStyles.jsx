@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: #fff0;
     text-decoration: none;
+    a:visited {
+  color: inherit;
+}
   }
   
   html {

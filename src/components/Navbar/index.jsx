@@ -4,7 +4,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { createSvgIcon } from '@mui/material/utils';
 import { ContainerStyle } from './styles';
 import { NavLink } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext';
+// import { useCart } from '../../contexts/CartContext';
 
 export default function Navbar() {
   const HomeIcon = createSvgIcon(
@@ -33,8 +33,8 @@ export default function Navbar() {
     setValue(newValue);
   };
 
-  const { cart } = useCart();
-  console.log(cart);
+  // const { cart } = useCart();
+  // console.log(cart);
   return (
     <>
       <ContainerStyle>
@@ -47,8 +47,22 @@ export default function Navbar() {
               </NavLink>
             }
           />
-          <BottomNavigationAction value="search" icon={<SearchIcon fontSize="large" />} />
-          <BottomNavigationAction value="cart" icon={<ShoppingCartIcon fontSize="large" />} />
+          <BottomNavigationAction
+            value="search"
+            icon={
+              <NavLink to="/buscar">
+                <SearchIcon fontSize="large" />
+              </NavLink>
+            }
+          />
+          <BottomNavigationAction
+            value="cart"
+            icon={
+              <NavLink to="/carrinho">
+                <ShoppingCartIcon fontSize="large" />
+              </NavLink>
+            }
+          />
           <BottomNavigationAction value="account" icon={<PersonIcon fontSize="large" />} />
         </BottomNavigation>
       </ContainerStyle>
