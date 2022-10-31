@@ -45,7 +45,7 @@ const Router = () => {
             }
           />
           <Route
-            path="/categorias"
+            path="/categoria/:id"
             element={
               <>
                 <ProductCategory />

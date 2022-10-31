@@ -8,6 +8,7 @@ export const SearchComp = () => {
   const [products, setProducts] = useState([]);
   const [filterValue, setFilterValue] = useState('');
   const category_id = 1;
+
   useEffect(() => {
     const loadProducts = async () => {
       const res = await listProducts();

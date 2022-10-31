@@ -23,7 +23,7 @@ export const CategoriesCarousel = () => {
   return (
     <Container>
       <CategoriesTitles>
-        <Link to={`/categorias/`}> Categorias </Link>
+        <p> Categorias </p>
       </CategoriesTitles>
 
       {showCategories?.length > 0 ? (
@@ -35,9 +35,12 @@ export const CategoriesCarousel = () => {
                   <SwiperSlide key={item.id}>
                     <Card>
                       <CardImg>
-                        <img src={item.image} alt={item.alt} />
+                        <Link to={`/categoria/${item.id}`}>
+                          {' '}
+                          <img src={item.image} alt={item.alt} />
+                        </Link>
                         <CardTitle>
-                          <Link to={`/categorias/`}>{item.name}</Link>
+                          <Link to={`/categoria/${item.id}`}>{item.name}</Link>
                         </CardTitle>
                       </CardImg>
                     </Card>
