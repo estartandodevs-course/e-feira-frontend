@@ -11,6 +11,7 @@ export const HeaderBox = styled.div`
 
 export const GoBackButton = styled.div`
   position: absolute;
+  background-color: white;
   margin: 2rem;
   > a:link,
   a:visited,
@@ -18,9 +19,17 @@ export const GoBackButton = styled.div`
     text-decoration: none;
     color: #32a060;
   }
+  :focus {
+    outline: none;
+  }
+  button {
+    outline: none;
+    border: none;
+    color: #32a060;
+  }
 `;
 
-export const SiteTitle = styled.h3`
+export const SiteTitle = styled.h2`
   align-items: center;
   background-color: inherit;
   color: #32a060;
@@ -30,6 +39,7 @@ export const SiteTitle = styled.h3`
   width: 100%;
   font-family: 'Bion';
   font-style: normal;
+  font-size: 2.5rem;
 
   > a {
     color: inherit;

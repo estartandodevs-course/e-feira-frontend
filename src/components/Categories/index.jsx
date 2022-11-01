@@ -16,7 +16,6 @@ import {
 } from './styles';
 import { Link, useParams } from 'react-router-dom';
 import { ApiServer } from '../../services/Api';
-
 export const CategoriesPage = () => {
   const { id } = useParams();
   const [productsCategories, setProductsCategories] = useState([]);

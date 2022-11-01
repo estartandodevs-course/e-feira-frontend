@@ -1,10 +1,11 @@
 import * as React from 'react';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import Badge from '@mui/material/Badge';
 import { createSvgIcon } from '@mui/material/utils';
 import { ContainerStyle } from './styles';
 import { NavLink } from 'react-router-dom';
-// import { useCart } from '../../contexts/CartContext';
+import { useCart } from '../../contexts/CartContext';
 
 export default function Navbar() {
   const HomeIcon = createSvgIcon(
@@ -33,8 +34,10 @@ export default function Navbar() {
     setValue(newValue);
   };
 
-  // const { cart } = useCart();
-  // console.log(cart);
+  const { cart } = useCart();
+
+  let totalItems = cart.map(a => a.amount);
+
   return (
     <>
       <ContainerStyle>
@@ -59,7 +62,9 @@ export default function Navbar() {
             value="cart"
             icon={
               <NavLink to="/carrinho">
-                <ShoppingCartIcon fontSize="large" />
+                <Badge badgeContent={totalItems.length} color="primary" fontSize="large">
+                  <ShoppingCartIcon fontSize="large" />
+                </Badge>
               </NavLink>
             }
           />

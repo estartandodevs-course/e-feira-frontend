@@ -8,9 +8,15 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: #fff0;
     text-decoration: none;
-    a:visited {
+    a, a:visited {
   color: inherit;
 }
+ > img {
+  border-radius: 1rem;
+ }
+ :focus {
+    			outline: none;
+			}
   }
   
   html {
@@ -94,10 +100,10 @@ object-fit: cover;
 .swiper-pagination-bullet {
   background-color: #9E9E9E;
 }
-
-.swiper-pagination-bullet-active {
+ 
+.swiper-slide {
+  background-color: white;
 }
-  
 `;
 
 export default GlobalStyle;

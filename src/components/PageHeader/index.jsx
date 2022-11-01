@@ -1,25 +1,24 @@
 import { SiteTitle, HeaderBox } from './styles';
-import { NavLink, Link, useLocation } from 'react-router-dom';
-import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GoBackButton } from './styles';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 export function PageHeader() {
-  const { path } = useLocation();
+  const curr = useLocation();
+  const navigate = useNavigate();
 
   let backButton =
-    path === '/' ? null : (
-      <Link to="/">
-        <ArrowBackIosNewOutlinedIcon fontSize="large" />
-      </Link>
+    curr === '/' ? null : (
+      <button style={{ outline: 'none' }} onClick={() => navigate(-1)}>
+        <ChevronLeftIcon fontSize="large" />
+      </button>
     );
 
   return (
     <>
       <HeaderBox>
         <GoBackButton>{backButton}</GoBackButton>
-        <SiteTitle>
-          <NavLink to="/">pageTitle</NavLink>
-        </SiteTitle>
+        <SiteTitle>{document.title}</SiteTitle>
       </HeaderBox>
     </>
   );

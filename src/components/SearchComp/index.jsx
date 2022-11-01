@@ -1,47 +1,55 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Text } from './styles';
+import { Container, SearchBox } from './styles';
 import productsApi from '../../services/products';
 import { ProductsContainer, ProductItem } from './styles';
+import { InputAdornment, OutlinedInput } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 
 export const SearchComp = () => {
   const { listProducts } = productsApi;
   const [products, setProducts] = useState([]);
   const [filterValue, setFilterValue] = useState('');
-  const category_id = 1;
+  // const category_id = 1;
 
   useEffect(() => {
     const loadProducts = async () => {
       const res = await listProducts();
       if (res.success) {
-        setProducts(res.data.filter(item => item.category_id === category_id));
+        setProducts(res.data);
       }
     };
     loadProducts();
   }, []);
   return (
     <Container>
-      <Text>
-        <div>
-          <input
-            type="text"
-            value={filterValue}
-            onChange={({ currentTarget }) => setFilterValue(String(currentTarget.value))}
-          />
+      <SearchBox>
+        <OutlinedInput
+          type="text"
+          fontSize=""
+          value={filterValue}
+          placeholder="Insira o que procura"
+          startAdornment={
+            <InputAdornment position="start">
+              {' '}
+              <SearchIcon />
+            </InputAdornment>
+          }
+          onChange={({ currentTarget }) => setFilterValue(String(currentTarget.value))}
+        />
+      </SearchBox>
 
-          <ProductsContainer>
-            {products
-              .filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
-              .map(item => (
-                <ProductItem key={item.id}>
-                  <a href={`produtos/${item.id}`}>
-                    <img src={item.image} />
-                    {item.name}
-                  </a>
-                </ProductItem>
-              ))}
-          </ProductsContainer>
-        </div>
-      </Text>
+      <ProductsContainer>
+        {products
+          .filter(item => item.name.toLowerCase().includes(filterValue.toLowerCase()))
+          .map(item => (
+            <ProductItem key={item.id}>
+              <a href={`produtos/${item.id}`}>
+                <img src={item.image} />
+                {item.name}
+              </a>
+            </ProductItem>
+          ))}
+      </ProductsContainer>
     </Container>
   );
 };

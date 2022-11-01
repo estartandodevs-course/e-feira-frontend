@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   width: 90%;
   height: 100%;
   padding: 1rem;
   margin: 2rem 0;
   > .mySwiperCategories * {
     /* background-color: white; */
-    align-items: center;
+    /* align-items: center;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    flex-wrap: wrap; */
   }
   > h3 {
     text-align: center;
@@ -58,6 +58,7 @@ export const CardSubTitle = styled.h6`
   letter-spacing: 0.004em;
 `;
 
+
 export const CardChildren = styled.div`
   display: flex;
   justify-content: center;
@@ -82,4 +83,32 @@ export const ProductItem = styled.div`
   gap: 10px;
   align-items: center;
   flex-direction: row;
+=======
+export const ProductItem = styled.li`
+  ${() => css`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  `}
+
 `;
+
+export const ProductImage = styled.div`
+  img {
+    width: 25rem;
+    height: 100%;
+    border-radius: 30px;
+  }
+`;
+
+export const ProductName = styled.h3`
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ProductQty = styled.h4``;
+
+export const ProductPrice = styled.h4``;
+
+export const ProductTotal = styled.h4``;
