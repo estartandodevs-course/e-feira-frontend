@@ -18,19 +18,18 @@ import { Link, useParams } from 'react-router-dom';
 import { ApiServer } from '../../services/Api';
 
 export const CategoriesPage = () => {
-  const { id } = useParams;
+  const { id } = useParams();
   const [productsCategories, setProductsCategories] = useState([]);
 
   useEffect(() => {
     ApiServer.get('/products')
       .then(response => {
-        console.log(id);
-        setProductsCategories(response.data.filter(item => item.category_id === id));
+        setProductsCategories(response.data.filter(item => item.category_id == id));
       })
       .catch(error => {
         console.log(error);
       });
-  }, [id]);
+  }, []);
   return (
     <>
       <Container>

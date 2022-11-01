@@ -1,8 +1,7 @@
 import { useCart } from '../../contexts/CartContext';
-import { Container, ProductsContainer, ProductItem } from './styles';
+import { Container, ProductsContainer, ProductItem, Card, CardSubTitle, CardTitle, CardRight } from './styles';
 
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Link } from 'react-router-dom';
 
 export const CartComponent = () => {
   const { cart } = useCart();
@@ -12,11 +11,19 @@ export const CartComponent = () => {
       <ProductsContainer>
         {cart.map(item => (
           <ProductItem key={item.id}>
-            <a href={`produtos/${item.id}`}>
+            <Card>
               <img src={item.image} />
+            </Card>
+            <Link to={`/produtos/${item.id}`}>{item.name}</Link>
+            <div>
+              <CardTitle>{item.title}</CardTitle>
+              <div>
+                <CardSubTitle>{item.subtitle}</CardSubTitle>
+              </div>
+            </div>
 
-              {item.name}
-            </a>
+            <div>{item.price}</div>
+            <CardRight></CardRight>
           </ProductItem>
         ))}
 

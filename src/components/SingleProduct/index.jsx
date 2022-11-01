@@ -159,7 +159,7 @@ export const SingleProduct = () => {
             }}
             onClick={() => updateCart(productDetails)}
           >
-            <label>{productDetails.inCart ? 'Atualizar sacola' : 'Adicionar a sacola'}</label>
+            <label>{productDetails.inCart ? 'Atualizar sacola' : 'Enviar para a sacola'}</label>
           </Button>
         </Stack>
       </ButtonContainer>
