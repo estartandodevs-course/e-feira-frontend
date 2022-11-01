@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     background-color: #fff0;
     text-decoration: none;
-    a:visited {
+    a, a:visited {
   color: inherit;
 }
  > img {

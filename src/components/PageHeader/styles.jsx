@@ -29,7 +29,7 @@ export const GoBackButton = styled.div`
   }
 `;
 
-export const SiteTitle = styled.h3`
+export const SiteTitle = styled.h2`
   align-items: center;
   background-color: inherit;
   color: #32a060;
@@ -39,6 +39,7 @@ export const SiteTitle = styled.h3`
   width: 100%;
   font-family: 'Bion';
   font-style: normal;
+  font-size: 2.5rem;
 
   > a {
     color: inherit;
