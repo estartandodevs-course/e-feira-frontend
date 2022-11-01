@@ -11,11 +11,20 @@ export const HeaderBox = styled.div`
 
 export const GoBackButton = styled.div`
   position: absolute;
+  background-color: white;
   margin: 2rem;
   > a:link,
   a:visited,
   a:hover {
     text-decoration: none;
+    color: #32a060;
+  }
+  :focus {
+    outline: none;
+  }
+  button {
+    outline: none;
+    border: none;
     color: #32a060;
   }
 `;

@@ -43,6 +43,7 @@ const Router = () => {
                 <Cart />
               </>
             }
+            title="Carrinho"
           />
           <Route
             path="/categoria/:id"
