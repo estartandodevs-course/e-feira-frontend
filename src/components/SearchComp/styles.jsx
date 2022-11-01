@@ -2,12 +2,17 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
-export const Text = styled.div`
+export const SearchBox = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 2rem 4rem;
+  margin-bottom: 2rem;
+
+  > .MuiInputAdornment-root {
+    width: 25rem;
+  }
 `;
 export const ProductsContainer = styled.ul`
   ${() => css`
@@ -22,10 +27,15 @@ export const ProductItem = styled.li`
     display: flex;
     gap: 10px;
     align-items: center;
+
     img {
       width: 60px;
       height: 60px;
-      border-radius: 30px;
+      border-radius: 1rem;
+    }
+    a {
+      align-items: center;
+      display: flex;
     }
   `}
 `;

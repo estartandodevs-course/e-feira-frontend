@@ -86,6 +86,7 @@ export const CardInformations = styled.div`
   justify-content: flex-start;
   padding: 0 1rem;
 `;
+
 export const Icon = styled.div`
   position: absolute;
   padding: 11rem;
@@ -114,14 +115,14 @@ export const MeetSupplier = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  align-content: flex-end;
   padding: 3.12rem 1rem;
   gap: 0.625rem;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 120%;
+  line-height: 100%;
   align-items: center;
+  justify-content: center;
 `;
 
 export const PriceCompare = styled.div`
@@ -133,15 +134,16 @@ export const PriceCompare = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
-  line-height: 120%;
+  line-height: 100%;
   align-items: center;
+  justify-content: center;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
   align-items: center;
-  /* margin: 1rem; */
-  padding: 3.75rem 0;
-  margin-bottom: 1rem;
-  width: 100%;
+  margin-top: 2rem;
+  width: 75%;
 `;

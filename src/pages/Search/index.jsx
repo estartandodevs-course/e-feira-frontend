@@ -6,10 +6,10 @@ import { ContainerStyle } from './styles';
 const Search = () => {
   return (
     <>
+      {/* <Helmet>
+        <title>Encontre Produtos </title>
+      </Helmet> */}
       <ContainerStyle>
-        {/* <Helmet>
-          <title>Encontre Produtos </title>
-        </Helmet> */}
         <SearchComp />;
       </ContainerStyle>
     </>
