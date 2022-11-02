@@ -10,7 +10,7 @@ const Search = () => {
         <title>Encontre Produtos </title>
       </Helmet> */}
       <ContainerStyle>
-        <SearchComp />;
+        <SearchComp />
       </ContainerStyle>
     </>
   );

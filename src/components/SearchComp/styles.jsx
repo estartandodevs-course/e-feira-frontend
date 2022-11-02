@@ -3,6 +3,18 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  /* background-color: blue; */
+  > OutlinedInput {
+    width: 30rem;
+    background-color: blue;
+  }
+  > OutlinedInput {
+    background-color: blue;
+  }
+`;
+
+export const OutlinedInput = styled.div`
+  background-color: blue;
 `;
 
 export const SearchBox = styled.div`
@@ -19,6 +31,8 @@ export const ProductsContainer = styled.ul`
     list-style: none;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
     gap: 10px;
   `}
 `;
@@ -27,10 +41,9 @@ export const ProductItem = styled.li`
     display: flex;
     gap: 10px;
     align-items: center;
-
     img {
-      width: 60px;
-      height: 60px;
+      width: 10rem;
+      height: 10rem;
       border-radius: 1rem;
     }
     a {
