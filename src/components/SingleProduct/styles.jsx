@@ -113,8 +113,8 @@ export const IconContainer = styled.div`
 
 export const MeetSupplier = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   padding: 3.12rem 1rem;
   gap: 0.625rem;
   font-style: normal;
@@ -122,7 +122,6 @@ export const MeetSupplier = styled.div`
   font-size: 14px;
   line-height: 100%;
   align-items: center;
-  justify-content: center;
 `;
 
 export const PriceCompare = styled.div`

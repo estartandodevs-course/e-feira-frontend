@@ -129,6 +129,29 @@ export const ProductImage = styled.div`
   }
 `;
 
+export const ItemUnit = styled.div`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const IconButton = styled.div`
+  position: absolute;
+  padding: 11rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  > button {
+    border: none;
+  }
+`;
+
 export const ProductName = styled.h3`
   justify-content: center;
   align-items: center;
@@ -164,6 +187,8 @@ export const ProductTotal = styled.h4``;
 export const KeepBuying = styled.div`
   display: flex;
   margin: 0;
+  flex-direction: column;
+  float: right;
   justify-content: flex-start;
 `;
 
@@ -185,4 +210,13 @@ export const IconContainer = styled.div`
   right: 15px;
   display: flex;
   gap: 0.5rem;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+  width: 75%;
 `;
