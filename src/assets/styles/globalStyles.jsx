@@ -9,14 +9,20 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fff0;
     text-decoration: none;
     a, a:visited {
-  color: inherit;
-}
- > img {
-  border-radius: 1rem;
- }
- :focus {
+    color: inherit;
+    }
+    > img {
+     border-radius: 2rem;
+    }
+     :focus {
     			outline: none;
-			}
+		}
+  }
+
+ body {
+    > img {
+    border-radius: 2rem;
+    }
   }
   
   html {
