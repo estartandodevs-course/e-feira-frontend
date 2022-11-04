@@ -36,9 +36,8 @@ export const SearchComp = () => {
         <OutlinedInput
           sx={{ fontSize: 20 }}
           type="text"
-          fontSize=""
           value={showBoxData}
-          placeholder="Insira o que procura"
+          placeholder="O que procura?"
           startAdornment={
             <InputAdornment position="start">
               <SearchIcon />
