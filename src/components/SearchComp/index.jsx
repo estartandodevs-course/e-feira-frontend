@@ -34,7 +34,8 @@ export const SearchComp = () => {
     <Container>
       <SearchBox>
         <OutlinedInput
-          sx={{ fontSize: 20 }}
+          sx={{ fontSize: 20, width: 300 }}
+          alignItems="flex-start"
           type="text"
           value={showBoxData}
           placeholder="O que procura?"
