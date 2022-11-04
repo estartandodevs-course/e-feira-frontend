@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Container, SearchBox } from './styles';
+import {
+  CardDescription,
+  CardImg,
+  CardLeft,
+  CardRight,
+  CardSubTitle,
+  CardTitle,
+  Container,
+  ItemPrice,
+  SearchBox,
+} from './styles';
 import productsApi from '../../services/products';
 import { ProductsContainer, ProductItem } from './styles';
 import { InputAdornment, OutlinedInput } from '@mui/material';
@@ -44,12 +54,12 @@ export const SearchComp = () => {
         <OutlinedInput
           sx={{ fontSize: 20 }}
           type="text"
-          fontSize=""
           value={inputBoxData}
+          letterSpacing="0.001em"
           placeholder="Insira o que procura"
           startAdornment={
             <InputAdornment position="start">
-              <SearchIcon />
+              <SearchIcon style={{ fontSize: '30' }} />
             </InputAdornment>
           }
           onChange={({ currentTarget }) =>
@@ -66,8 +76,18 @@ export const SearchComp = () => {
           .map(item => (
             <ProductItem key={item.id}>
               <a href={`produtos/${item.id}`}>
-                <img src={item.image} />
-                {item.name}
+                <CardLeft>
+                  <CardImg>
+                    <img src={item.image} />
+                  </CardImg>
+                </CardLeft>
+                <CardRight>
+                  <CardDescription>
+                    <CardTitle>{item.name}</CardTitle>
+                    <CardSubTitle>{item.subtitle}</CardSubTitle>
+                    <ItemPrice>R$ {item.price.toFixed(2)}</ItemPrice>
+                  </CardDescription>
+                </CardRight>
               </a>
             </ProductItem>
           ))}
