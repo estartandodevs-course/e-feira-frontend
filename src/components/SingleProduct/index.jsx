@@ -61,6 +61,7 @@ export const SingleProduct = () => {
           id: product.id,
           name: product.name,
           subtitle: product.subtitle,
+          weight: product.weight,
           image: product.image,
           image_alt: product.alt,
           amount: productsExists ? productsExists.amount : 0,
