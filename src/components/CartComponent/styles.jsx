@@ -85,7 +85,8 @@ export const Container = styled.div`
 
 export const CardCenter = styled.div`
   display: flex;
-  align-items: center;
+  width: 100vw;
+  align-items: start;
   align-content: center;
   flex-direction: column;
   justify-content: center;
@@ -102,6 +103,7 @@ export const ProductItem = styled.div`
   display: flex;
   gap: 10px;
   align-items: center;
+  padding: 0.5rem 0;
   > img {
     flex-direction: column;
     justify-content: start;
@@ -127,6 +129,9 @@ export const ProductImage = styled.div`
     height: 72px;
     border-radius: 10px;
   }
+`;
+export const Acess = styled.h3`
+  padding-bottom: 1rem 0;
 `;
 
 export const ItemUnit = styled.div`
@@ -160,7 +165,6 @@ export const ProductName = styled.h3`
   line-height: 120%;
   align-items: center;
   letter-spacing: 0.004em;
-  padding: 0.5rem 0;
 `;
 
 export const ProductQty = styled.h3`
@@ -192,7 +196,7 @@ export const KeepBuying = styled.div`
   justify-content: flex-start;
 `;
 
-export const Text = styled.h4`
+export const Text = styled.h3`
   display: flex;
   align-items: center;
   h3 {
@@ -219,4 +223,56 @@ export const ButtonContainer = styled.div`
   align-items: center;
   margin-top: 2rem;
   width: 75%;
+  > button {
+    border: none;
+  }
 `;
+
+export const OrderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SubTotalOrderValue = styled.h4`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.004em;
+`;
+
+export const ShippingPrice = styled.h4`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.004em;
+  padding: 0.55rem 0;
+`;
+
+export const TotalOrder = styled.h4`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.004em;
+  margin-top: 0.55rem 0;
+  padding: 1rem 0 0 0;
+`;
+
+export const Thing = styled.h4`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.004em;
+`;
+
+export const Payment = styled.div`
+  padding: 1rem 0;
+`;
+export const PaymentText = styled.h2``;
+
+export const PaymentLogo = styled.div``;
+
+export const PaymentInfo = styled.h3``;

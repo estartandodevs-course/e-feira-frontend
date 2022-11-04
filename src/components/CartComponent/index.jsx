@@ -2,15 +2,19 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import RemoveIcon from '@mui/icons-material/Remove';
 import { Stack, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 
 import {
+  Acess,
   Adress,
   AdressCard,
   AdressContainer,
   AdressTitle,
   CardCenter,
   Container,
+  ItemUnit,
   DeliveryPlace,
   ProductsContainer,
   ProductItem,
@@ -22,6 +26,15 @@ import {
   Text,
   IconContainer,
   ButtonContainer,
+  OrderContainer,
+  SubTotalOrderValue,
+  ShippingPrice,
+  TotalOrder,
+  Thing,
+  Payment,
+  PaymentText,
+  PaymentInfo,
+  PaymentLogo,
 
   // CardProvider,
 } from './styles';
@@ -51,26 +64,56 @@ export const CartComponent = () => {
         </AdressCard>
       </AdressContainer>
       <ProductsContainer>
-        {cart.map(item => (
-          <ProductItem key={item.id}>
-            {/* <CardProvider>{item.provider_name}</CardProvider> */}
-            <Link to={`produtos/${item.id}`}>
-              <ProductImage>
-                <img src={item.image} />
-              </ProductImage>
-            </Link>
-            <CardCenter>
+        {cart.map((item, index) => (
+          <div key={item.id}>
+            {index === 0 && <Acess>{item.provider_name}</Acess>}
+            <ProductItem>
               <Link to={`produtos/${item.id}`}>
-                <ProductName>{item.name}</ProductName>
-                <ProductQty>
-                  {item.amount}x {item.subtitle}
-                </ProductQty>
-                <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
-
-                {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
+                <ProductImage>
+                  <img src={item.image} />
+                </ProductImage>
               </Link>
-            </CardCenter>
-          </ProductItem>
+              <CardCenter>
+                <Link to={`produtos/${item.id}`}>
+                  <ProductName>{item.name}</ProductName>
+                  <ProductQty>
+                    {item.amount}x {item.weight}
+                  </ProductQty>
+                  <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
+
+                  {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
+                </Link>
+              </CardCenter>
+              <ButtonContainer>
+                <button
+                  onClick={() => {
+                    cart(prev => {
+                      return { ...prev, amount: prev.amount >= 1 ? prev.amount - 1 : 0 };
+                    });
+                  }}
+                >
+                  <RemoveIcon style={{ color: '#3BA032' }} />
+                </button>
+
+                <ItemUnit>
+                  {cart[1].amount.toLocaleString('pt-BR', {
+                    minimumIntegerDigits: 2,
+                    useGrouping: false,
+                  })}
+                </ItemUnit>
+
+                <button
+                  onClick={() =>
+                    cart(prev => {
+                      return { ...prev, amount: prev.amount + 1 };
+                    })
+                  }
+                >
+                  <AddIcon style={{ color: '#3BA032' }} />
+                </button>
+              </ButtonContainer>
+            </ProductItem>
+          </div>
         ))}
         <KeepBuying>
           <Text>
@@ -81,6 +124,19 @@ export const CartComponent = () => {
           </Text>
         </KeepBuying>
       </ProductsContainer>
+
+      <OrderContainer>
+        <SubTotalOrderValue>Subtotal</SubTotalOrderValue>
+        <ShippingPrice>Taxa de Entrega</ShippingPrice>
+        <TotalOrder>Total</TotalOrder>
+        <Thing>Troco</Thing>
+      </OrderContainer>
+
+      <Payment>
+        <PaymentText>Pagamento</PaymentText>
+        <PaymentLogo></PaymentLogo>
+        <PaymentInfo>Pagamento em dinheiro no ato da entrega</PaymentInfo>
+      </Payment>
       <ButtonContainer>
         <Button description={'Finalizar a Compra'} />
 
