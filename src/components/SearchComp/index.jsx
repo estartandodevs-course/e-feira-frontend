@@ -8,10 +8,10 @@ import {
   CardTitle,
   Container,
   ItemPrice,
+  ProductItem,
   SearchBox,
 } from './styles';
-import { ProductsContainer, ProductItem } from './styles';
-import { InputAdornment, OutlinedInput } from '@mui/material';
+import { InputAdornment, OutlinedInput, Box } from '@mui/material';
 import productsApi from '../../services/products';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -34,7 +34,7 @@ export const SearchComp = () => {
     <Container>
       <SearchBox>
         <OutlinedInput
-          sx={{ fontSize: 20, width: 300 }}
+          sx={{ fontSize: 20 }}
           alignItems="flex-start"
           type="text"
           value={showBoxData}
@@ -51,7 +51,7 @@ export const SearchComp = () => {
       </SearchBox>
 
       {showBoxData !== '' && (
-        <ProductsContainer>
+        <Box>
           {products
             .filter(item =>
               item.name.normalize('NFKD').replace(/[^\w]/g, '').toLowerCase().includes(showBoxData.toLowerCase())
@@ -74,7 +74,7 @@ export const SearchComp = () => {
                 </a>
               </ProductItem>
             ))}
-        </ProductsContainer>
+        </Box>
       )}
     </Container>
   );
