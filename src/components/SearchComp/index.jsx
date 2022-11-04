@@ -8,14 +8,15 @@ import SearchIcon from '@mui/icons-material/Search';
 export const SearchComp = () => {
   const { listProducts } = productsApi;
   const [products, setProducts] = useState([]);
-  const [filterValue, setFilterValue] = useState('');
+  const [inputBoxData, setinputBoxData] = useState('');
+  const [filterValue, setFilterValue] = useState(false);
   // const category_id = 1;
 
-  const test = 'ç';
-  const test1 = 'c';
+  // const test = 'ç';
+  // const test1 = 'c';
 
-  const testResult = test.normalize('NFKD') == test1.normalize('NFKD');
-  console.log(testResult);
+  // const testResult = test.normalize('NFKD') == test1.normalize('NFKD');
+  // console.log(testResult);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -27,6 +28,16 @@ export const SearchComp = () => {
     loadProducts();
   }, []);
 
+  useEffect(() => {
+    (() => {
+      if (inputBoxData == '') {
+        console.log('Empty Array');
+      } else {
+        setFilterValue;
+      }
+    })();
+  }, [inputBoxData]);
+
   return (
     <Container>
       <SearchBox>
@@ -34,7 +45,7 @@ export const SearchComp = () => {
           sx={{ fontSize: 20 }}
           type="text"
           fontSize=""
-          value={filterValue}
+          value={inputBoxData}
           placeholder="Insira o que procura"
           startAdornment={
             <InputAdornment position="start">
@@ -42,7 +53,7 @@ export const SearchComp = () => {
             </InputAdornment>
           }
           onChange={({ currentTarget }) =>
-            setFilterValue(String(currentTarget.value.normalize('NFKD').replace(/[^\w]/g, '')))
+            setinputBoxData(String(currentTarget.value.normalize('NFKD').replace(/[^\w]/g, '')))
           }
         />
       </SearchBox>
