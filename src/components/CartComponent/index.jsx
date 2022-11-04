@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import RemoveIcon from '@mui/icons-material/Remove';
+
 import { Stack, Button } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 
 import {
   Acess,
@@ -14,7 +13,6 @@ import {
   AdressTitle,
   CardCenter,
   Container,
-  ItemUnit,
   DeliveryPlace,
   ProductsContainer,
   ProductItem,
@@ -84,34 +82,6 @@ export const CartComponent = () => {
                   {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
                 </Link>
               </CardCenter>
-              <ButtonContainer>
-                <button
-                  onClick={() => {
-                    cart(prev => {
-                      return { ...prev, amount: prev.amount >= 1 ? prev.amount - 1 : 0 };
-                    });
-                  }}
-                >
-                  <RemoveIcon style={{ color: '#3BA032' }} />
-                </button>
-
-                <ItemUnit>
-                  {cart[1].amount.toLocaleString('pt-BR', {
-                    minimumIntegerDigits: 2,
-                    useGrouping: false,
-                  })}
-                </ItemUnit>
-
-                <button
-                  onClick={() =>
-                    cart(prev => {
-                      return { ...prev, amount: prev.amount + 1 };
-                    })
-                  }
-                >
-                  <AddIcon style={{ color: '#3BA032' }} />
-                </button>
-              </ButtonContainer>
             </ProductItem>
           </div>
         ))}
