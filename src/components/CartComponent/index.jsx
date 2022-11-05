@@ -23,7 +23,7 @@ import {
   ProductPrice,
   KeepBuying,
   Text,
-  Icon,
+  // Icon,
   IconContainer,
   // ItemUnit,
   ButtonContainer,
@@ -37,8 +37,8 @@ import {
   PaymentInfo,
   PaymentLogo,
 } from './styles';
-import RemoveIcon from '@mui/icons-material/Remove';
-import AddIcon from '@mui/icons-material/Add';
+// import RemoveIcon from '@mui/icons-material/Remove';
+// import AddIcon from '@mui/icons-material/Add';
 
 export const CartComponent = () => {
   const { cart } = useCart();
