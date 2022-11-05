@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
-import { SplashProvider } from '../contexts/SplashProvider';
 import { FullLayout } from '../pages/Layout/FullLayout';
 import { NoHeaderLayout } from '../pages/Layout/NoHeaderLayout.jsx';
 import { PageHeaderLayout } from '../pages/Layout/PageHeaderLayout';
+import { Routes, Route } from 'react-router-dom';
+import { SplashProvider } from '../contexts/SplashProvider';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import ProductCategory from '../pages/ProductCategory';
