@@ -22,7 +22,9 @@ import {
   ProductPrice,
   KeepBuying,
   Text,
+  Icon,
   IconContainer,
+  // ItemUnit,
   ButtonContainer,
   OrderContainer,
   SubTotalOrderValue,
@@ -36,6 +38,8 @@ import {
 
   // CardProvider,
 } from './styles';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
 export const CartComponent = () => {
   const { cart } = useCart();
@@ -75,12 +79,38 @@ export const CartComponent = () => {
                 <Link to={`produtos/${item.id}`}>
                   <ProductName>{item.name}</ProductName>
                   <ProductQty>
+                    <Icon>
+                      <RemoveIcon
+                        style={{
+                          color: '#3BA032',
+                          position: 'relative',
+                          display: 'flex',
+
+                          justifyContent: 'flex-end',
+                        }}
+                      />
+                      {/* <ItemUnit>
+                        {cart[0].amount.toLocaleString('pt-BR', {
+                          minimumIntegerDigits: 2,
+                          useGrouping: false,
+                        })}
+                      </ItemUnit> */}
+                      <AddIcon
+                        style={{
+                          color: '#3BA032',
+                          position: 'relative',
+                          display: 'flex',
+
+                          justifyContent: 'flex-end',
+                        }}
+                      />
+                    </Icon>
                     {item.amount}x {item.weight}
                   </ProductQty>
                   <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
 
                   {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
-                </Link>
+                </Link>{' '}
               </CardCenter>
             </ProductItem>
           </div>
@@ -114,11 +144,9 @@ export const CartComponent = () => {
           <Button
             style={{
               display: 'flex',
-
               background: '#3ba032',
               borderRadius: '8px',
               justifyContent: 'center',
-
               color: '#fff',
               fontWeight: '500',
               fontSize: '16px',

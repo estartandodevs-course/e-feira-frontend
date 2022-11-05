@@ -135,9 +135,7 @@ export const Acess = styled.h3`
 `;
 
 export const ItemUnit = styled.div`
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  display: flex;
 `;
 
 export const IconButton = styled.div`
@@ -216,6 +214,22 @@ export const IconContainer = styled.div`
   gap: 0.5rem;
 `;
 
+export const Icon = styled.div`
+  position: absolute;
+  padding: 0 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  > button {
+    border: none;
+  }
+`;
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
