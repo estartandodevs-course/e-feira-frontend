@@ -1,5 +1,27 @@
 import styled from 'styled-components';
 
+export const Loader = styled.div`
+  > .loader-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.834);
+    z-index: 1;
+  }
+
+  > .spinner {
+    width: 64px;
+    height: 64px;
+    border: 8px solid;
+    border-color: #3d5af1 transparent #3d5af1 transparent;
+    border-radius: 50%;
+    animation: spin-anim 1.2s linear infinite;
+  }
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,9 +50,6 @@ export const HeaderButton = styled.div`
     text-decoration: none;
     color: #32a060;
   }
-  > PageTitle {
-    padding: 0 1rem;
-  }
 `;
 export const PageTitle = styled.h3`
   font-family: 'Roboto';
@@ -38,6 +57,10 @@ export const PageTitle = styled.h3`
   font-weight: 500;
   font-size: 20px;
   line-height: 120%;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-top: 5rem;
 `;
 
 export const Main = styled.div`

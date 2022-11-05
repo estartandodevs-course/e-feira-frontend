@@ -13,9 +13,11 @@ import {
   Container,
   ItemPrice,
   Main,
+  // PageTitle,
 } from './styles';
 import { Link, useParams } from 'react-router-dom';
 import { ApiServer } from '../../services/Api';
+
 export const CategoriesPage = () => {
   const { id } = useParams();
   const [productsCategories, setProductsCategories] = useState([]);
@@ -28,7 +30,8 @@ export const CategoriesPage = () => {
       .catch(error => {
         console.log(error);
       });
-  }, []);
+  });
+
   return (
     <>
       <Container>
@@ -42,30 +45,32 @@ export const CategoriesPage = () => {
           loop={true}
           className="mySwiperCategories"
         >
-          <Main>
-            {productsCategories.map(item => {
-              return (
-                <SwiperSlide key={item.id}>
-                  <Card>
-                    <CardLeft>
-                      <CardImg>
-                        <Link to={`/produtos/${item.id}`}>
-                          <img src={item.image} alt={item.alt} />
-                        </Link>
-                      </CardImg>
-                    </CardLeft>
-                    <CardRight>
-                      <CardDescription>
-                        <CardTitle>{item.name}</CardTitle>
-                        <CardSubTitle>{item.subtitle}</CardSubTitle>
-                        <ItemPrice> </ItemPrice>
-                      </CardDescription>
-                    </CardRight>
-                  </Card>
-                </SwiperSlide>
-              );
-            })}
-          </Main>
+          {productsCategories.length > 0 ? (
+            <Main>
+              {productsCategories.map(item => {
+                return (
+                  <SwiperSlide key={item.id}>
+                    <Card>
+                      <CardLeft>
+                        <CardImg>
+                          <Link to={`/produtos/${item.id}`}>
+                            <img src={item.image} alt={item.alt} />
+                          </Link>
+                        </CardImg>
+                      </CardLeft>
+                      <CardRight>
+                        <CardDescription>
+                          <CardTitle>{item.name}</CardTitle>
+                          <CardSubTitle>{item.subtitle}</CardSubTitle>
+                          <ItemPrice>R$ {item.price} </ItemPrice>
+                        </CardDescription>
+                      </CardRight>
+                    </Card>
+                  </SwiperSlide>
+                );
+              })}
+            </Main>
+          ) : null}
         </Swiper>
       </Container>
     </>

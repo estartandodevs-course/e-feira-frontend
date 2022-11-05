@@ -30,7 +30,7 @@ export const Latest = () => {
 
   return (
     <Container>
-      <Title>Últimas Bancas</Title>
+      <Title>Bancas</Title>
 
       {latestMarket.length > 0 &&
         latestMarket.map((item, index) => (

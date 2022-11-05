@@ -38,7 +38,7 @@ export const SearchComp = () => {
           alignItems="flex-start"
           type="text"
           value={showBoxData}
-          placeholder="O que procura?"
+          placeholder="digite o produto"
           startAdornment={
             <InputAdornment position="start">
               <SearchIcon />
