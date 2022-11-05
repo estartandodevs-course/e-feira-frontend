@@ -115,8 +115,6 @@ export const CartComponent = () => {
             <PaymentInfo>Pagamento em dinheiro no ato da entrega</PaymentInfo>
           </Payment>
           <ButtonContainer>
-            <Button description={'Finalizar a Compra'} />
-
             <Stack spacing={2} direction="row">
               <Button
                 style={{
