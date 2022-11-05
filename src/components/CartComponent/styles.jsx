@@ -1,6 +1,19 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+  width: 90%;
+  height: 100%;
+  padding: 1rem;
+  margin: 2rem 0;
+  > h3 {
+    margin-top: 5rem;
+    text-align: center;
+  }
+`;
+
 // Endereço de Entrega
+
+export const CartBox = styled.div``;
 
 export const AdressContainer = styled.div`
   margin: 1.43 rem 0;
@@ -64,25 +77,6 @@ export const CardProvider = styled.p`
   justify-content: center;
 `;
 
-export const Container = styled.div`
-  /* display: flex;
-  flex-direction: column; */
-  width: 90%;
-  height: 100%;
-  padding: 1rem;
-  margin: 2rem 0;
-  > .mySwiperCategories * {
-    /* background-color: white; */
-    /* align-items: center;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap; */
-  }
-  > h3 {
-    text-align: center;
-  }
-`;
-
 export const CardCenter = styled.div`
   display: flex;
   width: 100vw;
@@ -110,14 +104,6 @@ export const ProductItem = styled.div`
     align-items: start;
   }
 `;
-
-// export const ProductItem = styled.li`
-//   ${() => css`
-//     display: flex;
-//     flex-direction: column;
-//     gap: 10px;
-//     align-items: center;
-//   `}
 
 export const ProductImage = styled.div`
   display: flex;

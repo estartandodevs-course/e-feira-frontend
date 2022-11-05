@@ -6,6 +6,7 @@ export const Title = styled.h3`
 export const Access = styled.h4`
   color: #3ba032;
   padding: 0.5rem 0;
+  font-size: large;
   cursor: pointer;
   justify-content: flex-start;
 `;
@@ -14,7 +15,6 @@ export const Container = styled.div`
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
-  // padding: 0 1rem;
   height: 100%;
   > .swiper-wrapper * {
     background-color: #fff;
@@ -23,7 +23,6 @@ export const Container = styled.div`
 export const Main = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
   flex-direction: row;
 `;
 export const Card = styled.div`
@@ -37,7 +36,7 @@ export const CardTitle = styled.h6`
   text-align: start;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 120%;
 `;
 export const CardSubTitle = styled.h6`

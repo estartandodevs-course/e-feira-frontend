@@ -28,9 +28,20 @@ export const Latest = () => {
       });
   }, []);
 
+  let currentIndex = latestMarket.length,
+    random;
+
+  while (currentIndex > 0) {
+    random = Math.floor(Math.random() * currentIndex);
+
+    currentIndex--;
+
+    [latestMarket[currentIndex], latestMarket[random]] = [latestMarket[random], latestMarket[currentIndex]];
+  }
+
   return (
     <Container>
-      <Title>Últimas Bancas</Title>
+      <Title>Bancas</Title>
 
       {latestMarket.length > 0 &&
         latestMarket.map((item, index) => (
