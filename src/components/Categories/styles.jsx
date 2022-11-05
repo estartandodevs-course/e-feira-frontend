@@ -61,6 +61,7 @@ export const PageTitle = styled.h3`
   justify-content: center;
   padding: 0 1rem;
   margin-top: 5rem;
+  text-align: center;
 `;
 
 export const Main = styled.div`
