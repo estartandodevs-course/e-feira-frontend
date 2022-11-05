@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   ButtonContainer,
   Card,
-  CardInformations,
+  CardInformation,
   CardPrice,
   CardSubTitle,
   CardTitle,
@@ -12,19 +12,17 @@ import {
   IconContainer,
   ItemUnit,
   MeetSupplier,
-  PriceCompare,
+  MeetSupplierLeft,
+  MeetSupplierRight,
   TextInfo,
   TextQuestion,
 } from './styles';
-import productApi from '../../services/products';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Stack, Button } from '@mui/material';
 import { useCart } from '../../contexts/CartContext';
-
 import AddIcon from '@mui/icons-material/Add';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import productApi from '../../services/products';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveIcon from '@mui/icons-material/Remove';
 
@@ -46,7 +44,7 @@ export const SingleProduct = () => {
   const { id } = useParams();
 
   const SelectedItem = () => {
-    navigate(`/${productDetails.provider_id}`, {
+    navigate(`/fornecedor/${productDetails.provider_id}`, {
       replace: true,
     });
   };
@@ -119,25 +117,19 @@ export const SingleProduct = () => {
           </Icon>
         </CardPrice>
 
-        <CardInformations>
-          <MeetSupplier>
-            <div onClick={SelectedItem}>
+        <CardInformation>
+          <MeetSupplier onClick={SelectedItem}>
+            <MeetSupplierLeft>
               <FavoriteBorderIcon fontSize="large" />
               Conheça o fornecedor
+            </MeetSupplierLeft>
+            <MeetSupplierRight>
               <IconContainer>
                 <ChevronRightIcon fontSize="large" />
               </IconContainer>
-            </div>
+            </MeetSupplierRight>
           </MeetSupplier>
-
-          <PriceCompare>
-            <ErrorOutlineIcon fontSize="large" />
-            Compare o preço
-            <IconContainer>
-              <ChevronRightIcon fontSize="large" />
-            </IconContainer>
-          </PriceCompare>
-        </CardInformations>
+        </CardInformation>
       </TextInfo>
       <ButtonContainer>
         <Button description={'Enviar Para Sacola'} />

@@ -3,13 +3,15 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-color: blue; */
-  > OutlinedInput {
-    width: 30rem;
-    background-color: blue;
-  }
-  > OutlinedInput {
-    background-color: blue;
+`;
+
+export const SearchBox = styled.div`
+  display: flex;
+  margin: 2rem;
+  margin-bottom: 2rem;
+
+  > .MuiInputAdornment-root {
+    width: 100%;
   }
 `;
 
@@ -58,15 +60,6 @@ export const OutlinedInput = styled.div`
   background-color: blue;
 `;
 
-export const SearchBox = styled.div`
-  display: flex;
-  margin: 2rem 4rem;
-  margin-bottom: 2rem;
-
-  > .MuiInputAdornment-root {
-    width: 25rem;
-  }
-`;
 export const ProductsContainer = styled.ul`
   ${() => css`
     list-style: none;

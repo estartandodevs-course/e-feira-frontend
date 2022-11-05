@@ -82,11 +82,6 @@ export const CardPrice = styled.div`
   }
 `;
 
-export const CardInformations = styled.div`
-  justify-content: flex-start;
-  padding: 0 1rem;
-`;
-
 export const Icon = styled.div`
   position: absolute;
   padding: 11rem;
@@ -104,25 +99,33 @@ export const Icon = styled.div`
   }
 `;
 
-export const IconContainer = styled.div`
-  position: absolute;
-  right: 15px;
-  display: flex;
-  gap: 0.5rem;
+export const CardInformation = styled.div`
+  padding: 0 1rem;
 `;
 
 export const MeetSupplier = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 3.12rem 1rem;
   gap: 0.625rem;
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1.6rem;
   line-height: 100%;
-  align-items: center;
 `;
+
+export const MeetSupplierLeft = styled.div`
+  display: flex;
+  align-items: center;
+  > :first-child {
+    margin-right: 1rem;
+  }
+`;
+export const MeetSupplierRight = styled.div``;
+
+export const IconContainer = styled.div``;
 
 export const PriceCompare = styled.div`
   display: flex;
