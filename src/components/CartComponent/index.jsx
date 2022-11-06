@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-
+import _ from 'lodash';
 import { Stack, Button } from '@mui/material';
 
 import {
@@ -35,43 +35,14 @@ import {
   PaymentText,
   PaymentInfo,
   PaymentLogo,
-
-  // CardProvider,
 } from './styles';
-// import RemoveIcon from '@mui/icons-material/Remove';
-// import AddIcon from '@mui/icons-material/Add';
 
 export const CartComponent = () => {
   const { cart } = useCart();
-  // const { updateCart, setPpdateCart } = useState({})
 
-  const carrinhoFiltrado = {};
+  let newCart = _.groupBy(cart, 'provider_name');
 
-  cart.map(
-    ({ provider_name, id, name, subtitle, weight, image, image_alt, amount, price, totalAmount, provider_id }) => {
-      let option = carrinhoFiltrado[provider_name];
-      if (option) {
-        carrinhoFiltrado[provider_name] = [
-          ...carrinhoFiltrado[provider_name],
-          { id, name, subtitle, weight, image, image_alt, amount, price, totalAmount, provider_id },
-        ];
-      } else {
-        carrinhoFiltrado[provider_name] = [
-          { id, name, subtitle, weight, image, image_alt, amount, price, totalAmount, provider_id },
-        ];
-      }
-    }
-  );
-  // console.log(carrinhoFiltrado);
-  const newArray = Array.from(carrinhoFiltrado);
-
-  /*CARRINHO ORIGINAL */
-  console.log(cart);
-  /*CARRINHO FILTRADO */
-  console.log(carrinhoFiltrado);
-  /*CARRINHO NOVO */
-  console.log(newArray);
-
+  console.log([newCart]);
   return (
     <Container>
       <AdressContainer>
@@ -90,31 +61,30 @@ export const CartComponent = () => {
         </AdressCard>
       </AdressContainer>
       <ProductsContainer>
-        {newArray.map(item => (
-          <div key={item.id}>
-            {<Acess>{item}</Acess>}
-            {newArray.map(singleItem => {
-              <ProductItem key={singleItem.id}>
-                <Link to={`/produtos/${singleItem.id}`}>
-                  <ProductImage>
-                    <img src={singleItem.image} />
-                  </ProductImage>
-                </Link>
-                <CardCenter>
-                  <Link to={`/produtos/${singleItem.id}`}>
-                    <ProductName>{singleItem.name}</ProductName>
-                    <ProductQty>
-                      {singleItem.amount}x {singleItem.weight}
-                    </ProductQty>
-                    <ProductPrice>R$ {singleItem.price?.toFixed(2)} </ProductPrice>
+        {[newCart].map(item => {
+          <div key={item}>
+            {<Acess>{item[0]}</Acess>}
+            <ProductItem key={item.id}>
+              <Link to={`/produtos/${item.id}`}>
+                <ProductImage>
+                  <img src={item.image} />
+                </ProductImage>
+              </Link>
+              <CardCenter>
+                <Link to={`/produtos/${item.id}`}>
+                  <ProductName>{item.name}</ProductName>
+                  <ProductQty>
+                    {item.amount}x {item.weight}
+                  </ProductQty>
+                  <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
 
-                    {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
-                  </Link>
-                </CardCenter>
-              </ProductItem>;
-            })}
-          </div>
-        ))}
+                  {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
+                </Link>
+              </CardCenter>
+            </ProductItem>
+            ;
+          </div>;
+        })}
         <KeepBuying>
           <Text>
             <Link to={`/`}>Continuar comprando</Link>
