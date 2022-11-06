@@ -120,10 +120,6 @@ export const Acess = styled.h3`
   padding-bottom: 1rem 0;
 `;
 
-export const ItemUnit = styled.div`
-  display: flex;
-`;
-
 export const IconButton = styled.div`
   position: absolute;
   padding: 11rem;
@@ -201,12 +197,12 @@ export const IconContainer = styled.div`
 `;
 
 export const Icon = styled.div`
-  position: absolute;
-  padding: 0 20rem;
   display: flex;
+  margin: 0 18rem;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+
+  gap: 1rem;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -216,6 +212,12 @@ export const Icon = styled.div`
     border: none;
   }
 `;
+export const ItemUnit = styled.div`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;

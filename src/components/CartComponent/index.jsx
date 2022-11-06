@@ -23,9 +23,9 @@ import {
   ProductPrice,
   KeepBuying,
   Text,
-  // Icon,
+  Icon,
   IconContainer,
-  // ItemUnit,
+  ItemUnit,
   ButtonContainer,
   OrderContainer,
   SubTotalOrderValue,
@@ -37,8 +37,8 @@ import {
   PaymentInfo,
   PaymentLogo,
 } from './styles';
-// import RemoveIcon from '@mui/icons-material/Remove';
-// import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
 export const CartComponent = () => {
   const { cart } = useCart();
@@ -69,9 +69,9 @@ export const CartComponent = () => {
             </AdressCard>
           </AdressContainer>
           <ProductsContainer>
-            {cart.map((item, index) => (
+            {cart.map(item => (
               <div key={item.id}>
-                {index === 0 && <Acess>{item.provider_name}</Acess>}
+                <Acess>{item.provider_name}</Acess>
                 <ProductItem>
                   <Link to={`/produtos/${item.id}`}>
                     <ProductImage>
@@ -81,13 +81,30 @@ export const CartComponent = () => {
                   <CardCenter>
                     <Link to={`/produtos/${item.id}`}>
                       <ProductName>{item.name}</ProductName>
-                      <ProductQty>
-                        {item.amount}x {item.weight}
-                      </ProductQty>
-                      <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
-
-                      {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
                     </Link>
+                    <Icon style={{ alignItems: 'flex-end' }}>
+                      <button>
+                        <RemoveIcon style={{ color: '#3BA032' }} />
+                      </button>
+
+                      <ItemUnit>
+                        {item.amount.toLocaleString('pt-BR', {
+                          minimumIntegerDigits: 2,
+                          useGrouping: false,
+                        })}
+                      </ItemUnit>
+
+                      <button>
+                        <AddIcon style={{ color: '#3BA032' }} />
+                      </button>
+                    </Icon>
+
+                    <ProductQty>
+                      {item.amount}x {item.weight}
+                    </ProductQty>
+                    <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
+
+                    {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
                   </CardCenter>
                 </ProductItem>
               </div>
