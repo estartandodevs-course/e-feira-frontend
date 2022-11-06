@@ -1,14 +1,11 @@
 import { CartComponent } from '../../components/CartComponent';
-// import usePageTitle from '../../hooks/usePageTitle';
-import { Helmet } from 'react-helmet';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const Cart = () => {
   return (
     <>
-      {/* {usePageTitle('Carrinho')} */}
-      <Helmet>
-        <title>Carrinho</title>
-      </Helmet>
+      {usePageTitle('Carrinho')}
+
       <CartComponent />
     </>
   );

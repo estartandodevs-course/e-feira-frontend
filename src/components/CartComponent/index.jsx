@@ -22,7 +22,9 @@ import {
   ProductPrice,
   KeepBuying,
   Text,
+  // Icon,
   IconContainer,
+  // ItemUnit,
   ButtonContainer,
   OrderContainer,
   SubTotalOrderValue,
@@ -36,18 +38,44 @@ import {
 
   // CardProvider,
 } from './styles';
+// import RemoveIcon from '@mui/icons-material/Remove';
+// import AddIcon from '@mui/icons-material/Add';
 
 export const CartComponent = () => {
   const { cart } = useCart();
+  // const { updateCart, setPpdateCart } = useState({})
 
+  const carrinhoFiltrado = {};
+
+  cart.map(
+    ({ provider_name, id, name, subtitle, weight, image, image_alt, amount, price, totalAmount, provider_id }) => {
+      let option = carrinhoFiltrado[provider_name];
+      if (option) {
+        carrinhoFiltrado[provider_name] = [
+          ...carrinhoFiltrado[provider_name],
+          { id, name, subtitle, weight, image, image_alt, amount, price, totalAmount, provider_id },
+        ];
+      } else {
+        carrinhoFiltrado[provider_name] = [
+          { id, name, subtitle, weight, image, image_alt, amount, price, totalAmount, provider_id },
+        ];
+      }
+    }
+  );
+  // console.log(carrinhoFiltrado);
+  const newArray = Array.from(carrinhoFiltrado);
+
+  /*CARRINHO ORIGINAL */
   console.log(cart);
+  /*CARRINHO FILTRADO */
+  console.log(carrinhoFiltrado);
+  /*CARRINHO NOVO */
+  console.log(newArray);
 
   return (
     <Container>
       <AdressContainer>
-        <AdressTitle>
-          <h3>Entregar em </h3>
-        </AdressTitle>
+        <AdressTitle>Entregar em</AdressTitle>
         <AdressCard>
           <MapOutlinedIcon className="map-icon" style={{ fontSize: '40' }}></MapOutlinedIcon>
           <DeliveryPlace>
@@ -62,27 +90,29 @@ export const CartComponent = () => {
         </AdressCard>
       </AdressContainer>
       <ProductsContainer>
-        {cart.map((item, index) => (
+        {newArray.map(item => (
           <div key={item.id}>
-            {index === 0 && <Acess>{item.provider_name}</Acess>}
-            <ProductItem>
-              <Link to={`produtos/${item.id}`}>
-                <ProductImage>
-                  <img src={item.image} />
-                </ProductImage>
-              </Link>
-              <CardCenter>
-                <Link to={`produtos/${item.id}`}>
-                  <ProductName>{item.name}</ProductName>
-                  <ProductQty>
-                    {item.amount}x {item.weight}
-                  </ProductQty>
-                  <ProductPrice>R$ {item.price?.toFixed(2)} </ProductPrice>
-
-                  {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
+            {<Acess>{item}</Acess>}
+            {newArray.map(singleItem => {
+              <ProductItem key={singleItem.id}>
+                <Link to={`/produtos/${singleItem.id}`}>
+                  <ProductImage>
+                    <img src={singleItem.image} />
+                  </ProductImage>
                 </Link>
-              </CardCenter>
-            </ProductItem>
+                <CardCenter>
+                  <Link to={`/produtos/${singleItem.id}`}>
+                    <ProductName>{singleItem.name}</ProductName>
+                    <ProductQty>
+                      {singleItem.amount}x {singleItem.weight}
+                    </ProductQty>
+                    <ProductPrice>R$ {singleItem.price?.toFixed(2)} </ProductPrice>
+
+                    {/* <ProductTotal>Total: {item.amount * item.price}R$ </ProductTotal> */}
+                  </Link>
+                </CardCenter>
+              </ProductItem>;
+            })}
           </div>
         ))}
         <KeepBuying>
@@ -108,13 +138,10 @@ export const CartComponent = () => {
         <PaymentInfo>Pagamento em dinheiro no ato da entrega</PaymentInfo>
       </Payment>
       <ButtonContainer>
-        <Button description={'Finalizar a Compra'} />
-
         <Stack spacing={2} direction="row">
           <Button
             style={{
               display: 'flex',
-
               background: '#3ba032',
               borderRadius: '8px',
               justifyContent: 'center',
