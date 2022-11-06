@@ -86,6 +86,8 @@ export const CardCenter = styled.div`
   justify-content: center;
 `;
 
+export const CardRight = styled.div``;
+
 export const ProductsContainer = styled.div`
   list-style: none;
   display: flex;
