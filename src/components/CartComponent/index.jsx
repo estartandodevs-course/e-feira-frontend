@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import _ from 'lodash';
+import { useEffect, useMemo } from 'react';
 import { Stack, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+
 import {
   // Icon,
-  // ItemUnit,
   Acess,
   Adress,
   AdressCard,
@@ -17,9 +21,9 @@ import {
   CardCenter,
   Container,
   DeliveryPlace,
-  Icon,
+  CardRight,
   IconContainer,
-  // ItemUnit,
+  ItemUnit,
   KeepBuying,
   OrderContainer,
   Payment,
@@ -41,21 +45,39 @@ import {
   Thing,
   TotalOrder,
 } from './styles';
-// import AddIcon from '@mui/icons-material/Add';
-// // import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import RemoveIcon from '@mui/icons-material/Remove';
 
 export const CartComponent = () => {
-  const { cart } = useCart();
+  const { cart, updateCart } = useCart();
 
-  const newCart = _.groupBy(cart, 'provider_name');
+  const cartGrouped = useMemo(() => {
+    const newCart = _.groupBy(cart, 'provider_name');
+    return Object.entries(newCart).map(([key, value]) => ({
+      name: key,
+      value,
+    }));
+  }, [cart]);
 
-  const cartGroupped = Object.entries(newCart).map(([key, value]) => ({
-    name: key,
-    value,
-  }));
+  const handleChangeProductCart = (id, amount) => {
+    const productInCart = cart.find(item => +item.id === +id);
+    updateCart({
+      ...productInCart,
+      amount: amount,
+      totalAmount: productInCart.price * amount,
+    });
+  };
 
-  console.log(cart);
+  // const counts = cart.reduce(function (result, product) {
+  //   product.ingredients.forEach(function () {
+  //     result[cart.totalAmount] = (result[totalAmount] || 0) + 1;
+  //   });
+  //   return result;
+  // }, {});
+
+  // console.log(handleChangeProductCart.totalAmount);
+
+  // useEffect(() => {
+  //   console.log({ cartGrouped, cart });
+  // }, [cartGrouped, cart]);
 
   return (
     <Container>
@@ -64,7 +86,6 @@ export const CartComponent = () => {
           <>
             <AdressContainer>
               <AdressTitle>Entregar em</AdressTitle>
-
               <AdressCard>
                 <MapOutlinedIcon className="map-icon" style={{ fontSize: '40' }}></MapOutlinedIcon>
                 <DeliveryPlace>
@@ -80,7 +101,7 @@ export const CartComponent = () => {
             </AdressContainer>
 
             <ProductsContainer>
-              {cartGroupped.map((item, index) => {
+              {cartGrouped.map((item, index) => {
                 return (
                   <div key={index}>
                     <Acess>{item.name}</Acess>
@@ -96,42 +117,32 @@ export const CartComponent = () => {
                             <ProductName>{cart.name}</ProductName>
                             <PricesBox>
                               <ProductQty>
-                                {cart.amount}x {cart.weight}
+                                {cart.amount} - {cart.weight}
                               </ProductQty>
                               <CloseIcon sx={{ mx: 'auto', my: 'auto' }} />
                               <ProductPrice>R$ {cart.price?.toFixed(2)} </ProductPrice>
                             </PricesBox>
-                            <ProductTotal>Total: R$ {item.totalAmount?.toFixed(2)} </ProductTotal>
+                            <ProductTotal>Total: R$ {cart.totalAmount?.toFixed(2)} </ProductTotal>
                           </Link>
                         </CardCenter>
-                        <Icon style={{ alignItems: 'flex-start' }}>
-                          {/* <button
-                            onClick={() => {
-                              setProductDetails(prev => {
-                                return { ...prev, amount: prev.amount >= 1 ? prev.amount - 1 : 0 };
-                              });
-                            }}
+                        <CardRight>
+                          <button
+                            onClick={() => handleChangeProductCart(cart.id, cart.amount >= 1 ? cart.amount - 1 : 0)}
                           >
                             <RemoveIcon style={{ color: '#3BA032' }} />
                           </button>
 
                           <ItemUnit>
-                            {productDetails.amount.toLocaleString('pt-BR', {
+                            {cart.amount.toLocaleString('pt-BR', {
                               minimumIntegerDigits: 2,
                               useGrouping: false,
                             })}
                           </ItemUnit>
 
-                          <button
-                            onClick={() =>
-                              setProductDetails(prev => {
-                                return { ...prev, amount: prev.amount + 1 };
-                              })
-                            }
-                          >
+                          <button onClick={() => handleChangeProductCart(cart.id, cart.amount + 1)}>
                             <AddIcon style={{ color: '#3BA032' }} />
-                          </button> */}
-                        </Icon>
+                          </button>
+                        </CardRight>
                       </ProductItem>
                     ))}
                   </div>
@@ -186,7 +197,7 @@ export const CartComponent = () => {
             </ButtonContainer>
           </>
         ) : (
-          <NothingFound>não foram encontrados produtos no carrinho</NothingFound>
+          <NothingFound>ainda não doi selecionado nenhum produto</NothingFound>
         )}
       </>
     </Container>

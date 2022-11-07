@@ -36,7 +36,7 @@ export default function Navbar() {
 
   const { cart } = useCart();
 
-  let totalItems = cart.map(a => a.amount);
+  let totalItems = cart.map(a => a);
 
   return (
     <>

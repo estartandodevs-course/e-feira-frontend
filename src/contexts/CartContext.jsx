@@ -11,7 +11,6 @@ const CartContext = ({ children }) => {
     }
     return [];
   });
-
   useEffect(() => {
     localStorage.setItem('EF:Cart', cart ? JSON.stringify(cart) : []);
   }, [cart]);
@@ -21,7 +20,7 @@ const CartContext = ({ children }) => {
       const productsExists = nCart.find(item => item.id === product.id && item.provider_id === product.provider_id);
       if (productsExists) {
         productsExists.amount = product.amount;
-        productsExists.totalAmount = product.price * product.amount;
+        productsExists.totalAmount = product.totalAmount;
       } else {
         nCart.push(product);
       }

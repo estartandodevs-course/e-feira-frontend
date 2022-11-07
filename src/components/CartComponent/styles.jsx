@@ -3,15 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 90%;
   height: 100%;
+  margin: 1rem;
+  margin-bottom: 5rem;
   padding: 1rem;
-  margin: 2rem 0 5rem 0;
   > h3 {
     margin-top: 5rem;
     text-align: center;
   }
 `;
-
-// Endereço de Entrega
 
 export const CartBox = styled.div``;
 
@@ -21,6 +20,7 @@ export const AdressContainer = styled.div`
 
 export const AdressTitle = styled.h4`
   display: flex;
+  margin-top: 1rem;
   padding-bottom: 1rem;
   > h3 {
     justify-content: flex-start;
@@ -33,10 +33,14 @@ export const AdressTitle = styled.h4`
 `;
 
 export const AdressCard = styled.div`
+  display: flex;
   justify-content: flex-start;
-  display: inline;
+  flex-wrap: wrap;
   margin: 1.4rem 0;
   align-items: flex-start;
+  > :nth-child(3) {
+    flex-grow: 3;
+  }
   > .map-icon {
     float: left;
     justify-content: flex-start;
@@ -58,8 +62,7 @@ export const NothingFound = styled.div`
 
 export const DeliveryPlace = styled.div`
   display: flex;
-  padding: 0 0.8rem;
-  align-items: flex-start;
+  padding: 1rem;
   justify-content: flex-start;
   > p {
     font-style: normal;
@@ -83,6 +86,9 @@ export const Adress = styled.div`
   line-height: 120%;
   align-items: center;
   letter-spacing: 0.004em;
+  > p {
+    width: 75%;
+  }
 `;
 
 export const CardProvider = styled.p`
@@ -93,14 +99,21 @@ export const CardProvider = styled.p`
 
 export const CardCenter = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   align-items: start;
   align-content: center;
   flex-direction: column;
   justify-content: center;
 `;
 
-export const CardRight = styled.div``;
+export const CardRight = styled.div`
+  display: flex;
+  margin-left: 2rem;
+  gap: 5px;
+  button {
+    border: 0;
+  }
+`;
 
 export const ProductsContainer = styled.div`
   list-style: none;
@@ -110,10 +123,13 @@ export const ProductsContainer = styled.div`
   margin: 1.5rem 0;
 `;
 export const ProductItem = styled.div`
-  display: flex;
+  display: grid;
+  /* width: 100%; */
+  max-width: 100%;
+  grid-template-columns: 0.7fr 1.2fr 0.8fr;
   gap: 10px;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   > img {
     flex-direction: column;
     justify-content: start;
@@ -141,7 +157,6 @@ export const ItemUnit = styled.div`
 `;
 
 export const IconButton = styled.div`
-  position: absolute;
   padding: 11rem;
   display: flex;
   justify-content: center;
@@ -222,22 +237,6 @@ export const IconContainer = styled.div`
   gap: 0.5rem;
 `;
 
-export const Icon = styled.div`
-  position: absolute;
-  padding: 0 20rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 120%;
-  > button {
-    border: none;
-  }
-`;
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
