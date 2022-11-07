@@ -37,7 +37,7 @@ const Router = () => {
             }
           />
           <Route
-            path="/Carrinho"
+            path="/carrinho"
             element={
               <>
                 <Cart />

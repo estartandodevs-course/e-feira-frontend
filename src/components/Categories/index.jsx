@@ -77,7 +77,7 @@ export const CategoriesPage = () => {
                 })}
               </Main>
             ) : (
-              <PageTitle>infelizmente não temos produtos disponiveis nesta categoria</PageTitle>
+              <PageTitle>no momento não encontramos produtos disponiveis nesta categoria</PageTitle>
             )}
           </Swiper>
         </Container>

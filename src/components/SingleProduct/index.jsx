@@ -21,10 +21,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Stack, Button } from '@mui/material';
 import { useCart } from '../../contexts/CartContext';
 import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import productApi from '../../services/products';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import RemoveIcon from '@mui/icons-material/Remove';
 
 export const SingleProduct = () => {
   const { listProductById } = productApi;
@@ -39,6 +39,7 @@ export const SingleProduct = () => {
     provider_id: 0,
     provider_name: '',
   });
+
   const navigate = useNavigate();
   const { cart, updateCart } = useCart();
   const { id } = useParams();
@@ -72,8 +73,8 @@ export const SingleProduct = () => {
       }
       return;
     };
-    loadProductData();
-  }, [id, cart]);
+    productDetails.name === '' && loadProductData();
+  }, [id, cart, productDetails.name]);
 
   return (
     <Container key={productDetails.id}>
@@ -91,7 +92,8 @@ export const SingleProduct = () => {
             <button
               onClick={() => {
                 setProductDetails(prev => {
-                  return { ...prev, amount: prev.amount >= 1 ? prev.amount - 1 : 0 };
+                  const amount = prev.amount >= 1 ? prev.amount - 1 : 0;
+                  return { ...prev, amount: amount, totalAmount: prev.price * amount };
                 });
               }}
             >
@@ -108,7 +110,8 @@ export const SingleProduct = () => {
             <button
               onClick={() =>
                 setProductDetails(prev => {
-                  return { ...prev, amount: prev.amount + 1 };
+                  const amount = prev.amount + 1;
+                  return { ...prev, amount: amount, totalAmount: prev.price * amount };
                 })
               }
             >

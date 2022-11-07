@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Title = styled.h3`
-  margin: 1rem 0;
+  margin: 2rem 0 1rem 0;
 `;
 export const Access = styled.h4`
   color: #3ba032;
