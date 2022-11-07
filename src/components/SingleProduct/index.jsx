@@ -39,6 +39,7 @@ export const SingleProduct = () => {
     provider_id: 0,
     provider_name: '',
   });
+
   const navigate = useNavigate();
   const { cart, updateCart } = useCart();
   const { id } = useParams();
@@ -75,6 +76,7 @@ export const SingleProduct = () => {
     loadProductData();
   }, [id, cart]);
 
+  // console.log(productDetails.totalAmount);
   return (
     <Container key={productDetails.id}>
       <Card>

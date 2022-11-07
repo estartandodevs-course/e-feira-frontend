@@ -1,10 +1,10 @@
 import { CartComponent } from '../../components/CartComponent';
-import usePageTitle from '../../hooks/usePageTitle';
+// import usePageTitle from '../../hooks/usePageTitle';
 
 const Cart = () => {
   return (
     <>
-      {usePageTitle('Carrinho')}
+      {/* {usePageTitle('Carrinho')} */}
 
       <CartComponent />
     </>

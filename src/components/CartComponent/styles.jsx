@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 90%;
   height: 100%;
   padding: 1rem;
-  margin: 2rem 0;
+  margin: 2rem 0 5rem 0;
   > h3 {
     margin-top: 5rem;
     text-align: center;
@@ -42,6 +42,20 @@ export const AdressCard = styled.div`
     justify-content: flex-start;
   }
 `;
+
+export const NothingFound = styled.div`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-top: 5rem;
+  text-align: center;
+`;
+
 export const DeliveryPlace = styled.div`
   display: flex;
   padding: 0 0.8rem;
@@ -155,7 +169,7 @@ export const ProductName = styled.h3`
 
 export const ProductQty = styled.h3`
   font-weight: 450;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 120%;
   align-items: center;
   letter-spacing: 0.004em;
@@ -165,14 +179,20 @@ export const ProductQty = styled.h3`
 export const ProductPrice = styled.h3`
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1.4rem;
   line-height: 120%;
   letter-spacing: 0.004em;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.2rem;
 `;
-
-export const ProductTotal = styled.div``;
+export const PricesBox = styled.div`
+  display: flex;
+`;
+export const ProductTotal = styled.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.5rem;
+`;
 
 export const KeepBuying = styled.div`
   display: flex;
@@ -273,6 +293,7 @@ export const Thing = styled.h4`
 export const Payment = styled.div`
   padding: 1rem 0;
 `;
+
 export const PaymentText = styled.h2``;
 
 export const PaymentLogo = styled.div``;
