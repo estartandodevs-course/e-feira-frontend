@@ -1,14 +1,20 @@
 import { useMemo } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
 import _ from 'lodash';
-
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import TextField from '@mui/material/TextField';
 import {
   Acess,
+  Adress,
+  AdressCard,
+  AdressContainer,
+  AdressTitle,
   ButtonContainer,
   CardCenter,
   CardRight,
@@ -40,6 +46,30 @@ import {
 export const CartComponent = () => {
   const { cart, updateCart } = useCart();
 
+  const form = useFormik({
+    initialValues: [
+      {
+        order: {
+          address: 'rua papagio, 555',
+          payment_method: 'Dinheiro',
+          total_price: 0,
+          change: 0,
+          delivery_tax: 5,
+        },
+      },
+      {
+        order_itens: [
+          {
+            amount: 0,
+            individual_price: 0,
+            product_id: 0,
+          },
+        ],
+      },
+    ],
+  });
+
+  console.log(form);
   const cartGrouped = useMemo(() => {
     const newCart = _.groupBy(cart, 'provider_name');
     return Object.entries(newCart).map(([key, value]) => ({
@@ -64,6 +94,22 @@ export const CartComponent = () => {
   return (
     <Container>
       <>
+        <AdressContainer>
+          <AdressTitle>Endereço de Entrega</AdressTitle>
+          <AdressCard>
+            <MapOutlinedIcon className="map-icon" style={{ fontSize: '60' }}></MapOutlinedIcon>
+            <Adress>
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                type="text"
+                className="form-control"
+                placeholder="Inserir o endereço"
+                sx={{ width: 220, ml: 2 }}
+              />
+            </Adress>
+          </AdressCard>
+        </AdressContainer>
         {cart.length > 0 ? (
           <>
             <ProductsContainer>
