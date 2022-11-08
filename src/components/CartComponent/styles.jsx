@@ -260,6 +260,11 @@ export const SubTotalOrderValue = styled.h4`
   font-weight: 500;
   line-height: 120%;
   letter-spacing: 0.004em;
+
+  span {
+    display: flex;
+    float: right;
+  }
 `;
 
 export const ShippingPrice = styled.h4`
@@ -269,6 +274,10 @@ export const ShippingPrice = styled.h4`
   line-height: 120%;
   letter-spacing: 0.004em;
   padding: 0.55rem 0;
+  span {
+    display: flex;
+    float: right;
+  }
 `;
 
 export const TotalOrder = styled.h4`
