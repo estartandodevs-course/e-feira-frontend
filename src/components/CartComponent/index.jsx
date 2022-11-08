@@ -2,24 +2,17 @@ import { useMemo } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {
   Acess,
-  Adress,
-  AdressCard,
-  AdressContainer,
-  AdressTitle,
   ButtonContainer,
   CardCenter,
   CardRight,
   Container,
-  DeliveryPlace,
   IconContainer,
   ItemUnit,
   KeepBuying,
@@ -71,22 +64,6 @@ export const CartComponent = () => {
       <>
         {cart.length > 0 ? (
           <>
-            <AdressContainer>
-              <AdressTitle>Entregar em</AdressTitle>
-              <AdressCard>
-                <MapOutlinedIcon className="map-icon" style={{ fontSize: '40' }}></MapOutlinedIcon>
-                <DeliveryPlace>
-                  <p>Casa</p>
-                </DeliveryPlace>
-                <Adress>
-                  <p>Avenida Lins de Vasconcelos, 356, Apartamento 13, Cambuci.</p>
-                  <IconContainer>
-                    <ArrowForwardIosIcon className="arrow-icon" fontSize="large" />
-                  </IconContainer>
-                </Adress>
-              </AdressCard>
-            </AdressContainer>
-
             <ProductsContainer>
               {cartGrouped.map((item, index) => {
                 return (

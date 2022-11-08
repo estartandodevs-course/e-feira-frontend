@@ -1,4 +1,5 @@
 import { CartComponent } from '../../components/CartComponent';
+import PlaceComponent from '../../components/PlaceComponent';
 // import usePageTitle from '../../hooks/usePageTitle';
 
 const Cart = () => {
@@ -6,6 +7,7 @@ const Cart = () => {
     <>
       {/* {usePageTitle('Carrinho')} */}
 
+      <PlaceComponent />
       <CartComponent />
     </>
   );

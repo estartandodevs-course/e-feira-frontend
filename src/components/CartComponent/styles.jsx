@@ -5,47 +5,10 @@ export const Container = styled.div`
   height: 100%;
   margin: 1rem;
   margin-bottom: 5rem;
-  padding: 1rem;
-  > h3 {
-    margin-top: 5rem;
-    text-align: center;
-  }
+  padding-left: 1rem;
 `;
 
 export const CartBox = styled.div``;
-
-export const AdressContainer = styled.div`
-  margin: 1.43 rem 0;
-`;
-
-export const AdressTitle = styled.h4`
-  display: flex;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
-  > h3 {
-    justify-content: flex-start;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    letter-spacing: 0.001em;
-  }
-`;
-
-export const AdressCard = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: 1.4rem 0;
-  align-items: flex-start;
-  > :nth-child(3) {
-    flex-grow: 3;
-  }
-  > .map-icon {
-    float: left;
-    justify-content: flex-start;
-  }
-`;
 
 export const NothingFound = styled.div`
   font-family: 'Roboto';
@@ -58,37 +21,6 @@ export const NothingFound = styled.div`
   padding: 0 1rem;
   margin-top: 5rem;
   text-align: center;
-`;
-
-export const DeliveryPlace = styled.div`
-  display: flex;
-  padding: 1rem;
-  justify-content: flex-start;
-  > p {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 120%;
-    align-items: center;
-    letter-spacing: 0.004em;
-  }
-`;
-
-export const Adress = styled.div`
-  display: flex;
-  padding: 0 0.8rem;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.8rem;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 120%;
-  align-items: center;
-  letter-spacing: 0.004em;
-  > p {
-    width: 75%;
-  }
 `;
 
 export const CardProvider = styled.p`
@@ -122,6 +54,14 @@ export const ProductsContainer = styled.div`
   gap: 10px;
   margin: 1.5rem 0;
 `;
+
+export const IconContainer = styled.div`
+  position: absolute;
+  right: 15px;
+  display: flex;
+  gap: 0.5rem;
+`;
+
 export const ProductItem = styled.div`
   display: grid;
   /* width: 100%; */
@@ -229,12 +169,6 @@ export const Text = styled.h3`
     align-items: center;
     letter-spacing: 0.001em;
   }
-`;
-export const IconContainer = styled.div`
-  position: absolute;
-  right: 15px;
-  display: flex;
-  gap: 0.5rem;
 `;
 
 export const ButtonContainer = styled.div`
