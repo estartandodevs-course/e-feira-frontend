@@ -10,11 +10,13 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
       <BrowserRouter>
-        <CartContext>
-          <GlobalStyle />
-          <Router />
-          <ScrollToTop />
-        </CartContext>
+        <React.StrictMode>
+          <CartContext>
+            <GlobalStyle />
+            <Router />
+            <ScrollToTop />
+          </CartContext>
+        </React.StrictMode>
       </BrowserRouter>
     </StyledEngineProvider>
   );

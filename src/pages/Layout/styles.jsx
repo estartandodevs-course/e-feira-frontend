@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const PageWrapper = styled.div`
-  ${(props) => css`
+  ${props => css`
     display: flex;
     flex-direction: column;
   `}
 `;
-export const PageContent = styled.main`
-`;
+export const PageContent = styled.main``;

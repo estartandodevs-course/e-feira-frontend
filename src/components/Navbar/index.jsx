@@ -1,11 +1,11 @@
 import * as React from 'react';
+import { useCart } from '../../contexts/CartContext';
+import { NavLink } from 'react-router-dom';
+import { ContainerStyle } from './styles';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Badge from '@mui/material/Badge';
 import { createSvgIcon } from '@mui/material/utils';
-import { ContainerStyle } from './styles';
-import { NavLink } from 'react-router-dom';
-import { useCart } from '../../contexts/CartContext';
 
 export default function Navbar() {
   const HomeIcon = createSvgIcon(

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import {
   Access,
   Card,
@@ -17,7 +17,6 @@ import {
   MainImage,
   SupplierDescription,
 } from './styles';
-import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
 import { useParams, useLocation, Link } from 'react-router-dom';

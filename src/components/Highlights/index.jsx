@@ -1,8 +1,7 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { SliderBox } from './styles';
 import { Pagination } from 'swiper';
-import { useState, useEffect } from 'react';
 import { ApiServer } from '../../services/Api';
 import 'swiper/css';
 import 'swiper/css/pagination';

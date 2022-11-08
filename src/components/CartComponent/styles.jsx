@@ -185,7 +185,7 @@ export const ProductName = styled.h3`
 export const ProductQty = styled.h3`
   font-weight: 450;
   font-size: 1.4rem;
-  line-height: 120%;
+  line-height: 100%;
   align-items: center;
   letter-spacing: 0.004em;
   padding: 0.5rem 0;
@@ -195,7 +195,7 @@ export const ProductPrice = styled.h3`
   font-style: normal;
   font-weight: 500;
   font-size: 1.4rem;
-  line-height: 120%;
+  line-height: 100%;
   letter-spacing: 0.004em;
   align-items: center;
   padding: 0.5rem 0.2rem;

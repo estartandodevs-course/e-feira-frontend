@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createContext, useState, useEffect, useContext } from 'react';
 import _ from 'lodash';
+
 const Cart = createContext();
 
 const CartContext = ({ children }) => {

@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
-import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
 import { useCart } from '../../contexts/CartContext';
+import { Link } from 'react-router-dom';
+import _ from 'lodash';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import _ from 'lodash';
-import { useEffect, useMemo } from 'react';
+
 import { Stack, Button } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 import {
-  // Icon,
   Acess,
   Adress,
   AdressCard,
@@ -19,12 +17,13 @@ import {
   AdressTitle,
   ButtonContainer,
   CardCenter,
+  CardRight,
   Container,
   DeliveryPlace,
-  CardRight,
   IconContainer,
   ItemUnit,
   KeepBuying,
+  NothingFound,
   OrderContainer,
   Payment,
   PaymentInfo,
@@ -37,7 +36,6 @@ import {
   ProductPrice,
   ProductQty,
   ProductsContainer,
-  NothingFound,
   ProductTotal,
   ShippingPrice,
   SubTotalOrderValue,
@@ -67,19 +65,6 @@ export const CartComponent = () => {
   };
 
   const grandTotal = _.sumBy(cart, 'totalAmount');
-
-  // const counts = cart.reduce(function (result, product) {
-  //   product.ingredients.forEach(function () {
-  //     result[cart.totalAmount] = (result[totalAmount] || 0) + 1;
-  //   });
-  //   return result;
-  // }, {});
-
-  // console.log(handleChangeProductCart.totalAmount);
-
-  // useEffect(() => {
-  //   console.log({ cartGrouped, cart });
-  // }, [cartGrouped, cart]);
 
   return (
     <Container>
@@ -118,13 +103,13 @@ export const CartComponent = () => {
                           <Link to={`/produtos/${cart.id}`}>
                             <ProductName>{cart.name}</ProductName>
                             <PricesBox>
-                              <ProductQty>
-                                {cart.amount} - {cart.weight}
-                              </ProductQty>
-                              <CloseIcon sx={{ mx: 'auto', my: 'auto' }} />
+                              <ProductQty>{cart.weight} x </ProductQty>
+
                               <ProductPrice>R$ {cart.price?.toFixed(2)} </ProductPrice>
                             </PricesBox>
-                            <ProductTotal>Total: R$ {cart.totalAmount?.toFixed(2)} </ProductTotal>
+                            <ProductTotal>
+                              {cart.amount} Un. R$ {cart.totalAmount?.toFixed(2)}{' '}
+                            </ProductTotal>
                           </Link>
                         </CardCenter>
                         <CardRight>
@@ -151,12 +136,14 @@ export const CartComponent = () => {
                 );
               })}
               <KeepBuying>
-                <Text>
-                  <Link to={`/`}>Continuar comprando</Link>
-                  <IconContainer>
-                    <ArrowForwardIosIcon className="arrow-icon" fontSize="large" />
-                  </IconContainer>
-                </Text>
+                <Link to={`/`}>
+                  <Text>
+                    Continuar comprando
+                    <IconContainer>
+                      <ArrowForwardIosIcon className="arrow-icon" fontSize="large" />
+                    </IconContainer>
+                  </Text>
+                </Link>
               </KeepBuying>
             </ProductsContainer>
 
@@ -174,9 +161,9 @@ export const CartComponent = () => {
             </OrderContainer>
 
             <Payment>
-              <PaymentText>Pagamento</PaymentText>
+              <PaymentText></PaymentText>
               <PaymentLogo></PaymentLogo>
-              <PaymentInfo>Pagamento em dinheiro no ato da entrega</PaymentInfo>
+              <PaymentInfo>Pagamento em dinheiro na entrega</PaymentInfo>
             </Payment>
             <ButtonContainer>
               <Stack spacing={2} direction="row">
@@ -197,7 +184,7 @@ export const CartComponent = () => {
                     textTransform: 'uppercase',
                   }}
                   // não está funcionando pois foi copiado o estilo
-                  onClick={() => cart(cart)}
+                  onClick={() => cart}
                 >
                   <label>{(cart.inCart = 'Finalizar a Compra')}</label>
                 </Button>

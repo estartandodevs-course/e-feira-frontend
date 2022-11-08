@@ -19,13 +19,11 @@ export const FullLayout = () => {
   return (
     <ThemeProvider theme={theme}>
       <PageWrapper>
-        <React.StrictMode>
-          <Header />
-          <PageContent>
-            <Outlet />
-          </PageContent>
-          <Navbar />
-        </React.StrictMode>
+        <Header />
+        <PageContent>
+          <Outlet />
+        </PageContent>
+        <Navbar />
       </PageWrapper>
     </ThemeProvider>
   );

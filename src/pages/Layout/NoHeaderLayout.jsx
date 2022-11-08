@@ -17,12 +17,10 @@ export const NoHeaderLayout = () => {
   return (
     <ThemeProvider theme={theme}>
       <PageWrapper>
-        <React.StrictMode>
-          <PageContent>
-            <Outlet />
-          </PageContent>
-          <Navbar />
-        </React.StrictMode>
+        <PageContent>
+          <Outlet />
+        </PageContent>
+        <Navbar />
       </PageWrapper>
     </ThemeProvider>
   );
