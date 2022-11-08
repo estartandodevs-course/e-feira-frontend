@@ -59,6 +59,8 @@ export const CartComponent = () => {
 
   const grandTotal = _.sumBy(cart, 'totalAmount');
 
+  const frete = 5;
+
   return (
     <Container>
       <>
@@ -131,7 +133,7 @@ export const CartComponent = () => {
               </SubTotalOrderValue>
               <ShippingPrice>
                 Taxa de Entrega:
-                <span>R$ {grandTotal.toFixed(2)}</span>
+                <span>R$ {frete.toFixed(2)}</span>
               </ShippingPrice>
               <TotalOrder>Total</TotalOrder>
               <Thing>Troco</Thing>

@@ -7,6 +7,8 @@ import TextField from '@mui/material/TextField';
 //https://react-google-maps-api-docs.netlify.app/#section-introduction
 //https://www.ultimateakash.com/blog-details/Ii0zJGAKYAo=/How-To-Integrate-Google-Places-Autocomplete-in-React-2022
 
+//AIzaSyCVLTlB24p8MM8lhJ0l1xj0Ij6DoAwIOqI
+
 const PlaceComponent = () => {
   const inputRef = useRef();
 
@@ -25,7 +27,7 @@ const PlaceComponent = () => {
       <AdressCard>
         <MapOutlinedIcon className="map-icon" style={{ fontSize: '60' }}></MapOutlinedIcon>
         <Adress>
-          <LoadScript googleMapsApiKey={process.env.AIzaSyCKHnGqm6KGkbhp8j2VbfQeBrsXSqXzHQE} libraries={['places']}>
+          <LoadScript googleMapsApiKey={process.env.AIzaSyCVLTlB24p8MM8lhJ0l1xj0Ij6DoAwIOqI} libraries={['places']}>
             <StandaloneSearchBox onLoad={ref => (inputRef.current = ref)} onPlacesChanged={handlePlaceChanged}>
               <TextField
                 id="outlined-basic"
