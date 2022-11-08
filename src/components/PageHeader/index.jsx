@@ -1,5 +1,5 @@
-import { SiteTitle, HeaderBox } from './styles';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { SiteTitle, HeaderBox } from './styles';
 import { GoBackButton } from './styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 

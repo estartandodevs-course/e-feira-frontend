@@ -1,6 +1,5 @@
-import React from 'react';
-import { Access, Card, CardBox, CardImg, CardSubTitle, CardTitle, Container, Main, Title } from './styles';
 import { useEffect, useState } from 'react';
+import { Access, Card, CardBox, CardImg, CardSubTitle, CardTitle, Container, Main, Title } from './styles';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ApiServer } from '../../services/Api';
 import { useNavigate, Link } from 'react-router-dom';

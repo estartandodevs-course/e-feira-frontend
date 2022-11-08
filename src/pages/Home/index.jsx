@@ -1,5 +1,5 @@
-import { ContainerStyle } from './styles';
 import { useEffect } from 'react';
+import { ContainerStyle } from './styles';
 import { useSplash } from '../../contexts/SplashProvider';
 import { Highlights } from '../../components/Highlights';
 import { CategoriesCarousel } from '../../components/Carousel';

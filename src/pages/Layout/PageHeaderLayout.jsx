@@ -18,13 +18,11 @@ export const PageHeaderLayout = () => {
   return (
     <ThemeProvider theme={theme}>
       <PageWrapper>
-        <React.StrictMode>
-          <PageHeader />
-          <PageContent>
-            <Outlet />
-          </PageContent>
-          <Navbar />
-        </React.StrictMode>
+        <PageHeader />
+        <PageContent>
+          <Outlet />
+        </PageContent>
+        <Navbar />
       </PageWrapper>
     </ThemeProvider>
   );
