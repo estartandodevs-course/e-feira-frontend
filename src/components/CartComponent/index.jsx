@@ -66,6 +66,8 @@ export const CartComponent = () => {
     });
   };
 
+  const grandTotal = _.sumBy(cart, 'totalAmount');
+
   // const counts = cart.reduce(function (result, product) {
   //   product.ingredients.forEach(function () {
   //     result[cart.totalAmount] = (result[totalAmount] || 0) + 1;
@@ -159,8 +161,14 @@ export const CartComponent = () => {
             </ProductsContainer>
 
             <OrderContainer>
-              <SubTotalOrderValue>Subtotal</SubTotalOrderValue>
-              <ShippingPrice>Taxa de Entrega</ShippingPrice>
+              <SubTotalOrderValue>
+                Subtotal:
+                <span>R$ {grandTotal.toFixed(2)}</span>
+              </SubTotalOrderValue>
+              <ShippingPrice>
+                Taxa de Entrega:
+                <span>R$ {grandTotal.toFixed(2)}</span>
+              </ShippingPrice>
               <TotalOrder>Total</TotalOrder>
               <Thing>Troco</Thing>
             </OrderContainer>
