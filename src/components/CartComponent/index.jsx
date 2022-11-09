@@ -3,19 +3,19 @@ import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import MapIcon from '../../assets/images/map';
+import MoneyIcon from '../../assets/images/money';
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import TextField from '@mui/material/TextField';
 import { ApiServer } from '../../services/Api';
 
 import {
   Acess,
-  Adress,
-  AdressCard,
-  AdressContainer,
-  AdressTitle,
+  Address,
+  AddressCard,
+  AddressContainer,
+  AddressTitle,
   ButtonContainer,
   CardCenter,
   CardRight,
@@ -27,7 +27,6 @@ import {
   OrderContainer,
   Payment,
   PaymentInfo,
-  PaymentLogo,
   PaymentText,
   PricesBox,
   ProductImage,
@@ -50,33 +49,7 @@ import { useState } from 'react';
 export const CartComponent = () => {
   const { cart, updateCart } = useCart();
 
-
-
   const [address, setAddress] = useState();
-  // eslint-disable-next-line
-  const form = useFormik({
-    initialValues: [
-      {
-        order: {
-          address: 'rua papagio, 555',
-          payment_method: 'Dinheiro',
-          total_price: 0,
-          change: 0,
-          delivery_tax: 5,
-        },
-      },
-      {
-        order_itens: [
-          {
-            amount: 0,
-            individual_price: 0,
-            product_id: 0,
-          },
-        ],
-      },
-    ],
-  });
-
 
   const cartGrouped = useMemo(() => {
     const newCart = _.groupBy(cart, 'provider_name');
@@ -161,15 +134,15 @@ export const CartComponent = () => {
     <Container>
       <>
         {address && (
-          <AdressContainer>
-            <AdressTitle>Endereço de Entrega</AdressTitle>
-            <AdressCard>
+          <AddressContainer>
+            <AddressTitle>Entregar em</AddressTitle>
+            <AddressCard>
               <MapIcon className="map-icon" />
-              <Adress>
+              <Address>
                 <p>{address}</p>
-              </Adress>
-            </AdressCard>
-          </AdressContainer>
+              </Address>
+            </AddressCard>
+          </AddressContainer>
         )}
         {cart.length > 0 ? (
           <>
@@ -212,7 +185,7 @@ export const CartComponent = () => {
                             })}
                           </ItemUnit>
 
-                          <button onClick={() => handleChangeProductCart(cart[0].id, cart.amount + 1)}>
+                          <button onClick={() => handleChangeProductCart(cart.id, cart.amount + 1)}>
                             <AddIcon style={{ color: '#3BA032' }} />
                           </button>
                         </CardRight>
@@ -247,9 +220,12 @@ export const CartComponent = () => {
             </OrderContainer>
 
             <Payment>
-              <PaymentText></PaymentText>
-              <PaymentLogo></PaymentLogo>
-              <PaymentInfo>Pagamento em dinheiro na entrega</PaymentInfo>
+              <PaymentText>Pagamento</PaymentText>
+
+              <PaymentInfo>
+                <MoneyIcon className="money-icon" />
+                Pagamento em dinheiro na entrega
+              </PaymentInfo>
             </Payment>
             <ButtonContainer>
               <Stack spacing={2} direction="row">
