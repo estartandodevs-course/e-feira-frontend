@@ -4,11 +4,12 @@ export const Container = styled.div`
   width: 90%;
   height: 100%;
   margin: 1rem;
-  margin-bottom: 5rem;
+  margin-top: 2.8rem;
+  margin-bottom: 10rem;
   padding-left: 1rem;
 `;
 export const AddressContainer = styled.div`
-  padding-bottom 1.2rem; 
+  padding-bottom: 1.2rem;
 `;
 
 export const AddressTitle = styled.h4`
@@ -252,6 +253,7 @@ export const ButtonContainer = styled.div`
 export const OrderContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
 `;
 
 export const SubTotalOrderValue = styled.h4`
@@ -282,12 +284,16 @@ export const ShippingPrice = styled.h4`
 
 export const TotalOrder = styled.h4`
   font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  font-style: bold;
+  font-weight: 700;
   line-height: 120%;
   letter-spacing: 0.004em;
-  margin-top: 0.55rem 0;
+  margin-top: 1rem;
   padding: 1rem 0 0 0;
+  span {
+    display: flex;
+    float: right;
+  }
 `;
 
 export const Thing = styled.h4`
@@ -299,7 +305,7 @@ export const Thing = styled.h4`
 `;
 
 export const Payment = styled.div`
-  padding: 1rem 0;
+  margin: 1rem 0 5rem 0;
 `;
 
 export const PaymentText = styled.h3`
@@ -307,11 +313,13 @@ export const PaymentText = styled.h3`
 `;
 
 export const PaymentInfo = styled.h3`
-  text-align: center;
   display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0 3rem 0;
+  text-align: center;
   > .money-icon {
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 0.5rem;
+    /* justify-content: flex-start; */
+    /* align-items: center;*/
+    padding: 0 0.5rem 0 0;
   }
 `;

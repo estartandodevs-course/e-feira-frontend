@@ -11,6 +11,7 @@ import {
   ProductItem,
   SearchBox,
 } from './styles';
+import { Link } from 'react-router-dom';
 import { InputAdornment, OutlinedInput, Box } from '@mui/material';
 import productsApi from '../../services/products';
 import SearchIcon from '@mui/icons-material/Search';
@@ -58,7 +59,7 @@ export const SearchComp = () => {
             )
             .map(item => (
               <ProductItem key={item.id}>
-                <a href={`produtos/${item.id}`}>
+                <Link to={`/produtos/${item.id}`}>
                   <CardLeft>
                     <CardImg>
                       <img src={item.image} />
@@ -71,7 +72,7 @@ export const SearchComp = () => {
                       <ItemPrice>R$ {item.price.toFixed(2)}</ItemPrice>
                     </CardDescription>
                   </CardRight>
-                </a>
+                </Link>
               </ProductItem>
             ))}
         </Box>

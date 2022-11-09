@@ -61,7 +61,7 @@ export const SupplierCard = () => {
           {provider.phoneNumber?.map((item, index) => (
             <ContactPhone key={index}>
               <LocalPhoneOutlinedIcon />
-              <a href="tel:${item}"> {item}</a>
+              <Link to="tel:${item}"> {item}</Link>
             </ContactPhone>
           ))}
         </ContactInfo>

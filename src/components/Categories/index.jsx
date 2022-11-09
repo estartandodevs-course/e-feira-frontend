@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link, useParams } from 'react-router-dom';
+import { ApiServer } from '../../services/Api';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { Box } from '@mui/material';
 import {
   Card,
+  CardBottom,
   CardDescription,
   CardImg,
   CardLeft,
@@ -12,11 +16,8 @@ import {
   CardTitle,
   Container,
   ItemPrice,
-  Main,
   PageTitle,
 } from './styles';
-import { Link, useParams } from 'react-router-dom';
-import { ApiServer } from '../../services/Api';
 
 export const CategoriesPage = () => {
   const { id } = useParams();
@@ -42,7 +43,7 @@ export const CategoriesPage = () => {
       <div style={{ display: loading ? 'none' : 'block' }}>
         <Container>
           <Swiper
-            width={450}
+            width={400}
             noSwiping={true}
             allowTouchMove={false}
             navigation={false}
@@ -50,9 +51,14 @@ export const CategoriesPage = () => {
             spaceBetween={10}
             loop={true}
             className="mySwiperCategories"
+            // breakpoints={{
+            //   300: {
+            //     width: 50,
+            //   },
+            // }}
           >
             {productsCategories.length > 0 ? (
-              <Main>
+              <Box>
                 {productsCategories.map(item => {
                   return (
                     <SwiperSlide key={item.id}>
@@ -67,15 +73,17 @@ export const CategoriesPage = () => {
                         <CardRight>
                           <CardDescription>
                             <CardTitle>{item.name}</CardTitle>
-                            <CardSubTitle>{item.subtitle}</CardSubTitle>
-                            <ItemPrice>R$ {item.price} </ItemPrice>
+                            <CardBottom>
+                              <CardSubTitle>{item.subtitle}</CardSubTitle>
+                              <ItemPrice>R$ {item.price.toFixed(2)} </ItemPrice>
+                            </CardBottom>
                           </CardDescription>
                         </CardRight>
                       </Card>
                     </SwiperSlide>
                   );
                 })}
-              </Main>
+              </Box>
             ) : (
               <PageTitle>no momento não encontramos produtos disponiveis nesta categoria</PageTitle>
             )}
