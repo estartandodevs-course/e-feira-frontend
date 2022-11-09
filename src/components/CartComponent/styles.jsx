@@ -7,9 +7,11 @@ export const Container = styled.div`
   margin-bottom: 5rem;
   padding-left: 1rem;
 `;
-export const AdressContainer = styled.div``;
+export const AddressContainer = styled.div`
+  padding-bottom 1.2rem; 
+`;
 
-export const AdressTitle = styled.h4`
+export const AddressTitle = styled.h4`
   display: flex;
   margin-top: 1rem;
   padding-bottom: 1rem;
@@ -23,7 +25,7 @@ export const AdressTitle = styled.h4`
   }
 `;
 
-export const AdressCard = styled.div`
+export const AddressCard = styled.div`
   justify-content: flex-start;
   margin: 1.4rem 0;
   align-items: flex-start;
@@ -39,7 +41,7 @@ export const AdressCard = styled.div`
   }
 `;
 
-export const Adress = styled.div`
+export const Address = styled.div`
   align-items: center;
   justify-content: center;
   > p {
@@ -300,8 +302,16 @@ export const Payment = styled.div`
   padding: 1rem 0;
 `;
 
-export const PaymentText = styled.h2``;
+export const PaymentText = styled.h3`
+  padding: 1.2rem 0;
+`;
 
-export const PaymentLogo = styled.div``;
-
-export const PaymentInfo = styled.h3``;
+export const PaymentInfo = styled.h3`
+  text-align: center;
+  display: flex;
+  > .money-icon {
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 0.5rem;
+  }
+`;
