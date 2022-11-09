@@ -25,7 +25,7 @@ export const Loader = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 95%;
+  width: 90%;
   height: 100%;
   padding: 1rem;
   margin-bottom: 4rem;
@@ -64,13 +64,6 @@ export const PageTitle = styled.h3`
   text-align: center;
 `;
 
-export const Main = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-direction: row;
-`;
-
 export const Card = styled.div`
   display: flex;
   flex-direction: row;
@@ -94,15 +87,13 @@ export const CardImg = styled.div`
     padding-bottom: 0.5rem;
   }
 `;
+
 export const CardDescription = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
-export const ItemPrice = styled.div`
-  margin-top: 4rem;
-  width: 100%;
-`;
-
+export const CardBottom = styled.div``;
 export const CardTitle = styled.h6`
   grid-row-start: 1;
   grid-row-end: 1;
@@ -110,10 +101,13 @@ export const CardTitle = styled.h6`
   text-align: start;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 120%;
   width: 100%;
+  inline-size: 15rem;
+  overflow-wrap: break-word;
 `;
+
 export const CardSubTitle = styled.h6`
   grid-row-start: 2;
   grid-row-end: 2;
@@ -124,4 +118,8 @@ export const CardSubTitle = styled.h6`
   font-weight: 400;
   font-size: 12px;
   line-height: 120%;
+`;
+export const ItemPrice = styled.div`
+  margin-top: 3rem;
+  width: 100%;
 `;

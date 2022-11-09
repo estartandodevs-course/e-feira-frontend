@@ -1,15 +1,10 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import MapIcon from '../../assets/images/map';
-import MoneyIcon from '../../assets/images/money';
-import { Stack, Button } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ApiServer } from '../../services/Api';
-
+import axios from 'axios';
+import { Stack, Button } from '@mui/material';
 import {
   Acess,
   Address,
@@ -42,9 +37,11 @@ import {
   Thing,
   TotalOrder,
 } from './styles';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { useState } from 'react';
+import MapIcon from '../../assets/images/map';
+import MoneyIcon from '../../assets/images/money';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export const CartComponent = () => {
   const { cart, updateCart } = useCart();
@@ -62,7 +59,7 @@ export const CartComponent = () => {
   const postProduct = id => {
     const data = {
       order: {
-        address: '',
+        address: cartGrouped[0].value[0].address,
         payment_method: 'Dinheiro',
         total_price: cartGrouped[0].value[0].totalAmount,
         change: cartGrouped[0].value[0].change,
@@ -99,8 +96,6 @@ export const CartComponent = () => {
 
   const grandTotal = _.sumBy(cart, 'totalAmount');
 
-  const frete = 5;
-
   function loadGeolocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
       const lat = position.coords.latitude;
@@ -129,6 +124,8 @@ export const CartComponent = () => {
       setAddress(firstAddress.formatted_address);
     }
   }
+
+  const amountDue = grandTotal + 5;
 
   return (
     <Container>
@@ -213,10 +210,13 @@ export const CartComponent = () => {
               </SubTotalOrderValue>
               <ShippingPrice>
                 Taxa de Entrega:
-                <span>R$ {frete.toFixed(2)}</span>
+                <span>R$ {5}</span>
               </ShippingPrice>
-              <TotalOrder>Total</TotalOrder>
-              <Thing>Troco</Thing>
+              <TotalOrder>
+                Total:
+                <span> R$ {amountDue.toFixed(2)}</span>
+              </TotalOrder>
+              <Thing></Thing>
             </OrderContainer>
 
             <Payment>
@@ -226,32 +226,33 @@ export const CartComponent = () => {
                 <MoneyIcon className="money-icon" />
                 Pagamento em dinheiro na entrega
               </PaymentInfo>
-            </Payment>
-            <ButtonContainer>
-              <Stack spacing={2} direction="row">
-                <Button
-                  onClick={() => postProduct(cart[0].id)}
-                  style={{
-                    display: 'flex',
-                    background: '#3ba032',
-                    borderRadius: '8px',
-                    justifyContent: 'center',
 
-                    color: '#fff',
-                    fontWeight: '500',
-                    fontSize: '16px',
-                    lineHeight: '120%',
-                    border: 'none',
-                    padding: '1rem 1rem',
-                    letterSpacing: '0.0125em',
-                    textTransform: 'uppercase',
-                  }}
-                  // não está funcionando pois foi copiado o estilo
-                >
-                  <label>{(cart.inCart = 'Finalizar a Compra')}</label>
-                </Button>
-              </Stack>
-            </ButtonContainer>
+              <ButtonContainer>
+                <Stack spacing={2} direction="row">
+                  <Button
+                    onClick={() => postProduct(cart[0].id)}
+                    style={{
+                      display: 'flex',
+                      background: '#3ba032',
+                      borderRadius: '8px',
+                      justifyContent: 'center',
+
+                      color: '#fff',
+                      fontWeight: '500',
+                      fontSize: '16px',
+                      lineHeight: '120%',
+                      border: 'none',
+                      padding: '1rem 1rem',
+                      letterSpacing: '0.0125em',
+                      textTransform: 'uppercase',
+                    }}
+                    // não está funcionando pois foi copiado o estilo
+                  >
+                    <label>{(cart.inCart = 'Finalizar a Compra')}</label>
+                  </Button>
+                </Stack>
+              </ButtonContainer>
+            </Payment>
           </>
         ) : (
           <NothingFound>ainda não doi selecionado nenhum produto</NothingFound>
