@@ -3,7 +3,7 @@ import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import _ from 'lodash';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import MapIcon from '../../assets/images/map';
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -50,7 +50,7 @@ export const CartComponent = () => {
   const { cart, updateCart } = useCart();
 
   const [address, setAddress] = useState();
-
+  // eslint-disable-next-line
   const form = useFormik({
     initialValues: [
       {
@@ -74,7 +74,6 @@ export const CartComponent = () => {
     ],
   });
 
-  console.log(form);
   const cartGrouped = useMemo(() => {
     const newCart = _.groupBy(cart, 'provider_name');
     return Object.entries(newCart).map(([key, value]) => ({
@@ -96,12 +95,8 @@ export const CartComponent = () => {
 
   const frete = 5;
 
-  console.log('Teste', navigator.geolocation);
-
   function loadGeolocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log('Latitude', position.coords.latitude);
-      console.log('Latitude', position.coords.longitude);
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
@@ -119,9 +114,9 @@ export const CartComponent = () => {
 
   async function loadAddressByGeolocation(lat, lng) {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&inputtype=textquery&fields=formatted_address&key=${GOOGLE_PLACES_API_KEY}`;
-    console.log(url);
+
     const response = await axios.get(url);
-    console.log(response.data);
+
     const results = response.data.results;
     if (results.length > 0) {
       const [firstAddress] = results;
@@ -136,7 +131,7 @@ export const CartComponent = () => {
           <AdressContainer>
             <AdressTitle>Endereço de Entrega</AdressTitle>
             <AdressCard>
-              <MapOutlinedIcon className="map-icon" style={{ fontSize: '60' }}></MapOutlinedIcon>
+              <MapIcon className="map-icon" />
               <Adress>
                 <p>{address}</p>
               </Adress>
