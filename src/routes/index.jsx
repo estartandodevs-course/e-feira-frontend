@@ -9,6 +9,7 @@ import ProductCategory from '../pages/ProductCategory';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
 import Search from '../pages/Search';
+import Orders from '../pages/Orders';
 
 const Router = () => {
   return (
@@ -28,11 +29,18 @@ const Router = () => {
         </Route>
         <Route element={<PageHeaderLayout />}>
           <Route
-            // title={title}
             path="/produtos/:id"
             element={
               <>
                 <ProductDetails />
+              </>
+            }
+          />
+          <Route
+            path="/pedidos/:id"
+            element={
+              <>
+                <Orders />
               </>
             }
           />

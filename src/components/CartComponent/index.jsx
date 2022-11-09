@@ -56,7 +56,7 @@ export const CartComponent = () => {
     }));
   }, [cart]);
 
-  const postProduct = id => {
+  const postProduct = () => {
     const data = {
       order: {
         address: cartGrouped[0].value[0].address,
@@ -73,8 +73,6 @@ export const CartComponent = () => {
         },
       ],
     };
-
-    console.log(id);
 
     ApiServer.post(`checkout`, data)
       .then(response => {
@@ -246,7 +244,6 @@ export const CartComponent = () => {
                       letterSpacing: '0.0125em',
                       textTransform: 'uppercase',
                     }}
-                    // não está funcionando pois foi copiado o estilo
                   >
                     <label>{(cart.inCart = 'Finalizar a Compra')}</label>
                   </Button>
