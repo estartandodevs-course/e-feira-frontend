@@ -8,7 +8,7 @@ import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import TextField from '@mui/material/TextField';
+
 import {
   Acess,
   Adress,
@@ -42,9 +42,14 @@ import {
   Thing,
   TotalOrder,
 } from './styles';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 
 export const CartComponent = () => {
   const { cart, updateCart } = useCart();
+
+  const [address, setAddress] = useState();
 
   const form = useFormik({
     initialValues: [
@@ -91,25 +96,53 @@ export const CartComponent = () => {
 
   const frete = 5;
 
+  console.log('Teste', navigator.geolocation);
+
+  function loadGeolocation() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log('Latitude', position.coords.latitude);
+      console.log('Latitude', position.coords.longitude);
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      if (lat && lng) {
+        loadAddressByGeolocation(lat, lng);
+      }
+    });
+  }
+
+  useEffect(() => {
+    loadGeolocation();
+  }, []);
+
+  const GOOGLE_PLACES_API_KEY = 'AIzaSyCJ2H3qLvFbfiWqZb6PyJgGBIUUoOpQObU';
+
+  async function loadAddressByGeolocation(lat, lng) {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&inputtype=textquery&fields=formatted_address&key=${GOOGLE_PLACES_API_KEY}`;
+    console.log(url);
+    const response = await axios.get(url);
+    console.log(response.data);
+    const results = response.data.results;
+    if (results.length > 0) {
+      const [firstAddress] = results;
+      setAddress(firstAddress.formatted_address);
+    }
+  }
+
   return (
     <Container>
       <>
-        <AdressContainer>
-          <AdressTitle>Endereço de Entrega</AdressTitle>
-          <AdressCard>
-            <MapOutlinedIcon className="map-icon" style={{ fontSize: '60' }}></MapOutlinedIcon>
-            <Adress>
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                type="text"
-                className="form-control"
-                placeholder="Inserir o endereço"
-                sx={{ width: 220, ml: 2 }}
-              />
-            </Adress>
-          </AdressCard>
-        </AdressContainer>
+        {address && (
+          <AdressContainer>
+            <AdressTitle>Endereço de Entrega</AdressTitle>
+            <AdressCard>
+              <MapOutlinedIcon className="map-icon" style={{ fontSize: '60' }}></MapOutlinedIcon>
+              <Adress>
+                <p>{address}</p>
+              </Adress>
+            </AdressCard>
+          </AdressContainer>
+        )}
         {cart.length > 0 ? (
           <>
             <ProductsContainer>
