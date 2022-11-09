@@ -56,8 +56,8 @@ export const CardBox = styled.div`
 `;
 
 export const CardImg = styled.div`
-  > img {
+  & img {
     border-radius: 12px;
-    padding-bottom: 0.5rem;
+    object-fit: cover;
   }
 `;
