@@ -156,7 +156,7 @@ export const CartComponent = () => {
                             })}
                           </ItemUnit>
 
-                          <button onClick={() => handleChangeProductCart(cart.id, cart.amount + 1)}>
+                          <button onClick={() => handleChangeProductCart(cart[0].id, cart.amount + 1)}>
                             <AddIcon style={{ color: '#3BA032' }} />
                           </button>
                         </CardRight>
