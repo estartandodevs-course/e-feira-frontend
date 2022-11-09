@@ -29,11 +29,10 @@ git clone https://github.com/estartandodevs-course/e-feira-frontend.git
   - [x] Carrossel
 - [x] Header
 - [x] Menu
-- [ ] Categorias de Produtos
-- [ ] Footer
-- [ ] CRUD
-- [ ] Páginas de Produtos
-- [ ] Formulários de Contato
+- [x] Categorias de Produtos
+- [x] Footer
+- [x] CRUD
+- [x] Páginas de Produtos
 
 ### :handshake: Members
 
