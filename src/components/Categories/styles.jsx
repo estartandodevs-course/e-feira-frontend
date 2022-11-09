@@ -25,7 +25,7 @@ export const Loader = styled.div`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 95%;
   height: 100%;
   padding: 1rem;
   margin-bottom: 4rem;

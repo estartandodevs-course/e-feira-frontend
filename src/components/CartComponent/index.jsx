@@ -62,8 +62,8 @@ export const CartComponent = () => {
         address: cartGrouped[0].value[0].address,
         payment_method: 'Dinheiro',
         total_price: cartGrouped[0].value[0].totalAmount,
-        change: cartGrouped[0].value[0].change,
-        delivery_tax: 5,
+        grandTotal: cartGrouped[0].value[0].grandTotal,
+        delivery_tax: cartGrouped[0].value[0].freight,
       },
       order_itens: [
         {
@@ -94,7 +94,9 @@ export const CartComponent = () => {
     });
   };
 
-  const grandTotal = _.sumBy(cart, 'totalAmount');
+  const total_price = _.sumBy(cart, 'totalAmount');
+  const freight = total_price * 0.3;
+  const grandTotal = total_price + freight;
 
   function loadGeolocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -124,8 +126,6 @@ export const CartComponent = () => {
       setAddress(firstAddress.formatted_address);
     }
   }
-
-  const amountDue = grandTotal + 5;
 
   return (
     <Container>
@@ -206,15 +206,15 @@ export const CartComponent = () => {
             <OrderContainer>
               <SubTotalOrderValue>
                 Subtotal:
-                <span>R$ {grandTotal.toFixed(2)}</span>
+                <span>R$ {total_price.toFixed(2)}</span>
               </SubTotalOrderValue>
               <ShippingPrice>
                 Taxa de Entrega:
-                <span>R$ {5}</span>
+                <span>R$ {freight.toFixed(2)}</span>
               </ShippingPrice>
               <TotalOrder>
                 Total:
-                <span> R$ {amountDue.toFixed(2)}</span>
+                <span> R$ {grandTotal.toFixed(2)}</span>
               </TotalOrder>
               <Thing></Thing>
             </OrderContainer>
