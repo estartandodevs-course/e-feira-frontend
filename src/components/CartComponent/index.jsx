@@ -54,8 +54,6 @@ export const CartComponent = () => {
     }));
   }, [cart]);
 
-  console.log(cartGrouped);
-
   const postProduct = id => {
     const data = {
       order: {
@@ -74,7 +72,9 @@ export const CartComponent = () => {
       ],
     };
 
-    ApiServer.post(`checkout/${id}`, data)
+    console.log(id);
+
+    ApiServer.post(`checkout`, data)
       .then(response => {
         console.log(response);
       })
