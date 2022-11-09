@@ -2,13 +2,14 @@ import { useMemo } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import MapIcon from '../../assets/images/map';
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import TextField from '@mui/material/TextField';
 import { ApiServer } from '../../services/Api';
+
 import {
   Acess,
   Adress,
@@ -42,9 +43,40 @@ import {
   Thing,
   TotalOrder,
 } from './styles';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
 
 export const CartComponent = () => {
   const { cart, updateCart } = useCart();
+
+
+
+  const [address, setAddress] = useState();
+  // eslint-disable-next-line
+  const form = useFormik({
+    initialValues: [
+      {
+        order: {
+          address: 'rua papagio, 555',
+          payment_method: 'Dinheiro',
+          total_price: 0,
+          change: 0,
+          delivery_tax: 5,
+        },
+      },
+      {
+        order_itens: [
+          {
+            amount: 0,
+            individual_price: 0,
+            product_id: 0,
+          },
+        ],
+      },
+    ],
+  });
+
 
   const cartGrouped = useMemo(() => {
     const newCart = _.groupBy(cart, 'provider_name');
@@ -96,25 +128,49 @@ export const CartComponent = () => {
 
   const frete = 5;
 
+  function loadGeolocation() {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      if (lat && lng) {
+        loadAddressByGeolocation(lat, lng);
+      }
+    });
+  }
+
+  useEffect(() => {
+    loadGeolocation();
+  }, []);
+
+  const GOOGLE_PLACES_API_KEY = 'AIzaSyCJ2H3qLvFbfiWqZb6PyJgGBIUUoOpQObU';
+
+  async function loadAddressByGeolocation(lat, lng) {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&inputtype=textquery&fields=formatted_address&key=${GOOGLE_PLACES_API_KEY}`;
+
+    const response = await axios.get(url);
+
+    const results = response.data.results;
+    if (results.length > 0) {
+      const [firstAddress] = results;
+      setAddress(firstAddress.formatted_address);
+    }
+  }
+
   return (
     <Container>
       <>
-        <AdressContainer>
-          <AdressTitle>Endereço de Entrega</AdressTitle>
-          <AdressCard>
-            <MapOutlinedIcon className="map-icon" style={{ fontSize: '60' }}></MapOutlinedIcon>
-            <Adress>
-              <TextField
-                id="outlined-basic"
-                variant="outlined"
-                type="text"
-                className="form-control"
-                placeholder="Inserir o endereço"
-                sx={{ width: 220, ml: 2 }}
-              />
-            </Adress>
-          </AdressCard>
-        </AdressContainer>
+        {address && (
+          <AdressContainer>
+            <AdressTitle>Endereço de Entrega</AdressTitle>
+            <AdressCard>
+              <MapIcon className="map-icon" />
+              <Adress>
+                <p>{address}</p>
+              </Adress>
+            </AdressCard>
+          </AdressContainer>
+        )}
         {cart.length > 0 ? (
           <>
             <ProductsContainer>

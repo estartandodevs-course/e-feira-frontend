@@ -9,26 +9,6 @@ export const Container = styled.div`
 `;
 export const AdressContainer = styled.div``;
 
-export const Adress = styled.div`
-  display: flex;
-  padding: 0 0.8rem;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.8rem;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 120%;
-  align-items: center;
-  letter-spacing: 0.004em;
-  > p {
-    width: 75%;
-  }
-  > input {
-    width: 100%;
-  }
-`;
-
 export const AdressTitle = styled.h4`
   display: flex;
   margin-top: 1rem;
@@ -44,20 +24,40 @@ export const AdressTitle = styled.h4`
 `;
 
 export const AdressCard = styled.div`
-  display: flex;
   justify-content: flex-start;
-  flex-wrap: wrap;
   margin: 1.4rem 0;
   align-items: flex-start;
   > :nth-child(3) {
     flex-grow: 3;
   }
-  > .map-icon {
+  .map-icon {
     float: left;
+    display: flex;
+    padding: 0.5rem 0;
+
     justify-content: flex-start;
   }
 `;
 
+export const Adress = styled.div`
+  align-items: center;
+  justify-content: center;
+  > p {
+    display: flex;
+    width: 70%;
+    padding: 0 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    align-items: center;
+    text-align: start;
+    letter-spacing: 0.004em;
+  }
+  > input {
+    width: 100%;
+  }
+`;
 export const DeliveryPlace = styled.div`
   display: flex;
   padding: 1rem;
