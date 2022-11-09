@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { Link } from 'react-router-dom';
-import { useFormik } from 'formik';
 import _ from 'lodash';
 import MapIcon from '../../assets/images/map';
 import { Stack, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import TextField from '@mui/material/TextField';
+import { ApiServer } from '../../services/Api';
 
 import {
   Acess,
@@ -49,6 +50,8 @@ import { useState } from 'react';
 export const CartComponent = () => {
   const { cart, updateCart } = useCart();
 
+
+
   const [address, setAddress] = useState();
   // eslint-disable-next-line
   const form = useFormik({
@@ -74,6 +77,7 @@ export const CartComponent = () => {
     ],
   });
 
+
   const cartGrouped = useMemo(() => {
     const newCart = _.groupBy(cart, 'provider_name');
     return Object.entries(newCart).map(([key, value]) => ({
@@ -81,6 +85,35 @@ export const CartComponent = () => {
       value,
     }));
   }, [cart]);
+
+  const postProduct = id => {
+    const data = {
+      order: {
+        address: '',
+        payment_method: 'Dinheiro',
+        total_price: cartGrouped[0].value[0].totalAmount,
+        change: cartGrouped[0].value[0].change,
+        delivery_tax: 5,
+      },
+      order_itens: [
+        {
+          amount: cartGrouped[0].value[0].amount,
+          individual_price: cartGrouped[0].value[0].price,
+          product_id: cartGrouped[0].value[0].id,
+        },
+      ],
+    };
+
+    console.log(id);
+
+    ApiServer.post(`checkout`, data)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
 
   const handleChangeProductCart = (id, amount) => {
     const productInCart = cart.find(item => +item.id === +id);
@@ -179,7 +212,7 @@ export const CartComponent = () => {
                             })}
                           </ItemUnit>
 
-                          <button onClick={() => handleChangeProductCart(cart.id, cart.amount + 1)}>
+                          <button onClick={() => handleChangeProductCart(cart[0].id, cart.amount + 1)}>
                             <AddIcon style={{ color: '#3BA032' }} />
                           </button>
                         </CardRight>
@@ -221,6 +254,7 @@ export const CartComponent = () => {
             <ButtonContainer>
               <Stack spacing={2} direction="row">
                 <Button
+                  onClick={() => postProduct(cart[0].id)}
                   style={{
                     display: 'flex',
                     background: '#3ba032',
@@ -237,7 +271,6 @@ export const CartComponent = () => {
                     textTransform: 'uppercase',
                   }}
                   // não está funcionando pois foi copiado o estilo
-                  onClick={() => cart}
                 >
                   <label>{(cart.inCart = 'Finalizar a Compra')}</label>
                 </Button>
