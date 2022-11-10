@@ -51,11 +51,6 @@ export const CategoriesPage = () => {
             spaceBetween={10}
             loop={true}
             className="mySwiperCategories"
-            // breakpoints={{
-            //   300: {
-            //     width: 50,
-            //   },
-            // }}
           >
             {productsCategories.length > 0 ? (
               <Box>
