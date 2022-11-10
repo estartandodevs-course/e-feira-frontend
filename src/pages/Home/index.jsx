@@ -5,6 +5,7 @@ import { Highlights } from '../../components/Highlights';
 import { CategoriesCarousel } from '../../components/Carousel';
 import { Latest } from '../../components/Latest';
 import Navbar from '../../components/Navbar';
+import { PurchaseAlert } from '../../components/PurchaseAlert';
 
 const Home = () => {
   const sleep = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
@@ -22,6 +23,7 @@ const Home = () => {
   return isShown ? null : (
     <>
       <ContainerStyle>
+        <PurchaseAlert />
         <Highlights />
         <CategoriesCarousel />
         <Latest />
