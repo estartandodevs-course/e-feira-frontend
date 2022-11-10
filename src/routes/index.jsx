@@ -2,14 +2,12 @@ import { FullLayout } from '../pages/Layout/FullLayout';
 import { NoHeaderLayout } from '../pages/Layout/NoHeaderLayout.jsx';
 import { PageHeaderLayout } from '../pages/Layout/PageHeaderLayout';
 import { Routes, Route } from 'react-router-dom';
-import { SplashProvider } from '../contexts/SplashProvider';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import ProductCategory from '../pages/ProductCategory';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
 import Search from '../pages/Search';
-import Orders from '../pages/Orders';
 
 const Router = () => {
   return (
@@ -20,27 +18,18 @@ const Router = () => {
             path="/"
             element={
               <>
-                <SplashProvider>
-                  <Home />
-                </SplashProvider>
+                <Home />
               </>
             }
           />
         </Route>
         <Route element={<PageHeaderLayout />}>
           <Route
+            // title={title}
             path="/produtos/:id"
             element={
               <>
                 <ProductDetails />
-              </>
-            }
-          />
-          <Route
-            path="/pedidos/:id"
-            element={
-              <>
-                <Orders />
               </>
             }
           />

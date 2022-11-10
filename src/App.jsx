@@ -5,19 +5,22 @@ import ScrollToTop from './components/ScrollToTop';
 import CartContext from './contexts/CartContext';
 import { BrowserRouter } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { SplashProvider } from './contexts/SplashProvider';
 
 function App() {
   return (
     <StyledEngineProvider injectFirst>
-      <BrowserRouter>
-        <React.StrictMode>
-          <CartContext>
-            <GlobalStyle />
-            <Router />
-            <ScrollToTop />
-          </CartContext>
-        </React.StrictMode>
-      </BrowserRouter>
+      <SplashProvider>
+        <BrowserRouter>
+          <React.StrictMode>
+            <CartContext>
+              <GlobalStyle />
+              <Router />
+              <ScrollToTop />
+            </CartContext>
+          </React.StrictMode>
+        </BrowserRouter>
+      </SplashProvider>
     </StyledEngineProvider>
   );
 }
