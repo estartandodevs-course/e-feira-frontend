@@ -57,34 +57,28 @@ export const CartComponent = () => {
   }, [cart]);
 
   const postProduct = () => {
-    const data = [
-      {
-        order: {
-          address: cartGrouped[0].value[0].address,
-          payment_method: 'Dinheiro',
-          total_price: cartGrouped[0].value[0].totalAmount,
-          grand_total: cartGrouped[0].value[0].grandTotal,
-          delivery_tax: cartGrouped[0].value[0].freight,
-        },
-        order_itens: [
-          {
-            amount: cartGrouped[0].value[0].amount,
-            individual_price: cartGrouped[0].value[0].price,
-            product_id: cartGrouped[0].value[0].id,
-          },
-        ],
+    const data = {
+      order: {
+        address: cartGrouped[0].value[0].address,
+        payment_method: 'Dinheiro',
+        total_price: cartGrouped[0].value[0].totalAmount,
+        grand_total: cartGrouped[0].value[0].grandTotal,
+        delivery_tax: cartGrouped[0].value[0].freight,
       },
-    ];
-
-    ApiServer.post(
-      'checkout',
-      { data },
-      {
-        headers: {
-          userid: 1,
+      order_itens: [
+        {
+          amount: cartGrouped[0].value[0].amount,
+          individual_price: cartGrouped[0].value[0].price,
+          product_id: cartGrouped[0].value[0].id,
         },
-      }
-    )
+      ],
+    };
+
+    ApiServer.post('checkout', data, {
+      headers: {
+        userid: 1,
+      },
+    })
       .then(response => {
         console.log(response);
       })
