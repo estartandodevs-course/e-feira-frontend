@@ -62,7 +62,7 @@ export const CartComponent = () => {
         address: cartGrouped[0].value[0].address,
         payment_method: 'Dinheiro',
         total_price: cartGrouped[0].value[0].totalAmount,
-        grandTotal: cartGrouped[0].value[0].grandTotal,
+        grand_total: cartGrouped[0].value[0].grandTotal,
         delivery_tax: cartGrouped[0].value[0].freight,
       },
       order_itens: [
@@ -74,7 +74,11 @@ export const CartComponent = () => {
       ],
     };
 
-    ApiServer.post(`checkout`, data)
+    ApiServer.post('checkout', data, {
+      headers: {
+        userid: 1,
+      },
+    })
       .then(response => {
         console.log(response);
       })
