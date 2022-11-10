@@ -68,7 +68,14 @@ export default function Navbar() {
               </NavLink>
             }
           />
-          <BottomNavigationAction value="account" icon={<PersonIcon fontSize="large" />} />
+          <BottomNavigationAction
+            value="account"
+            icon={
+              <NavLink to="/pedidos">
+                <PersonIcon fontSize="large" />
+              </NavLink>
+            }
+          />
         </BottomNavigation>
       </ContainerStyle>
     </>

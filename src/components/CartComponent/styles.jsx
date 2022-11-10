@@ -318,8 +318,6 @@ export const PaymentInfo = styled.h3`
   margin: 1rem 0 3rem 0;
   text-align: center;
   > .money-icon {
-    /* justify-content: flex-start; */
-    /* align-items: center;*/
     padding: 0 0.5rem 0 0;
   }
 `;

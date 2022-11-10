@@ -1,8 +1,7 @@
+import { Routes, Route } from 'react-router-dom';
 import { FullLayout } from '../pages/Layout/FullLayout';
 import { NoHeaderLayout } from '../pages/Layout/NoHeaderLayout.jsx';
 import { PageHeaderLayout } from '../pages/Layout/PageHeaderLayout';
-import { Routes, Route } from 'react-router-dom';
-import { SplashProvider } from '../contexts/SplashProvider';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import ProductCategory from '../pages/ProductCategory';
@@ -15,18 +14,17 @@ const Router = () => {
   return (
     <Routes>
       <>
-        <Route element={<FullLayout />}>
+        <Route path="/" element={<FullLayout />}>
           <Route
-            path="/"
+            index
             element={
               <>
-                <SplashProvider>
-                  <Home />
-                </SplashProvider>
+                <Home />
               </>
             }
           />
         </Route>
+
         <Route element={<PageHeaderLayout />}>
           <Route
             path="/produtos/:id"
@@ -36,14 +34,16 @@ const Router = () => {
               </>
             }
           />
+
           <Route
-            path="/pedidos/:id"
+            path="/pedidos"
             element={
               <>
                 <Orders />
               </>
             }
           />
+
           <Route
             path="/carrinho"
             element={
@@ -53,6 +53,7 @@ const Router = () => {
             }
             title="Carrinho"
           />
+
           <Route
             path="/categoria/:id"
             element={
@@ -61,9 +62,12 @@ const Router = () => {
               </>
             }
           />
+
           <Route path="/buscar" element={<Search />} />
+
           <Route path="/cart" element={<Cart />} />
         </Route>
+
         <Route element={<NoHeaderLayout />}>
           <Route
             path="/fornecedor/:id"

@@ -36,7 +36,6 @@ export const SearchComp = () => {
       <SearchBox>
         <OutlinedInput
           sx={{ fontSize: 20 }}
-          // alignItems="flex-start"
           type="text"
           value={showBoxData}
           placeholder="digite o produto"

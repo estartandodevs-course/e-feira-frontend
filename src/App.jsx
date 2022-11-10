@@ -1,24 +1,27 @@
 import React from 'react';
 import Router from './routes';
 import GlobalStyle from './assets/styles/globalStyles';
+import { BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import CartContext from './contexts/CartContext';
-import { BrowserRouter } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { SplashProvider } from './contexts/SplashProvider';
 
 function App() {
   return (
-    <StyledEngineProvider injectFirst>
-      <BrowserRouter>
+    <BrowserRouter>
+      <StyledEngineProvider injectFirst>
         <React.StrictMode>
           <CartContext>
             <GlobalStyle />
-            <Router />
+            <SplashProvider>
+              <Router />
+            </SplashProvider>
             <ScrollToTop />
           </CartContext>
         </React.StrictMode>
-      </BrowserRouter>
-    </StyledEngineProvider>
+      </StyledEngineProvider>
+    </BrowserRouter>
   );
 }
 
