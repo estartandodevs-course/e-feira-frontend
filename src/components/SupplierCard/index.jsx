@@ -71,10 +71,8 @@ export const SupplierCard = () => {
             noSwiping={true}
             allowTouchMove={false}
             navigation={false}
-            // autoHeight={true}
             slidesPerView={1}
             spaceBetween={10}
-            // direction="vertical"
             loop={true}
             className="mySwiper"
           >

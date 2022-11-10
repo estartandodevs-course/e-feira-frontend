@@ -1,21 +1,22 @@
+import { Routes, Route } from 'react-router-dom';
 import { FullLayout } from '../pages/Layout/FullLayout';
 import { NoHeaderLayout } from '../pages/Layout/NoHeaderLayout.jsx';
 import { PageHeaderLayout } from '../pages/Layout/PageHeaderLayout';
-import { Routes, Route } from 'react-router-dom';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import ProductCategory from '../pages/ProductCategory';
 import ProductDetails from '../pages/ProductsDetails';
 import SupplierPage from '../pages/SupplierPage';
 import Search from '../pages/Search';
+import Orders from '../pages/Orders';
 
 const Router = () => {
   return (
     <Routes>
       <>
-        <Route element={<FullLayout />}>
+        <Route path="/" element={<FullLayout />}>
           <Route
-            path="/"
+            index
             element={
               <>
                 <Home />
@@ -23,9 +24,9 @@ const Router = () => {
             }
           />
         </Route>
+
         <Route element={<PageHeaderLayout />}>
           <Route
-            // title={title}
             path="/produtos/:id"
             element={
               <>
@@ -33,6 +34,16 @@ const Router = () => {
               </>
             }
           />
+
+          <Route
+            path="/pedidos"
+            element={
+              <>
+                <Orders />
+              </>
+            }
+          />
+
           <Route
             path="/carrinho"
             element={
@@ -42,6 +53,7 @@ const Router = () => {
             }
             title="Carrinho"
           />
+
           <Route
             path="/categoria/:id"
             element={
@@ -50,9 +62,12 @@ const Router = () => {
               </>
             }
           />
+
           <Route path="/buscar" element={<Search />} />
+
           <Route path="/cart" element={<Cart />} />
         </Route>
+
         <Route element={<NoHeaderLayout />}>
           <Route
             path="/fornecedor/:id"

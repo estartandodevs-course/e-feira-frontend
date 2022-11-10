@@ -1,10 +1,10 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import { ApiServer } from '../../services/Api';
-import axios from 'axios';
 import { Stack, Button } from '@mui/material';
+import { ApiServer } from '../../services/Api';
 import {
   Acess,
   Address,
@@ -256,7 +256,7 @@ export const CartComponent = () => {
             </Payment>
           </>
         ) : (
-          <NothingFound>ainda não doi selecionado nenhum produto</NothingFound>
+          <NothingFound>ainda não foi selecionado nenhum produto</NothingFound>
         )}
       </>
     </Container>

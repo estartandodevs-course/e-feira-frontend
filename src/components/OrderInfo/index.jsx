@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Stack, Button } from '@mui/material';
 import { useCart } from '../../contexts/CartContext';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import productApi from '../../services/products';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {
-  ButtonContainer,
   Card,
   CardInformation,
   CardPrice,
@@ -26,7 +23,6 @@ import {
 } from './styles';
 
 export const OrderInfo = () => {
-  const { listProductById } = productApi;
   const [productDetails, setProductDetails] = useState({
     name: '',
     subtitle: '',
@@ -40,7 +36,7 @@ export const OrderInfo = () => {
   });
 
   const navigate = useNavigate();
-  const { cart, updateCart } = useCart();
+  const { cart } = useCart();
   const { id } = useParams();
 
   const SelectedItem = () => {
@@ -133,31 +129,6 @@ export const OrderInfo = () => {
           </MeetSupplier>
         </CardInformation>
       </TextInfo>
-      <ButtonContainer>
-        <Button description={'Enviar Para Sacola'} />
-
-        <Stack spacing={2} direction="row">
-          <Button
-            style={{
-              width: '100%',
-              background: '#3ba032',
-              borderRadius: '8px',
-              justifyContent: 'center',
-              letterSpacing: '0.0125em',
-              textTransform: 'uppercase',
-              color: '#fff',
-              fontWeight: '500',
-              fontSize: '16px',
-              lineHeight: '120%',
-              border: 'none',
-              padding: '1rem 1rem',
-            }}
-            onClick={() => updateCart(productDetails)}
-          >
-            <label>{productDetails.inCart ? 'Atualizar sacola' : 'Enviar para a sacola'}</label>
-          </Button>
-        </Stack>
-      </ButtonContainer>
     </Container>
   );
 };
