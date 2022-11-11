@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
-import { AlertTitles, ButtonMessage, Img, Message } from './styles';
+import { AlertTitles, ButtonMessage, ImgCard, Message } from './styles';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import EfeiraIcon from '../../assets/images/efeira-icon';
@@ -9,17 +9,18 @@ export const PurchaseAlert = () => {
 
   return (
     <>
-      {/* <Button onClick={() => setOpen(true)}>Open Dialog</Button> */}
+      <Button onClick={() => setOpen(true)}>Open Dialog</Button>
       <Dialog
+        className="container"
         aria-labelldby="dialog-title"
         aria-describedby="dialog-description"
         open={open}
         onClose={() => setOpen(false)}
       >
         <DialogTitle id="dialog-title">
-          <Img>
+          <ImgCard sx={{ backgroundColor: 'red' }}>
             <EfeiraIcon />
-          </Img>
+          </ImgCard>
 
           <AlertTitles>Pedido Concluído com sucesso !</AlertTitles>
         </DialogTitle>

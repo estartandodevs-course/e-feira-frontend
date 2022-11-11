@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Img = styled.div`
+export const ImgCard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
