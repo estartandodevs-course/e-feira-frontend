@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function EfeiraIcon(props) {
+function EfeiraIcon() {
   return (
     <svg
       width={118}
@@ -8,7 +8,6 @@ function EfeiraIcon(props) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      {...props}
     >
       <rect x={0.42} y={0.208} width={116.962} height={148} rx={58.481} fill="url(#prefix__pattern0)" />
       <defs>

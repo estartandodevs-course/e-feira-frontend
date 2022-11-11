@@ -3,8 +3,9 @@ import { useCart } from '../../contexts/CartContext';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
-import { Stack, Button } from '@mui/material';
+import { Stack, Button, Modal, Box, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import { ApiServer } from '../../services/Api';
+import efeiraLogo from '../../assets/images/logo_transparent.png';
 import {
   Acess,
   Address,
@@ -12,12 +13,15 @@ import {
   AddressContainer,
   AddressTitle,
   ButtonContainer,
+  ButtonMessage,
   CardCenter,
   CardRight,
   Container,
   IconContainer,
+  ImgCard,
   ItemUnit,
   KeepBuying,
+  Message,
   NothingFound,
   OrderContainer,
   Payment,
@@ -37,7 +41,7 @@ import {
   Thing,
   TotalOrder,
 } from './styles';
-import MapIcon from '../../assets/images/map';
+import MapIcon from '../../assets/images/map.jsx';
 import MoneyIcon from '../../assets/images/money';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -47,6 +51,11 @@ export const CartComponent = () => {
   const { cart, updateCart } = useCart();
 
   const [address, setAddress] = useState();
+  const [orderNumber, setOrderNumber] = useState();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const cartGrouped = useMemo(() => {
     const newCart = _.groupBy(cart, 'provider_name');
@@ -80,7 +89,8 @@ export const CartComponent = () => {
       },
     })
       .then(response => {
-        console.log(response);
+        setOrderNumber(response.data.id);
+        handleOpen();
       })
       .catch(error => {
         console.log(error);
@@ -254,6 +264,48 @@ export const CartComponent = () => {
                 </Stack>
               </ButtonContainer>
             </Payment>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box
+                sx={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: 250,
+                  bgcolor: 'background.paper',
+                  border: '2px solid #000',
+                  boxShadow: 24,
+                  p: 4,
+                }}
+              >
+                <ImgCard sx={{ backgroundColor: 'red' }}>
+                  <img src={efeiraLogo} alt="logo" width="120" />
+                </ImgCard>
+                <DialogContent>
+                  <DialogContentText id="dialog-description">
+                    <Message>
+                      <b>Pedido nr.{orderNumber}</b>
+                      <br />O seu pedido foi confirmado com sucesso! <br />
+                      Fique de olho no seu e-mail que você receberá uma mensagem com os detalhes da sua compra.
+                    </Message>
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions style={{ justifyContent: 'center' }}>
+                  <ButtonMessage>
+                    <Button autoFocus className="btn-back" style={{ fontSize: 14, backgroundColor: '#309f5d' }}>
+                      <Link onClick={() => setOpen(false)} to={`/`}>
+                        Voltar para a tela inicial
+                      </Link>
+                    </Button>
+                  </ButtonMessage>
+                </DialogActions>
+              </Box>
+            </Modal>
           </>
         ) : (
           <NothingFound>ainda não foi selecionado nenhum produto</NothingFound>
