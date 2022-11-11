@@ -1,4 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export const AlertBox = styled.div`
+  ${() => css`
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  `}
+`;
 
 export const Container = styled.div`
   width: 90%;
@@ -319,5 +333,61 @@ export const PaymentInfo = styled.h3`
   text-align: center;
   > .money-icon {
     padding: 0 0.5rem 0 0;
+  }
+`;
+
+export const ImgCard = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  object-fit: cover;
+`;
+
+export const AlertTitles = styled.div`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #202020;
+`;
+
+export const Message = styled.h6`
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2.2rempx;
+  text-align: center;
+  color: #202020;
+  opacity: 0.5;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.0058em;
+`;
+
+export const ButtonMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: #54aa47;
+  width: 40%;
+  float: left;
+  text-decoration: none;
+  & > .btn-back {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 `;
